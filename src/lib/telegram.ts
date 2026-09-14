@@ -13,19 +13,29 @@
  * Set up: docs/telegram-notifications.md
  */
 
-const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+/**
+ * One bot, or several separated by commas. Two independent bots are a second
+ * copy of the copy: they authenticate on different tokens and fail for
+ * different reasons, so a lead survives one of them being revoked or rate
+ * limited. Each bot sends to every chat it is a member of; a chat a bot has not
+ * been added to simply rejects that one pair, and the others still deliver.
+ */
+const TOKENS = (process.env.TELEGRAM_BOT_TOKEN || "")
+  .split(",")
+  .map((t) => t.trim())
+  .filter(Boolean);
 /** One chat, or several separated by commas — a person and a group, say. */
 const CHATS = (process.env.TELEGRAM_CHAT_ID || "")
   .split(",")
   .map((id) => id.trim())
   .filter(Boolean);
 
-export const telegramConfigured = Boolean(TOKEN && CHATS.length);
+export const telegramConfigured = Boolean(TOKENS.length && CHATS.length);
 
 /** Telegram rejects a message over 4096 characters outright. */
 const MAX_TEXT = 4096;
 
-const api = (method: string) => `https://api.telegram.org/bot${TOKEN}/${method}`;
+const api = (token: string, method: string) => `https://api.telegram.org/bot${token}/${method}`;
 
 /** Long enough for a PDF upload on a slow line, short enough not to hang. */
 const TIMEOUT_MS = 20_000;
@@ -64,13 +74,17 @@ export async function sendTelegramNotice(notice: TelegramNotice): Promise<boolea
     ? `${notice.text.replace(/<[^>]+>/g, "").slice(0, MAX_TEXT - 48)}\n\n… trimmed — full details in the email.`
     : notice.text;
 
+  // Every bot to every chat. A bot that is not in a given chat fails only that
+  // one pair; the rest still deliver, and the whole notice is "sent" if any did.
+  const pairs = TOKENS.flatMap((token) => CHATS.map((chat) => ({ token, chat })));
+
   const results = await Promise.all(
-    CHATS.map(async (chat) => {
+    pairs.map(async ({ token, chat }) => {
       try {
         // HTML rather than MarkdownV2. Telegram needs only & < > escaped for
         // HTML, where MarkdownV2 also demands . - ( ) ! _ — and every rupee
         // amount, reference and address in an order is full of those.
-        const sent = await post(api("sendMessage"), {
+        const sent = await post(api(token, "sendMessage"), {
           chat_id: chat,
           text,
           parse_mode: overLong ? undefined : notice.parseMode,
@@ -88,7 +102,7 @@ export async function sendTelegramNotice(notice: TelegramNotice): Promise<boolea
           );
           // A failed attachment does not undo a delivered message — the
           // operator still knows a lead came in, and the PDF is in the email.
-          await postForm(api("sendDocument"), form);
+          await postForm(api(token, "sendDocument"), form);
         }
         return true;
       } catch (error) {
