@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { BreadcrumbSchema, PageHero } from "@/components/site/page-hero";
 import { HowItWorks } from "@/components/landing/how-it-works";
-import { PricingCards } from "@/components/landing/pricing-cards";
 import { Accordion } from "@/components/ui/accordion";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -250,7 +249,6 @@ export default async function DistrictPage({
       </section>
 
       <HowItWorks />
-      <PricingCards />
 
       {/* District-specific FAQs — deliberately not the generic set, so 38 pages
           do not ship the same eight answers. */}

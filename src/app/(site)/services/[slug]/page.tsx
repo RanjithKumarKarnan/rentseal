@@ -11,7 +11,6 @@ import {
   Users,
 } from "lucide-react";
 import { BreadcrumbSchema, PageHero } from "@/components/site/page-hero";
-import { PricingCards } from "@/components/landing/pricing-cards";
 import { Commitments } from "@/components/landing/commitments";
 import { Accordion } from "@/components/ui/accordion";
 import { ButtonLink } from "@/components/ui/button";
@@ -188,7 +187,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      <PricingCards />
       <Commitments />
 
       {/* Service FAQs */}

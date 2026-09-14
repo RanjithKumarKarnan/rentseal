@@ -6,7 +6,6 @@ import { LeadForm } from "@/components/landing/lead-form";
 import { FaqSchema, FaqSection } from "@/components/landing/faq-section";
 import { Hero } from "@/components/landing/hero";
 import { HowItWorks } from "@/components/landing/how-it-works";
-import { PricingCards } from "@/components/landing/pricing-cards";
 import { StampPaper } from "@/components/landing/stamp-paper";
 import { Commitments } from "@/components/landing/commitments";
 import { TrustBar } from "@/components/landing/trust-bar";
@@ -68,7 +67,6 @@ export default function HomePage() {
       <AgreementTypes />
       <Certificates />
       <HowItWorks />
-      <PricingCards compact />
       <Commitments />
       <FaqSection limit={5} />
 
