@@ -237,6 +237,32 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
+            "@type": "Service",
+            name: service.name,
+            serviceType: service.name,
+            description: service.metaDescription,
+            url: `${SITE.url}/services/${service.slug}`,
+            // Points at the organisation defined once in the root layout rather
+            // than restating its name, address and hours on every service page.
+            provider: { "@id": `${SITE.url}/#organization` },
+            areaServed: { "@type": "State", name: "Tamil Nadu" },
+            // Drafting starts at ₹300 across the catalogue — the same floor the
+            // homepage's priceRange states, so the two never disagree.
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "INR",
+              price: "300",
+              url: `${SITE.url}/services/${service.slug}`,
+              availability: "https://schema.org/InStock",
+            },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
             "@type": "FAQPage",
             mainEntity: service.faqs.map((f) => ({
               "@type": "Question",
