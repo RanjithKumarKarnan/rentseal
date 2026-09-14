@@ -1,4 +1,4 @@
-import { stampPaperPrice } from "./stamp-paper";
+import { sheetsPrice } from "./stamp-paper";
 
 /**
  * Extra copies of the finished deed.
@@ -25,21 +25,26 @@ import { stampPaperPrice } from "./stamp-paper";
 /** Rupees per page, for a printed copy or a soft one. */
 export const COPY_PAGE_FEE = 10;
 
-/** What one printed copy comes to, on the given paper. */
-export function printedCopyUnitPrice(pages: number, stampPaperValue: number): number {
-  const sheets = Math.max(1, Math.floor(Number(pages) || 1));
-  const stamp = stampPaperPrice(stampPaperValue)?.price ?? 0;
-  return stamp + sheets * COPY_PAGE_FEE;
+/**
+ * What one printed copy comes to, on the given paper.
+ *
+ * A copy is a second execution, so it re-buys the whole combination of sheets
+ * the original runs on — two ₹100 sheets cost two ₹100 sheets again — plus the
+ * per-page printing.
+ */
+export function printedCopyUnitPrice(pages: number, sheets: number[]): number {
+  const printed = Math.max(1, Math.floor(Number(pages) || 1));
+  return sheetsPrice(sheets) + printed * COPY_PAGE_FEE;
 }
 
-/** Printed copies, at one stamped sheet plus per-page printing apiece. */
+/** Printed copies, at the whole stamped sheet set plus per-page printing apiece. */
 export function printedCopiesFee(
   copies: number,
   pages: number,
-  stampPaperValue: number,
+  sheets: number[],
 ): number {
   const n = Math.max(0, Math.floor(Number(copies) || 0));
-  return n * printedCopyUnitPrice(pages, stampPaperValue);
+  return n * printedCopyUnitPrice(pages, sheets);
 }
 
 /** A soft copy, charged once by the page. */

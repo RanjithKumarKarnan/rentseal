@@ -1,5 +1,6 @@
 import { calculateStampDuty } from "./stamp-duty";
 import { isNotaryMandatory } from "./notary";
+import { describeSheets } from "./stamp-paper";
 import { stampPaperDateOf } from "./backdating";
 import { propertyAddress, agreementTitle } from "./clauses";
 import { AGREEMENT_TYPES } from "./site";
@@ -51,6 +52,7 @@ export function agreementRow(draft: AgreementDraft, notes = ""): OrderRow {
     stampPaperDate: stampPaperDateOf(draft),
     templateId: draft.templateId,
     stampPaperValue: draft.options.stampPaperValue,
+    stampPaperSheets: draft.options.stampPaperSheets,
     documentPages: draft.options.documentPages,
     extraPrintedCopies: draft.options.extraPrintedCopies,
     softCopy: draft.options.softCopy,
@@ -115,7 +117,14 @@ export function agreementRow(draft: AgreementDraft, notes = ""): OrderRow {
     registrationFee: String(breakdown.registrationFee),
     documentFee: String(breakdown.documentFee),
     stampPaperValue: String(draft.options.stampPaperValue),
+    // The combination the office must actually source — "₹100 + ₹100" — not a
+    // single face value, which cannot represent a two-sheet order.
+    stampPaperCombo: describeSheets(draft.options.stampPaperSheets),
     stampPaperFee: String(breakdown.stampPaperFee),
+    extraPageFee: String(breakdown.extraPageFee),
+    // Where the physical paper ships. Blank on an e-Stamp; the office falls back
+    // to the property address if the customer left it empty.
+    shippingAddress: draft.options.shippingAddress || (draft.options.stampPaperSheets.length ? propertyAddress(draft) : ""),
     documentPages: String(draft.options.documentPages),
     // platformFee includes the document's own price; the email lists that
     // separately, so this is the plan's uplift on top of it and nothing else.
@@ -232,7 +241,10 @@ const LABELS: Record<string, string> = {
   tenantPhone: "Tenant phone",
   tenantEmail: "Tenant email",
   stampPaperValue: "Stamp paper (face value)",
+  stampPaperCombo: "Stamp paper",
+  shippingAddress: "Delivery address",
   stampPaperFee: "Stamp paper charge",
+  extraPageFee: "Extra-page printing",
   stampPaperDate: "Date on the paper",
   backdatingMonths: "Back-dated (months)",
   backdatingFee: "Back-dating charge",
@@ -262,8 +274,8 @@ const GROUPS: Array<{ title: string; keys: string[] }> = [
   // add up to the estimate printed under them is a section an operator has to
   // check with a calculator, so every rupee lives in one list and that list
   // sums to the total.
-  { title: "Paper and copies", keys: ["stampPaperValue", "stampPaperDate", "backdatingMonths", "documentPages", "extraPrintedCopies", "softCopy", "registrationRequired", "lawyerReview"] },
-  { title: "The quote", keys: ["documentFee", "planFee", "stampPaperFee", "stampDuty", "registrationFee", "notaryFee", "backdatingFee", "printedCopiesFee", "softCopyFee", "gst", "estimate"] },
+  { title: "Paper and copies", keys: ["stampPaperCombo", "shippingAddress", "stampPaperDate", "backdatingMonths", "documentPages", "extraPrintedCopies", "softCopy", "registrationRequired", "lawyerReview"] },
+  { title: "The quote", keys: ["documentFee", "planFee", "stampPaperFee", "extraPageFee", "stampDuty", "registrationFee", "notaryFee", "backdatingFee", "printedCopiesFee", "softCopyFee", "gst", "estimate"] },
 ];
 
 /** Values that mean "nothing to say" rather than a fact worth printing. */
@@ -282,7 +294,7 @@ function rowsFor(group: { keys: string[] }, row: OrderRow) {
 
 /** Money keys render right-aligned with a rupee sign rather than as bare text. */
 const MONEY = new Set([
-  "documentFee", "planFee", "stampPaperFee", "stampDuty", "registrationFee",
+  "documentFee", "planFee", "stampPaperFee", "extraPageFee", "stampDuty", "registrationFee",
   "notaryFee", "backdatingFee", "printedCopiesFee", "softCopyFee", "gst", "estimate",
   // Not fees, but amounts all the same. "150000" is a number to decode;
   // "₹1,50,000" is a figure, and the lakh grouping is what an Indian reader

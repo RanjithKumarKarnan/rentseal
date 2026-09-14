@@ -384,9 +384,8 @@ export function AgreementPdf({ draft }: { draft: AgreementDraft }) {
           style={isTamil ? [s.footMeta, s.taFootMeta] : s.footMeta}
           render={({ pageNumber, totalPages }) =>
             isTamil
-              ? `${draft.id}  ·  ${SITE.name}  ·  பக்கம் ${pageNumber} / ${totalPages}`
-              : `${draft.id}  ·  ${SITE.name}  ·  Page ${pageNumber} of ${totalPages}  ·  ` +
-                `Draft for stamping — not yet executed`
+              ? `பக்கம் ${pageNumber} / ${totalPages}`
+              : `Page ${pageNumber} of ${totalPages}`
           }
           fixed
         />

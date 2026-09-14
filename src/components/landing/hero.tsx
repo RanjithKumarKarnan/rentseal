@@ -282,10 +282,10 @@ export function Hero() {
                   Order stamp paper
                   <ArrowRight className="size-[18px] transition-transform duration-300 group-hover:translate-x-1" />
                 </ButtonLink>
-                <ButtonLink href={BUILDER_START} variant="secondary" size="xl" className="group">
-                  <FileSignature className="size-[18px] text-brand-600" />
+                <ButtonLink href={BUILDER_START} variant="primary" size="xl" className="group">
+                  <FileSignature className="size-[18px]" />
                   Create agreement
-                  <ArrowRight className="size-[18px] text-navy-400 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="size-[18px] transition-transform duration-300 group-hover:translate-x-1" />
                 </ButtonLink>
               </div>
 

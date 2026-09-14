@@ -2,7 +2,7 @@ import type { PlanId, StampDutyBreakdown } from "./types";
 import { notaryFeeForPages } from "./notary";
 import { BACKDATE_FEE_PER_MONTH as BACKDATE_PER_MONTH, backdateFee, backdateMonths } from "./backdating";
 import { templatePrice } from "./template-prices";
-import { stampPaperPrice } from "./stamp-paper";
+import { sheetsPrice, sheetsFaceValue } from "./stamp-paper";
 import { COPY_PAGE_FEE, printedCopiesFee, softCopyFee } from "./copies";
 import type { TemplateId } from "./agreement-templates";
 
@@ -25,6 +25,23 @@ export const TN_STAMP_RATE_UNDER_30Y = 0.01; // 1% of chargeable value
 export const TN_REGISTRATION_RATE = 0.01; // 1% of chargeable value
 export const REGISTRATION_MANDATORY_FROM_MONTHS = 12;
 export const GST_RATE = 0.18;
+
+/**
+ * Printing surcharge for a longer document.
+ *
+ * The first sheet is included in the drafting fee. A deed that runs onto more
+ * paper is more to typeset, print and check, so each sheet past the first adds
+ * a flat charge. `EXTRA_PAGE_FREE` is how many are included before it starts —
+ * raise it if the base fee should cover more than one page.
+ */
+export const EXTRA_PAGE_FEE = 50;
+export const EXTRA_PAGE_FREE = 1;
+
+/** The printing surcharge for a document of the given length. */
+export function extraPageFeeForPages(pages: number): number {
+  const sheets = Math.max(1, Math.floor(Number(pages) || 1));
+  return Math.max(0, sheets - EXTRA_PAGE_FREE) * EXTRA_PAGE_FEE;
+}
 
 /**
  * What each plan adds on top of the document's own price.
@@ -67,6 +84,13 @@ export interface StampDutyInput {
   templateId?: TemplateId;
   /** Face value of the physical sheet chosen. 0 for an e-Stamp. */
   stampPaperValue?: number;
+  /**
+   * The physical sheets the deed is executed on, e.g. [100, 100] for two ₹100
+   * sheets. Preferred over `stampPaperValue`; when omitted it falls back to a
+   * single sheet of `stampPaperValue` (empty for an e-Stamp), so older callers
+   * keep working.
+   */
+  stampPaperSheets?: number[];
   /** Sheets the deed runs to, for the notary's per-sheet charge. */
   documentPages?: number;
   /** Extra printed copies wanted, each on its own stamp paper. */
@@ -91,10 +115,22 @@ export function calculateStampDuty({
   stampPaperDate = "",
   templateId,
   stampPaperValue = 0,
-  documentPages = 4,
+  stampPaperSheets,
+  // One sheet unless a caller says otherwise, so a duty estimate that omits the
+  // page count carries no printing surcharge. The builder always passes the
+  // real figure. notaryFeeForPages treats 1 and 4 alike (both inside the base).
+  documentPages = 1,
   extraPrintedCopies = 0,
   softCopy = false,
 }: StampDutyInput): StampDutyBreakdown {
+  // The sheets to price. A caller that gives the list wins; otherwise a single
+  // sheet of the legacy value, and nothing at all for an e-Stamp (value 0).
+  const sheets =
+    stampPaperSheets && stampPaperSheets.length
+      ? stampPaperSheets
+      : stampPaperValue
+        ? [stampPaperValue]
+        : [];
   const rent = Math.max(0, Number(monthlyRent) || 0);
   const deposit = Math.max(0, Number(securityDeposit) || 0);
   const months = Math.max(1, Number(durationMonths) || 11);
@@ -115,10 +151,13 @@ export function calculateStampDuty({
   const documentFee = templateId ? templatePrice(templateId) : 0;
   const platformFee = documentFee + fees.platform;
 
-  // The sheet the deed is executed on, at the shelf price. An e-Stamp has no
-  // shelf price — its cost is the duty, already counted above.
-  const paper = stampPaperPrice(stampPaperValue);
-  const stampPaperFee = paper?.price ?? 0;
+  // The sheets the deed is executed on, at the shelf price, summed across the
+  // combination. An e-Stamp (no sheets) has no shelf price — its cost is the
+  // duty, already counted above.
+  const stampPaperFee = sheetsPrice(sheets);
+
+  // Each sheet past the first is a flat printing surcharge.
+  const extraPageFee = extraPageFeeForPages(documentPages);
 
   // Premium bundles notary attestation; other plans pay for it if they opt in,
   // or if the instrument is one that is void without it. The fee covers the
@@ -130,9 +169,10 @@ export function calculateStampDuty({
         ? notaryFeeForPages(documentPages)
         : 0;
 
-  // Extra copies. A printed one is a second execution and carries the sheet
-  // again; a soft one is a scan, charged once however many people get it.
-  const copiesFee = printedCopiesFee(extraPrintedCopies, documentPages, stampPaperValue);
+  // Extra copies. A printed one is a second execution and carries the whole
+  // sheet set again; a soft one is a scan, charged once however many people get
+  // it.
+  const copiesFee = printedCopiesFee(extraPrintedCopies, documentPages, sheets);
   const scanFee = softCopyFee(softCopy, documentPages);
 
   const backdatingMonths = backdateMonths(stampPaperDate);
@@ -154,10 +194,10 @@ export function calculateStampDuty({
     face value of every sheet, the original and each copy — is out of it.
   */
   const paperFaceValue =
-    (paper?.faceValue ?? 0) * (1 + Math.max(0, Math.floor(Number(extraPrintedCopies) || 0)));
+    sheetsFaceValue(sheets) * (1 + Math.max(0, Math.floor(Number(extraPrintedCopies) || 0)));
 
   const ourCharges =
-    platformFee + stampPaperFee + lawyerFee + backdatingFee + copiesFee + scanFee;
+    platformFee + stampPaperFee + extraPageFee + lawyerFee + backdatingFee + copiesFee + scanFee;
   const gst = Math.round(Math.max(0, ourCharges - paperFaceValue) * GST_RATE);
 
   const total =
@@ -165,6 +205,7 @@ export function calculateStampDuty({
     registrationFee +
     platformFee +
     stampPaperFee +
+    extraPageFee +
     lawyerFee +
     backdatingFee +
     copiesFee +
@@ -206,6 +247,12 @@ export function calculateStampDuty({
       `A scanned copy is ₹${COPY_PAGE_FEE} a page, charged once however many people you forward it to.`,
     );
   }
+  if (extraPageFee > 0) {
+    const extraSheets = Math.max(0, Math.max(1, Math.floor(documentPages)) - EXTRA_PAGE_FREE);
+    notes.push(
+      `The deed runs to ${documentPages} sheets. The first is included; the ${extraSheets} beyond it are ₹${EXTRA_PAGE_FEE} a sheet to print, so ₹${extraPageFee} in all.`,
+    );
+  }
   notes.push(
     "GST at 18% applies to our service fee only. Stamp duty, the registration fee and the face value printed on every sheet are the state's and carry no GST.",
   );
@@ -219,6 +266,7 @@ export function calculateStampDuty({
     registrationRequired,
     platformFee,
     stampPaperFee,
+    extraPageFee,
     documentFee,
     lawyerFee,
     paperFaceValue,

@@ -49,11 +49,11 @@ export const SITE = {
    * hours at all. Everything now reads from here.
    */
   hours: {
-    weekday: { label: "Monday to Saturday", opens: "09:30", closes: "17:00" },
+    weekday: { label: "Monday to Saturday", opens: "09:30", closes: "18:00" },
     /** Closed. Sunday is a holiday, not a short shift. */
     sunday: null,
-    summary: "Mon–Sat 9.30am–5pm · Sunday closed",
-    short: "Mon–Sat 9.30–5",
+    summary: "Mon–Sat 9.30am–6pm · Sunday closed",
+    short: "Mon–Sat 9.30–6",
   },
   /**
    * Profile URLs. Each empty string hides that icon in the footer — better a
@@ -91,7 +91,7 @@ export const SITE = {
 export const NAV_LINKS = [
   { label: "Agreements", href: "/templates" },
   { label: "Stamp paper", href: "/stamp-paper" },
-  { label: "Certificates", href: "/certificates" },
+  { label: "Online Works", href: "/certificates" },
   { label: "Pricing", href: "/pricing" },
   { label: "How it works", href: "/how-it-works" },
   {
@@ -140,7 +140,7 @@ export const FOOTER_LINKS = [
       { label: "Leave & Licence", href: "/services/leave-and-license" },
       { label: "Rental agreement by district", href: "/rental-agreement" },
       { label: "All agreement templates", href: "/templates" },
-      { label: "Certificates and registrations", href: "/certificates" },
+      { label: "Online Works", href: "/certificates" },
       { label: "Talk to us before you order", href: LEAD_ANCHOR },
     ],
   },

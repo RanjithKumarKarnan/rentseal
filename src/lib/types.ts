@@ -139,8 +139,22 @@ export interface AgreementOptions {
   /**
    * Face value of the physical sheet the deed is executed on. 0 means an
    * e-Stamp, where duty is the computed figure rather than a shelf price.
+   *
+   * Kept as the representative/primary sheet — the first of `stampPaperSheets`,
+   * or 0 for an e-Stamp — so older readers that expect one number still work.
    */
   stampPaperValue: number;
+  /**
+   * The physical sheets the deed is executed on, as a combination — e.g.
+   * [100, 100] for two ₹100 sheets, or [500, 100]. An empty list is an e-Stamp.
+   * The stamp-paper charge and its face value sum across this list.
+   */
+  stampPaperSheets: number[];
+  /**
+   * Where the physical stamp paper should be delivered. Blank falls back to the
+   * property address; an e-Stamp is emailed, so nothing is delivered.
+   */
+  shippingAddress: string;
   /**
    * Sheets the finished deed runs to — the stamp paper plus its green sheets.
    * The notary signs each one, and the first four are inside the base fee.
@@ -230,8 +244,10 @@ export interface StampDutyBreakdown {
   registrationRequired: boolean;
   platformFee: number;
   lawyerFee: number;
-  /** The chosen sheet, at the shelf price. Zero on an e-Stamp. */
+  /** The chosen sheets, at the shelf price, summed. Zero on an e-Stamp. */
   stampPaperFee: number;
+  /** Printing surcharge for a document past the first sheet. */
+  extraPageFee: number;
   /**
    * Face value of every physical sheet in the order — the one being executed
    * plus one for each extra printed copy. This part of the shelf price is the

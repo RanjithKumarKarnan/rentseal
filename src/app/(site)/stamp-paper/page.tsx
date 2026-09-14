@@ -36,7 +36,12 @@ export default function StampPaperIndex() {
             Get started
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </ButtonLink>
-          <ButtonLink href="/rental-agreement" variant="secondary" size="lg">
+          <ButtonLink
+            href="/rental-agreement"
+            variant="secondary"
+            size="lg"
+            className="border-brand-600 bg-brand-50/40 text-brand-700 hover:border-brand-700 hover:bg-brand-50 hover:text-brand-800"
+          >
             Get the agreement drafted too
           </ButtonLink>
         </div>

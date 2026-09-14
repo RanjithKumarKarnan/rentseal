@@ -143,6 +143,8 @@ export function createDraft(
       extraPrintedCopies: 0,
       softCopy: false,
       stampPaperValue: 100,
+      stampPaperSheets: [100],
+      shippingAddress: "",
       documentPages: 4,
       witnessRequired: true,
       customClauses: [],

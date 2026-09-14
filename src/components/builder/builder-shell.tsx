@@ -23,6 +23,7 @@ import { clauseStats, specFor } from "@/lib/clauses";
 import { calculateStampDuty } from "@/lib/stamp-duty";
 import { isNotaryMandatory } from "@/lib/notary";
 import { stampPaperDateOf } from "@/lib/backdating";
+import { describeSheets } from "@/lib/stamp-paper";
 import { AGREEMENT_TYPES } from "@/lib/site";
 import { TEMPLATES } from "@/lib/templates";
 import { Button, ButtonLink } from "@/components/ui/button";
@@ -191,6 +192,7 @@ function CostRail() {
         softCopy: draft.options.softCopy,
         templateId: draft.templateId,
         stampPaperValue: draft.options.stampPaperValue,
+        stampPaperSheets: draft.options.stampPaperSheets,
         documentPages: draft.options.documentPages,
       }),
     [draft],
@@ -208,7 +210,10 @@ function CostRail() {
           {[
             { label: "This document", value: breakdown.documentFee, hint: "Drafting fee" },
             breakdown.stampPaperFee > 0
-              ? { label: "Stamp paper", value: breakdown.stampPaperFee, hint: `${inr(draft.options.stampPaperValue)} sheet` }
+              ? { label: "Stamp paper", value: breakdown.stampPaperFee, hint: describeSheets(draft.options.stampPaperSheets) }
+              : null,
+            breakdown.extraPageFee > 0
+              ? { label: "Extra pages", value: breakdown.extraPageFee, hint: `${draft.options.documentPages} sheets · ₹50 past the first` }
               : null,
             { label: "Stamp duty", value: breakdown.stampDuty, hint: "1% · Govt of TN" },
             breakdown.registrationRequired
@@ -721,6 +726,7 @@ function SummaryRailMobile() {
     stampPaperDate: stampPaperDateOf(draft),
     templateId: draft.templateId,
     stampPaperValue: draft.options.stampPaperValue,
+    stampPaperSheets: draft.options.stampPaperSheets,
     documentPages: draft.options.documentPages,
   });
   return (

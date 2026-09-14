@@ -92,6 +92,35 @@ export function stampPaperPrice(value: number) {
   return { faceValue: d.value, price: d.price, ourCharge: d.price - d.value };
 }
 
+/* ══════════════ Combinations of sheets ══════════════
+ *
+ * A deed is not always executed on one sheet. The duty may be met by two ₹100
+ * sheets, or a ₹500 and a ₹100 together — so the paper is chosen as a list, and
+ * the price, the face value and the label all sum across it. An e-Stamp is the
+ * empty list: a single certificate for the exact duty, with no sheet to buy.
+ */
+
+/** What every sheet in the combination costs to procure, added up. */
+export function sheetsPrice(sheets: number[]): number {
+  return sheets.reduce((sum, v) => sum + (stampPaperPrice(v)?.price ?? 0), 0);
+}
+
+/** Face value of every sheet in the combination — the state's part. */
+export function sheetsFaceValue(sheets: number[]): number {
+  return sheets.reduce((sum, v) => sum + (stampPaperPrice(v)?.faceValue ?? 0), 0);
+}
+
+/**
+ * The combination written out for a person: "₹100 + ₹100", "₹500 + ₹100".
+ * Empty means an e-Stamp.
+ */
+export function describeSheets(sheets: number[]): string {
+  if (!sheets.length) return "e-Stamp — duty only";
+  return sheets
+    .map((v) => DENOMINATIONS.find((d) => d.value === v)?.label ?? `₹${v}`)
+    .join(" + ");
+}
+
 /* ══════════════════ Sheets, stamps and labels sold alongside ══════════════ */
 
 export interface StampAddOn {

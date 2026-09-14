@@ -216,7 +216,7 @@ export function AgreementDocument({
       {watermark ? (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -inset-6 z-10 select-none"
+          className="no-print pointer-events-none absolute -inset-6 z-10 select-none"
           style={watermarkStyle(draft.id)}
         />
       ) : null}

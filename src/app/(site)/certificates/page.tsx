@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/certificates" },
 };
 
-const CRUMBS = [{ label: "Home", href: "/" }, { label: "Certificates" }];
+const CRUMBS = [{ label: "Home", href: "/" }, { label: "Online Works" }];
 
 const CATEGORY_ICON = {
   Identity: IdCard,
@@ -31,7 +31,7 @@ export default function CertificatesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Certificates & registrations"
+        eyebrow="Online works"
         icon={FileCheck2}
         crumbs={CRUMBS}
         title="Every certificate, and exactly what to bring"
