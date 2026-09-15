@@ -6,7 +6,7 @@ Tailwind v4 · Framer Motion.
 
 ```bash
 npm run dev     # http://localhost:3011
-npm run build   # static site → out/, ready for Hostinger (see Deploying)
+npm run build   # static site → dist/, ready for Hostinger (see Deploying)
 npm run lint    # eslint
 ```
 
@@ -372,7 +372,7 @@ The same applies to `src/components/site/contact-form.tsx`.
 ## Deploying
 
 The site is static files, built for Hostinger's `public_html`. `npm run build`
-writes all of it to `out/`, `index.html` included, and nothing runs on a Node
+writes all of it to `dist/`, `index.html` included, and nothing runs on a Node
 server. Every page is still rendered to HTML at build time, so search engines
 get full pages and the browser takes over from there. The two pages that read
 the URL (`/search?q=` and `/success?id=`) do that part in the browser.
@@ -381,7 +381,7 @@ the URL (`/search?q=` and `/success?id=`) do that part in the browser.
    `ORDER_EMAIL` and `TELEGRAM_*` (see `docs/order-email.md` and
    `docs/telegram-notifications.md`), plus `NEXT_PUBLIC_GA_ID`.
 2. Run `npm run build`. Its last line says whether email and Telegram are on.
-3. Upload the **contents** of `out/` into `public_html`, replacing what is
+3. Upload the **contents** of `dist/` into `public_html`, replacing what is
    there. Include the hidden `.htaccess`.
 
 Hostinger's PHP (8.1 or newer, with curl — the default) and its `.htaccess`
@@ -395,9 +395,9 @@ support do what the Next server used to:
 | Old district URLs (`/rental-agreement/trichy` …) | `public/.htaccess`, as 301s |
 | Security headers and the 404 page | `public/.htaccess` |
 
-`orders.php` reads its settings from `out/api/orders-config.php`, which
+`orders.php` reads its settings from `dist/api/orders-config.php`, which
 `scripts/write-orders-config.mjs` writes from `.env` at the end of every build.
-It is never committed (`out/` is ignored) and `.htaccess` refuses to serve it.
+It is never committed (`dist/` is ignored) and `.htaccess` refuses to serve it.
 Change a setting, rebuild, upload again.
 
 `orders.php` logs to Hostinger's PHP error log, in lines starting `[mail]`,

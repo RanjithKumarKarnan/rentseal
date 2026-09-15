@@ -21,8 +21,8 @@ same reason printing and copying are switched off in the drafter.
 Add to `.env.local` (or `.env`) on the machine that runs `npm run build`. The
 site is static files on Hostinger, and the mail goes out from
 `public/api/orders.php`; the build copies these values into
-`out/api/orders-config.php` for it to read. After changing one, rebuild and
-upload `out/` again:
+`dist/api/orders-config.php` for it to read. After changing one, rebuild and
+upload `dist/` again:
 
 ```
 SMTP_HOST=smtp.gmail.com

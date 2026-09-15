@@ -16,6 +16,9 @@
 # next.js
 /.next/
 /out/
+# The static site `npm run build` writes. It carries the order desk's
+# credentials in dist/api/orders-config.php, so it must never be committed.
+/dist/
 
 # production
 /build

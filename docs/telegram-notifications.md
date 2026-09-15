@@ -46,9 +46,9 @@ Several people or a group as well? Separate them with commas.
 
 ### 3. Rebuild
 
-The build copies both values into `out/api/orders-config.php`, which
+The build copies both values into `dist/api/orders-config.php`, which
 `public/api/orders.php` reads on Hostinger. Run `npm run build` again and
-upload `out/`.
+upload `dist/`.
 
 ## Sending to a group
 

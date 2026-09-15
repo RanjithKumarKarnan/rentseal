@@ -1,6 +1,6 @@
 # LP Stamp Paper on Hostinger. LiteSpeed reads this the way Apache does.
 #
-# The site is static files: `npm run build` writes it to out/, and this file
+# The site is static files: `npm run build` writes it to dist/, and this file
 # goes with it into public_html. It does the jobs the Next server used to do —
 # clean URLs, the old district redirects, the security headers and the 404.
 
