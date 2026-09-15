@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { AGREEMENT_TYPES, CITIES, SITE } from "@/lib/site";
 import { enquiryRow } from "@/lib/orders";
+import { submitOrder } from "@/lib/submit-order";
 import { AgreementProvider } from "@/lib/agreement-store";
 import { BuilderShell } from "@/components/builder/builder-shell";
 import type { AgreementType } from "@/lib/types";
@@ -95,25 +96,20 @@ export function LeadForm() {
     const value = (name: string) => String(form.get(name) ?? "");
 
     try {
-      const response = await fetch("/api/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(
-          enquiryRow({
-            need,
-            name: value("name"),
-            phone,
-            email: value("email"),
-            city: value("city"),
-            denomination: value("denomination"),
-            notary: buyingPaper ? notary : "",
-            stampDate: buyingPaper ? stampDate : "",
-            agreementType: value("agreementType"),
-            message: value("message"),
-          }),
-        ),
-      });
-      if (!response.ok) throw new Error(String(response.status));
+      await submitOrder(
+        enquiryRow({
+          need,
+          name: value("name"),
+          phone,
+          email: value("email"),
+          city: value("city"),
+          denomination: value("denomination"),
+          notary: buyingPaper ? notary : "",
+          stampDate: buyingPaper ? stampDate : "",
+          agreementType: value("agreementType"),
+          message: value("message"),
+        }),
+      );
       setSending(false);
       setSent(true);
     } catch {

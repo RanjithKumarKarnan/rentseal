@@ -12,6 +12,9 @@ import { SITE } from "@/lib/site";
  * Two location families are generated from DISTRICTS — rental agreement and
  * stamp paper — giving 38 pages each plus their index.
  */
+// Written to a file at build time; a static site has no server to answer it on request.
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   // Stamped at build time. A hard-coded date goes stale the day after it is
   // written, and a wrong lastModified is worse than none: a crawler that has

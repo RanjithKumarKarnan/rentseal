@@ -44,10 +44,11 @@ TELEGRAM_CHAT_ID=123456789
 
 Several people or a group as well? Separate them with commas.
 
-### 3. Restart
+### 3. Rebuild
 
-Next reads the environment at boot, so restart the dev server. In production,
-set both variables in the hosting provider's environment.
+The build copies both values into `out/api/orders-config.php`, which
+`public/api/orders.php` reads on Hostinger. Run `npm run build` again and
+upload `out/`.
 
 ## Sending to a group
 
@@ -60,8 +61,8 @@ group messages and the helper will keep reporting nothing.
 
 ## If it fails
 
-Nothing is lost as long as the email went — the request still succeeds and the
-log carries a `[telegram]` line saying why. Watch for:
+Nothing is lost as long as the email went — the request still succeeds and
+Hostinger's PHP error log carries a `[telegram]` line saying why. Watch for:
 
 - `TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not set` — not configured; mail is
   carrying the load alone.

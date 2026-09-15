@@ -1,4 +1,3 @@
-import path from "node:path";
 import {
   Document,
   Font,
@@ -6,7 +5,7 @@ import {
   Text,
   View,
   StyleSheet,
-  renderToBuffer,
+  pdf,
 } from "@react-pdf/renderer";
 import {
   agreementTitle,
@@ -70,14 +69,14 @@ function aadhaar(value: string) {
  * formed. @react-pdf does this through fontkit, but the standard PDF fonts
  * carry no Tamil at all, so a face has to be embedded. Noto Sans Tamil is used
  * because the SIL Open Font License lets it ship with the app; the licence
- * travels with it in src/lib/fonts/.
+ * travels with it in public/fonts/, which is where the browser fetches the
+ * faces from when it draws the deed.
  */
-const FONT_DIR = path.join(process.cwd(), "src", "lib", "fonts");
 Font.register({
   family: "NotoSansTamil",
   fonts: [
-    { src: path.join(FONT_DIR, "NotoSansTamil-Regular.ttf"), fontWeight: "normal" },
-    { src: path.join(FONT_DIR, "NotoSansTamil-Bold.ttf"), fontWeight: "bold" },
+    { src: "/fonts/NotoSansTamil-Regular.ttf", fontWeight: "normal" },
+    { src: "/fonts/NotoSansTamil-Bold.ttf", fontWeight: "bold" },
   ],
 });
 // Tamil has no hyphenation worth applying, and the default English hyphenator
@@ -496,6 +495,7 @@ export function AgreementPdf({ draft }: { draft: AgreementDraft }) {
   );
 }
 
-export async function renderAgreementPdf(draft: AgreementDraft): Promise<Buffer> {
-  return renderToBuffer(<AgreementPdf draft={draft} />);
+/** The deed as a PDF file, drawn in the browser and uploaded with the order. */
+export async function renderAgreementPdf(draft: AgreementDraft): Promise<Blob> {
+  return pdf(<AgreementPdf draft={draft} />).toBlob();
 }

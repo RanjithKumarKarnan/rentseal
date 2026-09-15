@@ -5,8 +5,7 @@
   "scripts": {
     "telegram:chat-id": "node scripts/telegram-chat-id.mjs",
     "dev": "next dev -p 3011",
-    "build": "next build && node scripts/prepare-standalone.mjs",
-    "start": "node .next/standalone/server.js",
+    "build": "next build && node scripts/write-orders-config.mjs",
     "lint": "eslint"
   },
   "dependencies": {
@@ -16,7 +15,6 @@
     "framer-motion": "^12.43.0",
     "lucide-react": "^1.27.0",
     "next": "16.3.5",
-    "nodemailer": "^9.1.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "tailwind-merge": "^3.6.0"
@@ -25,7 +23,6 @@
     "@tailwindcss/postcss": "^4",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^20",
-    "@types/nodemailer": "^8.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

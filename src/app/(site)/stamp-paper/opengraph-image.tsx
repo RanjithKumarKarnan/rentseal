@@ -4,6 +4,8 @@ import { OG_CONTENT_TYPE, OG_SIZE, ogImage } from "@/lib/og";
 export const alt = "Stamp paper delivered to all 38 districts of Tamil Nadu";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
+// Drawn once at build time; a static site has no server to draw it on request.
+export const dynamic = "force-static";
 
 export default function Image() {
   return ogImage({

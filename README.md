@@ -6,8 +6,7 @@ Tailwind v4 · Framer Motion.
 
 ```bash
 npm run dev     # http://localhost:3011
-npm run build   # production build → .next/standalone (see Deploying)
-npm start       # serve that build on http://localhost:3000
+npm run build   # static site → out/, ready for Hostinger (see Deploying)
 npm run lint    # eslint
 ```
 
@@ -372,37 +371,38 @@ The same applies to `src/components/site/contact-form.tsx`.
 
 ## Deploying
 
-This is a Node server, not a folder of static files, so the build does not
-produce an `index.html` to upload. The server renders the pages, and it has to be
-running for `/api/orders` to send the order mail and Telegram notice, and for the
-district redirects and security headers in `next.config.ts`.
+The site is static files, built for Hostinger's `public_html`. `npm run build`
+writes all of it to `out/`, `index.html` included, and nothing runs on a Node
+server. Every page is still rendered to HTML at build time, so search engines
+get full pages and the browser takes over from there. The two pages that read
+the URL (`/search?q=` and `/success?id=`) do that part in the browser.
 
-Point the host at:
+1. Put the order desk's settings in `.env.local` or `.env`: `SMTP_*`,
+   `ORDER_EMAIL` and `TELEGRAM_*` (see `docs/order-email.md` and
+   `docs/telegram-notifications.md`), plus `NEXT_PUBLIC_GA_ID`.
+2. Run `npm run build`. Its last line says whether email and Telegram are on.
+3. Upload the **contents** of `out/` into `public_html`, replacing what is
+   there. Include the hidden `.htaccess`.
 
-| Setting | Value |
+Hostinger's PHP (8.1 or newer, with curl — the default) and its `.htaccess`
+support do what the Next server used to:
+
+| Job | Done by |
 | --- | --- |
-| Node | 20.9 or newer |
-| Install | `npm ci` |
-| Build | `npm run build` |
-| Start | `npm start` |
-| Port | `PORT` env var, default `3000` |
+| Emailing and Telegramming every order | `public/api/orders.php` |
+| The deed PDF | drawn in the browser by `src/lib/agreement-pdf.tsx`, uploaded with the order |
+| Clean URLs (`/about` serves `about.html`) | `public/.htaccess` |
+| Old district URLs (`/rental-agreement/trichy` …) | `public/.htaccess`, as 301s |
+| Security headers and the 404 page | `public/.htaccess` |
 
-`next.config.ts` sets `output: "standalone"`, so `next build` writes a
-self-contained server to `.next/standalone/server.js`. The second half of
-`npm run build` (`scripts/prepare-standalone.mjs`) copies `public/` and
-`.next/static/` in beside it; without that, pages load with no CSS, JS or
-images. `npm start` runs that server.
+`orders.php` reads its settings from `out/api/orders-config.php`, which
+`scripts/write-orders-config.mjs` writes from `.env` at the end of every build.
+It is never committed (`out/` is ignored) and `.htaccess` refuses to serve it.
+Change a setting, rebuild, upload again.
 
-- **Hosts that ask for a startup file** (cPanel / Hostinger Node.js apps): use
-  `.next/standalone/server.js`.
-- **Copying a build to a server by hand:** `.next/standalone/` is the whole app,
-  its `node_modules` included. Copy that folder over and run `node server.js` in it.
-- **Docker:** set `HOSTNAME=0.0.0.0`. Otherwise Docker sets `HOSTNAME` to the
-  container ID, and the server binds to that instead of every interface.
-- **Environment:** the build copies `.env` into the standalone folder, but not
-  `.env.local`. Set `SMTP_*`, `ORDER_EMAIL` and `TELEGRAM_*` in the host's
-  environment settings (see `docs/order-email.md`). `NEXT_PUBLIC_GA_ID` is
-  inlined at build time, so it has to be set wherever the build runs.
+`orders.php` logs to Hostinger's PHP error log, in lines starting `[mail]`,
+`[telegram]` and `[orders]`. `npm run dev` has no PHP, so there the forms show
+their "call or WhatsApp us" error; orders only go out from the built site.
 
 ---
 

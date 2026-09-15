@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SuccessView } from "@/components/success/success-view";
+import { Suspense } from "react";
+import { SuccessFromUrl } from "@/components/success/success-from-url";
 
 export const metadata: Metadata = {
   title: "Agreement Received",
@@ -7,11 +8,10 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function SuccessPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ id?: string }>;
-}) {
-  const { id } = await searchParams;
-  return <SuccessView agreementId={id ?? "LP-2026-000000"} />;
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={null}>
+      <SuccessFromUrl />
+    </Suspense>
+  );
 }

@@ -18,6 +18,7 @@ import {
 import { useAgreement } from "@/lib/agreement-store";
 import { PLANS, SITE } from "@/lib/site";
 import { agreementRow } from "@/lib/orders";
+import { submitOrder } from "@/lib/submit-order";
 import { checkPincode } from "@/lib/pincode";
 import { PLAN_FEES, calculateStampDuty, splitGovernmentAndService } from "@/lib/stamp-duty";
 import { templatePrice } from "@/lib/template-prices";
@@ -228,12 +229,7 @@ function SendBlock({
     setSending(true);
     setFailed("");
     try {
-      const response = await fetch("/api/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...agreementRow(draft, notes), draft }),
-      });
-      if (!response.ok) throw new Error(String(response.status));
+      await submitOrder(agreementRow(draft, notes), draft);
       onSent();
     } catch {
       // Never claim it landed. An order that quietly failed to reach the office

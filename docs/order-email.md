@@ -18,7 +18,11 @@ same reason printing and copying are switched off in the drafter.
 
 ## Setup
 
-Add to `.env.local`, and to the hosting provider's environment for production:
+Add to `.env.local` (or `.env`) on the machine that runs `npm run build`. The
+site is static files on Hostinger, and the mail goes out from
+`public/api/orders.php`; the build copies these values into
+`out/api/orders-config.php` for it to read. After changing one, rebuild and
+upload `out/` again:
 
 ```
 SMTP_HOST=smtp.gmail.com
@@ -63,13 +67,19 @@ attachment, because there is no drafted agreement yet.
 ## If mail fails
 
 If Telegram is configured, the lead still arrives there and the request
-succeeds; the log carries `emailed but Telegram notification failed` or its
-opposite so you know a channel is down.
+succeeds. Hostinger's PHP error log carries `emailed but Telegram notification
+failed` or its opposite so you know a channel is down, and a
+`[mail] could not send the order email: …` line with what the mail server said.
 
 If **both** fail, the request returns `502 {"ok":false,"error":"unreachable"}`
 and the form tells the customer to call or WhatsApp instead — better than
 thanking someone for an order nothing recorded.
 
-With neither configured, every submission fails. Check the logs for
-`SMTP is not configured` after any deploy that touches environment variables.
+With neither configured, every submission fails. `npm run build` ends by saying
+`email on` or `email OFF`; check it before uploading. On the server, the log
+says `SMTP is not configured` when the uploaded build had no settings.
+
+If Gmail refuses connections from Hostinger, send from a mailbox on the site's
+own domain instead: `SMTP_HOST=smtp.hostinger.com`, `SMTP_PORT=465`, and that
+mailbox's address and password.
 

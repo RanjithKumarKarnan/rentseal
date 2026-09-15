@@ -9,6 +9,9 @@ import { SITE } from "@/lib/site";
  * chrome, and an icon — the small signals a search engine and a phone both read
  * when they decide how a bookmarked or "add to home screen" site should look.
  */
+// Written to a file at build time; a static site has no server to answer it on request.
+export const dynamic = "force-static";
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: `${SITE.name} — Stamp Paper & Rental Agreements in Tamil Nadu`,
