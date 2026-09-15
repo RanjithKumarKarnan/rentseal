@@ -13,12 +13,15 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
+# build output
 # The static site `npm run build` writes. It carries the order desk's
 # credentials in dist/api/orders-config.php, so it must never be committed.
 /dist/
+# The Node build scripts/prerender.mjs renders the pages from; deleted after.
+/dist-ssr/
+# Left over from the Next.js build.
+/.next/
+/out/
 
 # production
 /build

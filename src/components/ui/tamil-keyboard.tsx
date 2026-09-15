@@ -1,5 +1,3 @@
-"use client";
-
 import { Delete, X } from "lucide-react";
 
 /**

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/link";
 import { HelpCircle, MessageCircle, Phone } from "lucide-react";
 import { FAQS, SITE } from "@/lib/site";
 import { Accordion } from "@/components/ui/accordion";

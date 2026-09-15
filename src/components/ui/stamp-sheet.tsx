@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
@@ -51,12 +50,12 @@ export function StampSheet({
         className,
       )}
     >
-      <Image
+      <img
         src={src}
         alt={`${label} non-judicial stamp paper`}
-        fill
-        sizes="(max-width: 640px) 45vw, 220px"
-        className="object-contain"
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-contain"
       />
     </span>
   );

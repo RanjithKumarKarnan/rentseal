@@ -12,9 +12,8 @@ import {
 /**
  * Building a blank draft, kept out of the store on purpose.
  *
- * The store is a "use client" module, and a client module cannot be called
- * from the server — the PDF route needs to build and normalise a draft
- * server-side, so the factory lives here and the store re-exports it.
+ * It is plain data with no React in it, so anything can build and normalise a
+ * draft without pulling in the builder's state; the store re-exports it.
  */
 
 function emptyParty(): Party {

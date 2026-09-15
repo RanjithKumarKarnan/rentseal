@@ -1,5 +1,3 @@
-"use client";
-
 import { Bike } from "lucide-react";
 import { useAgreement } from "@/lib/agreement-store";
 import { Field, Input, Toggle } from "@/components/ui/field";

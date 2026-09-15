@@ -1,7 +1,5 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Mail, MessageSquare, Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,7 +10,7 @@ const OTP_LENGTH = 6;
 const RESEND_SECONDS = 30;
 
 export function LoginForm() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [stage, setStage] = useState<"phone" | "otp">("phone");
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState<string[]>(Array(OTP_LENGTH).fill(""));
@@ -44,7 +42,7 @@ export function LoginForm() {
 
   const verify = (code: string) => {
     setBusy(true);
-    setTimeout(() => router.push("/dashboard"), 900);
+    setTimeout(() => navigate("/dashboard"), 900);
     void code;
   };
 

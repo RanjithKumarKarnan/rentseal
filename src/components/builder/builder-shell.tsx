@@ -1,8 +1,6 @@
-"use client";
-
 import { useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "@/components/ui/link";
+import { useNavigate } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -340,7 +338,7 @@ export function BuilderShell({
   type: AgreementType;
   embedded?: boolean;
 }) {
-  const router = useRouter();
+  const navigate = useNavigate();
   const root = useRef<HTMLDivElement>(null);
   const { draft, carriedOver, dismissCarriedOver, reset } = useAgreement();
   const [step, setStep] = useState(0);
@@ -406,7 +404,7 @@ export function BuilderShell({
       case "clauses":
         return <ClausesStep />;
       case "review":
-        return <ReviewAndSendStep onSent={() => router.push(`/success?id=${draft.id}`)} />;
+        return <ReviewAndSendStep onSent={() => navigate(`/success?id=${draft.id}`)} />;
     }
   };
 

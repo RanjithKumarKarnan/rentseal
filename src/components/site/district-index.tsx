@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/link";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { DISTRICTS, NOTABLE_TOWNS, ZONE_META, districtsByRegion } from "@/lib/districts";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";

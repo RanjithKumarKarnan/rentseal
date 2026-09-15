@@ -1,5 +1,3 @@
-"use client";
-
 import { useMemo, useState } from "react";
 import { LayoutGrid, Search, X } from "lucide-react";
 import { PageHero, type Crumb } from "@/components/site/page-hero";

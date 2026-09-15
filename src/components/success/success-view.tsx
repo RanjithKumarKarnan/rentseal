@@ -1,7 +1,5 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/link";
 import confetti from "canvas-confetti";
 import { motion } from "framer-motion";
 import {

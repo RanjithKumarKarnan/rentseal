@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/link";
 import { ArrowRight, Briefcase, Building2, FileStack, Home, KeyRound } from "lucide-react";
 import { AGREEMENT_TYPES } from "@/lib/site";
 import { Badge } from "@/components/ui/card";

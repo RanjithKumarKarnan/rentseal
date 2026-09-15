@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/link";
 import { ArrowRight, Check, Info, Minus, Sparkles, Tag } from "lucide-react";
 import { LEAD_ANCHOR, PLANS } from "@/lib/site";
 import { ButtonLink } from "@/components/ui/button";

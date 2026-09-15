@@ -1,7 +1,5 @@
-"use client";
-
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { useLocation } from "react-router";
 
 /** Close enough to count as landed — smooth scrolls stop a pixel or two short. */
 const TOLERANCE = 240;
@@ -9,7 +7,7 @@ const TOLERANCE = 240;
 /**
  * Owns fragment navigation.
  *
- * The browser's own scroll-to-fragment and the App Router's scroll handling
+ * The browser's own scroll-to-fragment and the router's scroll restoration
  * both fire around hydration, and on a long page the second one wins: a cold
  * load of /#get-started, or "Start my order" clicked from any other route,
  * would start scrolling toward the lead form and get cancelled ~50px in,
@@ -21,7 +19,7 @@ const TOLERANCE = 240;
  * cancels our first attempt too.
  */
 export function HashScroll() {
-  const pathname = usePathname();
+  const { pathname, hash, key } = useLocation();
 
   useEffect(() => {
     let frame = 0;
@@ -70,7 +68,7 @@ export function HashScroll() {
       clearTimeout(timer);
       window.removeEventListener("hashchange", onHashChange);
     };
-  }, [pathname]);
+  }, [pathname, hash, key]);
 
   return null;
 }

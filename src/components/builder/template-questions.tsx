@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgreement } from "@/lib/agreement-store";
 import { specFor } from "@/lib/clauses";
 import { fieldsForTemplate, type TemplateField } from "@/lib/template-fields";

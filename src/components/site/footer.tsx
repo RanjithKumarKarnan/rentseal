@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/link";
 import { ArrowUpRight, Mail, MapPin, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import { DISTRICTS } from "@/lib/districts";
 import { FOOTER_LINKS, LEAD_ANCHOR, SITE, TRUST_SIGNALS } from "@/lib/site";

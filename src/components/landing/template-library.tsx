@@ -1,7 +1,5 @@
-"use client";
-
 import { useSyncExternalStore } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/link";
 import {
   BedDouble,
   Bike,

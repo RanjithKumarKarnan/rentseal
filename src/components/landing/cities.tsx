@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/link";
 import { ArrowUpRight, Clock3, MapPin, PackageCheck, Truck } from "lucide-react";
 import { NOTABLE_TOWNS } from "@/lib/districts";
 import { FEATURED_DISTRICTS, LEAD_ANCHOR } from "@/lib/site";

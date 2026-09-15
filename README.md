@@ -1,13 +1,14 @@
 # RentSeal
 
 Landing site for a Tamil Nadu stamp paper supply and delivery business, which
-also drafts rental agreements. Next.js 16 (App Router) · React 19 · TypeScript ·
-Tailwind v4 · Framer Motion.
+also drafts rental agreements. Vite · React 19 · React Router 7 · TypeScript ·
+Tailwind v4 · Framer Motion. Every page is pre-rendered to HTML at build time.
 
 ```bash
 npm run dev     # http://localhost:3011
 npm run build   # static site → dist/, ready for Hostinger (see Deploying)
 npm run lint    # eslint
+npm run typecheck # tsc
 ```
 
 ---
@@ -238,13 +239,16 @@ nowhere else on the site.
 
 ### Social cards
 
-`src/lib/og.tsx` holds one card layout; each route group has an
-`opengraph-image.tsx` that feeds it. There are 77 generated cards — one per
-district page per track, one per service, one per index, one root fallback.
+`src/lib/og.tsx` holds one card layout, and `src/seo/og-cards.ts` lists every
+card the build draws with it into `dist/og/` — one per district page per track,
+one per service, one per index, and a site-wide default. Which card a route
+shares is set in `src/routes.tsx`; a route not given one uses the default
+(`src/seo/og.ts`).
 
-Note that a page which exports its own `openGraph` metadata block **suppresses**
-the inherited file-convention image, which is why the index and service routes
-each need their own `opengraph-image.tsx` rather than relying on the root one.
+Note that a page which sets its own `openGraph` **and** has no card of its own
+shares no image at all: its `openGraph` replaces the site's, card included. That
+is why the index and service routes each have their own card. `/templates` is
+the one page in that position today.
 
 ### Search
 
@@ -258,8 +262,9 @@ Two entry points share that index:
 - **`components/site/search-dialog.tsx`** — ⌘K / Ctrl+K anywhere, `/` when not
   already typing, or the header button. Runs in the browser, no request per
   keystroke.
-- **`/search?q=`** — server-rendered results grouped by kind. It is a plain GET
-  form, so it works with JavaScript disabled and can be linked to directly.
+- **`/search?q=`** — results grouped by kind. It is a plain GET form, so it can
+  be linked to directly. The build writes the page with no query; the browser
+  fills in the results.
 
 Districts carry their towns, taluk headquarters and alias names as keywords, so
 searching a town finds its parent district — Hosur returns Krishnagiri, Ooty
@@ -300,7 +305,7 @@ they would be orphaned, crawlable pages.
 ### Slug stability
 
 Slugs are the official district names. Two of the original city slugs were towns
-rather than districts (`trichy`, `hosur`), so `next.config.ts` holds permanent
+rather than districts (`trichy`, `hosur`), so `public/.htaccess` holds permanent
 redirects mapping them — and six other common town spellings — onto their parent
 district. **Never rename a slug without adding a redirect there.**
 
@@ -310,31 +315,41 @@ district. **Never rename a slug without adding a redirect there.**
 
 ```
 src/
-  app/
-    (site)/          public pages — wrapped in Header + Footer + MobileCta
-    _disabled/       built but not routed (Next.js private folder)
-    layout.tsx       fonts, metadata, Organization + WebSite JSON-LD
-    sitemap.ts       lists live routes only
+  main.tsx           browser entry — takes over the pre-rendered page
+  entry-server.tsx   Node entry — the build renders every page with it
+  routes.tsx         every route, its layout and its social card
+  layouts/           root (JSON-LD, scroll), site (header, footer), builder
+  pages/             one file per page: the component and its `meta`
+  seo/               <head> tags, social cards, sitemap/robots/manifest, page list
+  styles/globals.css design tokens and base styles
   components/
     landing/         hero, lead-form, features, pricing, testimonials, faq…
     site/            header, footer, page-hero, mobile-cta, contact-form, legal-page
-    builder/         multi-step agreement builder  (currently unrouted)
-    tools/           stamp duty calculator          (currently unrouted)
-    ui/              button, card, field, accordion, motion, logo
+    builder/         multi-step agreement builder
+    tools/           stamp duty calculator          (not routed)
+    ui/              button, card, field, accordion, motion, logo, link
   lib/
     site.ts          nav, footer, plans, cities, FAQs, testimonials, LEAD_ANCHOR
     services.ts      long-form content for the 4 service pages
     clauses.ts       dynamic clause generator (20 rules, 8 conditional)
     stamp-duty.ts    Tamil Nadu duty + registration fee engine
     agreement-store.tsx  builder state with debounced autosave
+    submit-order.ts  sends every form to public/api/orders.php
+scripts/
+  prerender.mjs      writes dist/<page>.html, sitemap, robots, manifest, cards
+  write-orders-config.mjs  the order desk's settings for orders.php
+public/
+  .htaccess          clean URLs, redirects, headers, 404 (Hostinger)
+  api/orders.php     emails and Telegrams every order
 ```
 
 ### Design tokens
 
-All in `src/app/globals.css` under `@theme`. Navy `#0F172A`, royal blue
+All in `src/styles/globals.css` under `@theme`. Navy `#0F172A`, royal blue
 `#2563EB`, emerald `#10B981`, canvas `#F8FAFC`, borders `#E2E8F0`. Headings are
-Plus Jakarta Sans, body is Inter, both via `next/font`. Reduced-motion and print
-styles are handled globally at the bottom of that file.
+Source Serif 4, body is Inter, both self-hosted through `@fontsource` (imported
+in `src/main.tsx`). Reduced-motion and print styles are handled globally at the
+bottom of that file.
 
 ### Editing content
 
@@ -350,22 +365,14 @@ Most copy is data, not JSX:
 
 ---
 
-## Wiring up the lead form
+## The forms
 
-`src/components/landing/lead-form.tsx` currently simulates the submit with a
-timeout. To send it somewhere real, replace the body of `submit()` with a POST.
-The fields are already named:
-
-| Field | Always present | Notes |
-| --- | --- | --- |
-| `need` | yes | `stamp-paper` · `agreement` · `both` |
-| `name`, `phone` | yes | phone is validated to 10 digits |
-| `email`, `message` | yes | optional |
-| `city` | yes | delivery address city, or property city |
-| `denomination` | only when `need=stamp-paper` | `20`…`500`, `custom`, `not-sure` |
-| `agreementType` | otherwise | `residential`…`leave-license`, `not-sure` |
-
-The same applies to `src/components/site/contact-form.tsx`.
+The lead form, the contact form and the agreement builder all send through
+`submitOrder()` in `src/lib/submit-order.ts`, which posts the order to
+`public/api/orders.php` (see Deploying). The order is a flat row built by
+`enquiryRow` or `agreementRow` in `src/lib/orders.ts`; `orders.php` writes the
+email and the Telegram message from it. A drafted agreement also carries its
+deed, drawn as a PDF in the browser.
 
 ---
 
@@ -377,6 +384,12 @@ server. Every page is still rendered to HTML at build time, so search engines
 get full pages and the browser takes over from there. The two pages that read
 the URL (`/search?q=` and `/success?id=`) do that part in the browser.
 
+The build is four steps: `vite build` (the browser bundle and the page
+template), `vite build --ssr` (a Node build of the same app),
+`scripts/prerender.mjs` (every page in `src/seo/paths.ts` rendered into
+`dist/`, plus the sitemap, robots.txt, manifest and social cards) and
+`scripts/write-orders-config.mjs`.
+
 1. Put the order desk's settings in `.env.local` or `.env`: `SMTP_*`,
    `ORDER_EMAIL` and `TELEGRAM_*` (see `docs/order-email.md` and
    `docs/telegram-notifications.md`), plus `NEXT_PUBLIC_GA_ID`.
@@ -385,7 +398,7 @@ the URL (`/search?q=` and `/success?id=`) do that part in the browser.
    there. Include the hidden `.htaccess`.
 
 Hostinger's PHP (8.1 or newer, with curl — the default) and its `.htaccess`
-support do what the Next server used to:
+support do the jobs a server would:
 
 | Job | Done by |
 | --- | --- |
@@ -406,27 +419,16 @@ their "call or WhatsApp us" error; orders only go out from the built site.
 
 ---
 
-## Re-enabling the product
+## Built but not switched on
 
-Everything under `src/app/_disabled/` is complete and type-checked; the leading
-underscore is the Next.js convention for a folder excluded from routing. To turn
-a feature back on, move it into a routed group:
-
-```bash
-cd src/app
-mv _disabled/create "(site)/create"                       # agreement type chooser
-mv "_disabled/(builder)" "(builder)"                      # 7-step builder
-mv _disabled/success "(site)/success"                     # post-payment + confetti
-mv _disabled/stamp-duty-calculator "(site)/stamp-duty-calculator"
-mv _disabled/login login                                  # OTP sign-in
-```
-
-Then point the CTAs back at them. Every conversion link uses the `LEAD_ANCHOR`
-constant in `src/lib/site.ts`, so changing that one value redirects the whole
-site. Also re-add the `Tools` group to `NAV_LINKS`, the calculator entry to
-`FOOTER_LINKS`, and both to `sitemap.ts`.
-
-Note: `_disabled/login` routes to `/dashboard`, which has not been built yet.
+The stamp duty calculator (`src/components/tools/stamp-duty-calculator.tsx`)
+and OTP sign-in (`src/components/auth/login-form.tsx`) are complete but have no
+page. To turn one on, add a page in `src/pages/`, a route in `src/routes.tsx`
+and its URL in `src/seo/paths.ts` so the build writes it — plus
+`src/seo/site-files.ts` if it belongs in the sitemap. Every conversion link uses
+the `LEAD_ANCHOR` constant in `src/lib/site.ts`, so changing that one value
+redirects the whole site. Sign-in sends people to `/dashboard`, which has not
+been built yet.
 
 ### What the builder does
 

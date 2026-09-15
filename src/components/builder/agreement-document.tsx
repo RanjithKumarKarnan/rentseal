@@ -1,5 +1,3 @@
-"use client";
-
 import { createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {

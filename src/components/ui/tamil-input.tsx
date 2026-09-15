@@ -1,5 +1,3 @@
-"use client";
-
 import { useLayoutEffect, useRef, useState } from "react";
 import { Keyboard } from "lucide-react";
 import { Input, Textarea } from "./field";

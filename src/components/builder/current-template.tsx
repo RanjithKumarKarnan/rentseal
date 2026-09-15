@@ -1,6 +1,4 @@
-"use client";
-
-import Link from "next/link";
+import Link from "@/components/ui/link";
 import { ArrowLeft, FileText } from "lucide-react";
 import { useAgreement } from "@/lib/agreement-store";
 import { specFor } from "@/lib/clauses";

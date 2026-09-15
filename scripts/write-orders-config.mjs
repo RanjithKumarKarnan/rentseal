@@ -4,29 +4,26 @@
  *
  * public/api/orders.php sends the order mail and the Telegram notice from
  * Hostinger, and PHP there cannot see this project's .env files. So the build
- * reads them the way Next does — the shell's environment first, then
- * .env.production.local, .env.local, .env.production and .env — and leaves a
- * PHP file of the values beside orders.php. Uploading dist/ carries it along.
- * public/.htaccess refuses to serve it, and dist/ is ignored by git.
+ * reads them — the shell's environment first, then .env.production.local,
+ * .env.local, .env.production and .env, the order Vite reads them in — and
+ * leaves a PHP file of the values beside orders.php. Uploading dist/ carries it
+ * along. public/.htaccess refuses to serve it, and dist/ is ignored by git.
  *
- * Runs as the second half of `npm run build`.
+ * Runs as the last step of `npm run build`.
  */
 import { existsSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import nextEnv from "@next/env";
+import { loadEnv } from "vite";
 
 const root = new URL("../", import.meta.url);
 
 if (!existsSync(new URL("dist/api/orders.php", root))) {
-  console.error(
-    '[orders] dist/api/orders.php is missing — are output: "export" and distDir: "dist" set in next.config.ts?',
-  );
+  console.error("[orders] dist/api/orders.php is missing — did `vite build` run first?");
   process.exit(1);
 }
 
-nextEnv.loadEnvConfig(fileURLToPath(root), false, { info() {}, error: console.error });
-
-const env = (name) => (process.env[name] ?? "").trim();
+const files = loadEnv("production", fileURLToPath(root), "");
+const env = (name) => (process.env[name] ?? files[name] ?? "").trim();
 const config = {
   smtp_host: env("SMTP_HOST"),
   smtp_port: env("SMTP_PORT") || "465",

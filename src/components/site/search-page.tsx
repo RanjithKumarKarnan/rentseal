@@ -1,7 +1,6 @@
-"use client";
-
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import Link from "@/components/ui/link";
+import { useSearchParams } from "react-router";
+import { useHydrated } from "@/lib/use-hydrated";
 import { ArrowRight, MapPin, Search as SearchIcon } from "lucide-react";
 import { BreadcrumbSchema, PageHero } from "@/components/site/page-hero";
 import { Reveal } from "@/components/ui/motion";
@@ -58,7 +57,10 @@ function ResultRow({ r }: { r: SearchResult }) {
  * so the results are worked out here in the browser.
  */
 export function SearchFromUrl() {
-  const query = (useSearchParams().get("q") ?? "").trim();
+  const [params] = useSearchParams();
+  // Empty until hydrated: the build wrote this page without a query, and the
+  // first render in the browser has to match that HTML.
+  const query = useHydrated() ? (params.get("q") ?? "").trim() : "";
   return <SearchView query={query} />;
 }
 

@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { Pencil, RotateCcw, Trash2, Undo2, X } from "lucide-react";
 import { useAgreement } from "@/lib/agreement-store";

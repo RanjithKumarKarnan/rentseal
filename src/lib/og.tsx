@@ -1,7 +1,5 @@
-import { ImageResponse } from "next/og";
-
-export const OG_SIZE = { width: 1200, height: 630 };
-export const OG_CONTENT_TYPE = "image/png";
+import { ImageResponse } from "@vercel/og";
+import { OG_SIZE } from "@/seo/og";
 
 const NAVY = "#0f172a";
 const BRAND = "#2563eb";

@@ -1,7 +1,5 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/link";
 import { cn } from "@/lib/utils";
 
 /** Where the supplied artwork lives. Drop the file in and it is picked up. */
@@ -37,7 +35,6 @@ export function LogoMark({ className }: { className?: string }) {
   return (
     // Plain <img>: the artwork is a fixed square the browser can scale on its
     // own, and next/image would want dimensions we do not control.
-    // eslint-disable-next-line @next/next/no-img-element
     <img
       ref={img}
       src={LOGO_SRC}

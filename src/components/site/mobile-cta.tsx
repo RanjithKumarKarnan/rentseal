@@ -1,7 +1,5 @@
-"use client";
-
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
 import { LEAD_ANCHOR, SITE } from "@/lib/site";

@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect } from "react";
 import { MotionConfig, MotionGlobalConfig } from "framer-motion";
 

@@ -1,8 +1,6 @@
-"use client";
-
 import { useEffect, useState, useSyncExternalStore } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "@/components/ui/link";
+import { useLocation } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Menu, Phone, Search, X } from "lucide-react";
 import { BUILDER_START, LEAD_ANCHOR, NAV_LINKS, SITE } from "@/lib/site";
@@ -26,7 +24,7 @@ export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const pathname = usePathname();
+  const { pathname } = useLocation();
 
   // Navigating away closes any open menu. Adjusting during render is the
   // documented way to reset state on a prop change — no extra pass needed.

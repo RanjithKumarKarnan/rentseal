@@ -1,8 +1,6 @@
-"use client";
-
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useNavigate } from "react-router";
+import Link from "@/components/ui/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CornerDownLeft, MapPin, Search, X } from "lucide-react";
 import { POPULAR_SEARCHES, search, type DocKind } from "@/lib/search";
@@ -27,7 +25,7 @@ export function SearchDialog({
   open: boolean;
   onClose: () => void;
 }) {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -67,9 +65,9 @@ export function SearchDialog({
   const go = useCallback(
     (href: string) => {
       onClose();
-      router.push(href);
+      navigate(href);
     },
-    [onClose, router],
+    [onClose, navigate],
   );
 
   const onKeyDown = (e: React.KeyboardEvent) => {
