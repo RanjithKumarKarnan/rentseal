@@ -23,7 +23,12 @@ export async function submitOrder(row: OrderRow, draft?: AgreementDraft): Promis
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ ...row, pdf }),
   });
-  if (!response.ok) throw new Error(`orders ${response.status}`);
+  // Only orders.php's own answer counts. A server that cannot run PHP — the
+  // Vite dev server, or a host with PHP switched off — hands the file back as
+  // text with a 200, and taking that for success would thank someone for an
+  // order that was never sent.
+  const result = (await response.json().catch(() => null)) as { ok?: boolean } | null;
+  if (!response.ok || result?.ok !== true) throw new Error(`orders ${response.status}`);
 }
 
 /**

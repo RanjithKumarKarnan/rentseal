@@ -414,8 +414,15 @@ It is never committed (`dist/` is ignored) and `.htaccess` refuses to serve it.
 Change a setting, rebuild, upload again.
 
 `orders.php` logs to Hostinger's PHP error log, in lines starting `[mail]`,
-`[telegram]` and `[orders]`. `npm run dev` has no PHP, so there the forms show
-their "call or WhatsApp us" error; orders only go out from the built site.
+`[telegram]` and `[orders]`.
+
+`npm run dev` sends orders too. It starts PHP's built-in server next to Vite
+(on a free local port), with the same `.env` settings, and forwards the form
+posts to it —
+so the email and Telegram messages from a local test are real, and their
+`[mail]`/`[telegram]` log lines show in the terminal. It needs PHP on the
+machine (`brew install php`); without it the forms show their "call or WhatsApp
+us" error instead of pretending to have sent.
 
 ---
 

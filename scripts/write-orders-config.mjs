@@ -14,6 +14,7 @@
 import { existsSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { loadEnv } from "vite";
+import { channels, ordersConfig, ordersConfigPhp } from "./orders-config.mjs";
 
 const root = new URL("../", import.meta.url);
 
@@ -22,36 +23,10 @@ if (!existsSync(new URL("dist/api/orders.php", root))) {
   process.exit(1);
 }
 
-const files = loadEnv("production", fileURLToPath(root), "");
-const env = (name) => (process.env[name] ?? files[name] ?? "").trim();
-const config = {
-  smtp_host: env("SMTP_HOST"),
-  smtp_port: env("SMTP_PORT") || "465",
-  smtp_user: env("SMTP_USER"),
-  smtp_pass: env("SMTP_PASS"),
-  order_email: env("ORDER_EMAIL"),
-  telegram_bot_token: env("TELEGRAM_BOT_TOKEN"),
-  telegram_chat_id: env("TELEGRAM_CHAT_ID"),
-};
+const config = ordersConfig({ ...loadEnv("production", fileURLToPath(root), ""), ...process.env });
+writeFileSync(new URL("dist/api/orders-config.php", root), ordersConfigPhp(config));
 
-/** A PHP single-quoted string: only the backslash and the quote need escaping. */
-const php = (value) => `'${value.replace(/\\/g, "\\\\").replace(/'/g, "\\'")}'`;
-
-writeFileSync(
-  new URL("dist/api/orders-config.php", root),
-  [
-    "<?php",
-    "// Written by scripts/write-orders-config.mjs from .env at build time.",
-    "// Change .env and rebuild rather than editing this on the server.",
-    "return [",
-    ...Object.entries(config).map(([key, value]) => `    '${key}' => ${php(value)},`),
-    "];",
-    "",
-  ].join("\n"),
-);
-
-const mail = Boolean(config.smtp_host && config.smtp_user && config.smtp_pass);
-const telegram = Boolean(config.telegram_bot_token && config.telegram_chat_id);
+const { mail, telegram } = channels(config);
 console.log(
   `[orders] wrote dist/api/orders-config.php — email ${mail ? "on" : "OFF"}, Telegram ${telegram ? "on" : "OFF"}`,
 );

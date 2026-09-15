@@ -61,10 +61,12 @@ function respond(int $status, array $body): void
     exit;
 }
 
-/** The credentials the build left beside this file. */
+/** The credentials: beside this file on Hostinger, or wherever `npm run dev` put them. */
 function load_config(): array
 {
-    $file = __DIR__ . '/orders-config.php';
+    // ORDERS_CONFIG is set only by `npm run dev` (vite.config.ts), which keeps
+    // the settings out of the source tree. A web request cannot set it.
+    $file = getenv('ORDERS_CONFIG') ?: __DIR__ . '/orders-config.php';
     $config = is_file($file) ? require $file : [];
     return is_array($config) ? $config : [];
 }
