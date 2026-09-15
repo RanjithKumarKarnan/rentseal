@@ -5,8 +5,8 @@
   "scripts": {
     "telegram:chat-id": "node scripts/telegram-chat-id.mjs",
     "dev": "next dev -p 3011",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && node scripts/prepare-standalone.mjs",
+    "start": "node .next/standalone/server.js",
     "lint": "eslint"
   },
   "dependencies": {

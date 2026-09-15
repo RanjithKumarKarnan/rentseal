@@ -5,8 +5,9 @@ also drafts rental agreements. Next.js 16 (App Router) · React 19 · TypeScript
 Tailwind v4 · Framer Motion.
 
 ```bash
-npm run dev     # http://localhost:3000
-npm run build   # production build
+npm run dev     # http://localhost:3011
+npm run build   # production build → .next/standalone (see Deploying)
+npm start       # serve that build on http://localhost:3000
 npm run lint    # eslint
 ```
 
@@ -366,6 +367,42 @@ The fields are already named:
 | `agreementType` | otherwise | `residential`…`leave-license`, `not-sure` |
 
 The same applies to `src/components/site/contact-form.tsx`.
+
+---
+
+## Deploying
+
+This is a Node server, not a folder of static files, so the build does not
+produce an `index.html` to upload. The server renders the pages, and it has to be
+running for `/api/orders` to send the order mail and Telegram notice, and for the
+district redirects and security headers in `next.config.ts`.
+
+Point the host at:
+
+| Setting | Value |
+| --- | --- |
+| Node | 20.9 or newer |
+| Install | `npm ci` |
+| Build | `npm run build` |
+| Start | `npm start` |
+| Port | `PORT` env var, default `3000` |
+
+`next.config.ts` sets `output: "standalone"`, so `next build` writes a
+self-contained server to `.next/standalone/server.js`. The second half of
+`npm run build` (`scripts/prepare-standalone.mjs`) copies `public/` and
+`.next/static/` in beside it; without that, pages load with no CSS, JS or
+images. `npm start` runs that server.
+
+- **Hosts that ask for a startup file** (cPanel / Hostinger Node.js apps): use
+  `.next/standalone/server.js`.
+- **Copying a build to a server by hand:** `.next/standalone/` is the whole app,
+  its `node_modules` included. Copy that folder over and run `node server.js` in it.
+- **Docker:** set `HOSTNAME=0.0.0.0`. Otherwise Docker sets `HOSTNAME` to the
+  container ID, and the server binds to that instead of every interface.
+- **Environment:** the build copies `.env` into the standalone folder, but not
+  `.env.local`. Set `SMTP_*`, `ORDER_EMAIL` and `TELEGRAM_*` in the host's
+  environment settings (see `docs/order-email.md`). `NEXT_PUBLIC_GA_ID` is
+  inlined at build time, so it has to be set wherever the build runs.
 
 ---
 

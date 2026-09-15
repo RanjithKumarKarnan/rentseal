@@ -2,6 +2,11 @@ import path from "node:path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Runs as a Node server, not a folder of static files: /api/orders sends the
+  // order mail and Telegram notice, and the redirects and headers below need a
+  // server too. `standalone` bundles one into .next/standalone/server.js, and
+  // scripts/prepare-standalone.mjs copies the assets in beside it after a build.
+  output: "standalone",
   // A stray lockfile in $HOME makes Turbopack guess the wrong root; pin it here.
   turbopack: {
     root: path.resolve("."),
