@@ -133,8 +133,14 @@ export function tamilTokens(draft: AgreementDraft): Record<string, string> {
 }
 
 /**
- * The tokens in the service provider agreement, which is between two companies
- * rather than two people.
+ * The tokens in the English documents held verbatim — the sale agreements, the
+ * deeds, the affidavits, the partnership deed and the service provider
+ * agreement, which is between two companies rather than two people.
+ *
+ * The two sides are carried under the same landlord/tenant pair the rest of the
+ * draft uses, whatever the document calls them: a vendor and a purchaser, a
+ * borrower and a lender, two partners. Where a document names a company, the
+ * registered name is used and the person's name is the fallback.
  */
 export function contractTokens(draft: AgreementDraft): Record<string, string> {
   const t = draft.terms;
@@ -142,6 +148,14 @@ export function contractTokens(draft: AgreementDraft): Record<string, string> {
   const fee = money(t.securityDeposit);
   const party = (p: AgreementDraft["landlord"]) => p.companyName?.trim() || p.fullName;
   return {
+    nameA: draft.landlord.fullName,
+    parentA: draft.landlord.parentName,
+    aadhaarA: aadhaar(draft.landlord.aadhaar),
+    addressA: draft.landlord.address,
+    nameB: draft.tenant.fullName,
+    parentB: draft.tenant.parentName,
+    aadhaarB: aadhaar(draft.tenant.aadhaar),
+    addressB: draft.tenant.address,
     companyName: party(draft.landlord),
     providerName: party(draft.tenant),
     executionPlace: t.executionPlace,

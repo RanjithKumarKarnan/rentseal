@@ -1,23 +1,26 @@
 import type { DeedTemplate } from "./deed-templates";
 
 /**
- * Seven more documents the office supplied, held verbatim.
+ * Eight more documents the office supplied, held verbatim.
  *
  * Four agreements for sale — a plot, a flat, a long form for a sale worth
  * arguing about, and a salvage vehicle sold as it stands — a supplier's
- * corporate guarantee, and the memorandum of deposit of title deeds in the two
- * bank forms the office uses.
+ * corporate guarantee, a partnership deed, and the memorandum of deposit of
+ * title deeds in the two bank forms the office uses.
  *
- * All seven arrived executed. Between them they carried names, Aadhaar and PAN
+ * All eight arrived executed. Between them they carried names, Aadhaar and PAN
  * numbers, home addresses, survey and door numbers, a vehicle registration with
  * its engine and chassis numbers, an insurance policy number, a purchase order
- * number and the sums involved. Every one of those is now either a {{token}}
- * the form fills or a blank rule the counter completes.
+ * number and the sums involved — and, in the partnership deed, a firm's name,
+ * its place of business, four partners, what each put in and what each takes
+ * out. Every one of those is now either a {{token}} the form fills or a blank
+ * rule the counter completes.
  *
  * Amounts are deliberately left as rules wherever a document names more than
  * one. A sale agreement states a consideration, an advance and a balance, and
  * pouring a single answer into all three would print a deed that contradicts
- * itself. Only the two documents that name a single sum ask for it.
+ * itself; a partnership deed names a capital and each partner's share of it.
+ * Only the two documents that name a single sum ask for it.
  */
 
 export type ContractTemplateId =
@@ -26,6 +29,7 @@ export type ContractTemplateId =
   | "sale-agreement-detailed"
   | "sale-damaged-vehicle"
   | "corporate-guarantee"
+  | "partnership-deed"
   | "mod-title-deeds"
   | "mod-title-deeds-bank"
   ;
@@ -351,6 +355,57 @@ export const CONTRACT_TEMPLATES: Record<ContractTemplateId, DeedTemplate> = {
       { text: "In witness where of, the seller have here unto affixed their signature the day, month and year first above written." },
       { text: "__________________________   __________________________" },
       { text: "__________________________   __________________________" },
+    ],
+  },
+  "partnership-deed": {
+    id: "partnership-deed",
+    baseType: "deed",
+    name: "Partnership Deed",
+    deedTitle: "PARTNERSHIP DEED",
+    roleA: "FIRST PARTNER",
+    roleB: "SECOND PARTNER",
+    description: "Partners starting a firm at will — capital, profit and loss shares, who runs the day to day, and how a partner retires. Under the Indian Partnership Act, 1932.",
+    body: [
+      { text: "PARTNERSHIP DEED", heading: true },
+      { text: "THIS DEED OF PARTNERSHIP entered into this {{executionDate}} between:" },
+      { text: "{{nameA}}, son / daughter / wife of {{parentA}}, aged about ___ years, residing at {{addressA}}, hereinafter called the party of the FIRST PART," },
+      { text: "{{nameB}}, son / daughter / wife of {{parentB}}, aged about ___ years, residing at {{addressB}}, hereinafter called the party of the SECOND PART," },
+      { text: "__________________________, son / daughter / wife of __________________________, aged about ___ years, residing at __________________________, hereinafter called the party of the THIRD PART AND" },
+      { text: "__________________________, son / daughter / wife of __________________________, aged about ___ years, residing at __________________________, hereinafter called the party of the FOURTH PART." },
+      { text: "Whereas the above said parties decided to commence a business under the name and style of “__________________________” as per the terms and conditions laid down as below" },
+      { text: "NOW THIS DEED OF PARTNERSHIP WITNESSETH AS FOLLOWS:", heading: true },
+      { text: "1.The name of the firm shall be “__________________________”. The name shall be changed as may be agreed upon by the parties hereto from time to time." },
+      { text: "2.The place of business shall be at __________________________. The place of business shall be changed to any other place or places as may be decided by the partners from time to time. The partnership firm also open branch office, at any other place which may be decided by the partners from time to time." },
+      { text: "3.The business of the Partnership shall be __________________________. The firm shall do any other business or businesses as may be decided by partners from time to time." },
+      { text: "4.The Partnership shall be “AT WILL” and shall be effect from {{executionDate}}." },
+      { text: "5.The capital of the firm shall be Rs. __________________________ /- (Rupees __________________________ only) and the same shall be contributed as below" },
+      { text: "1) {{nameA}}  |  Rs. __________________________" },
+      { text: "2) {{nameB}}  |  Rs. __________________________" },
+      { text: "3) __________________________  |  Rs. __________________________" },
+      { text: "4) __________________________  |  Rs. __________________________" },
+      { text: "Total  |  Rs. __________________________" },
+      { text: "If any further capital is required, they shall bring additional capital to the firm, which may be decided by the partners from time to time." },
+      { text: "6.The First and Second parties shall be the working partners. They shall manage the day to day affairs of the partnership business and shall carry on the business in the best interest of the partnership." },
+      { text: "7.The partners shall open bank account in the name of the firm. Bank account opened in the name of the firm shall be operated jointly by the party of the first and second part." },
+      { text: "8.The Profit and Losses of the business after adjusting all expenses shall be divided as follows:" },
+      { text: "1) {{nameA}}  —  __________ %" },
+      { text: "2) {{nameB}}  —  __________ %" },
+      { text: "3) __________________________  —  __________ %" },
+      { text: "4) __________________________  —  __________ %" },
+      { text: "9.The books of accounts and other records, documents shall be kept and maintained properly at the principal place of business. The books of accounts and other documents shall be kept at other place or places as the partners may agree upon. The partners shall have access to all the books of accounts and documents at all reasonable time." },
+      { text: "10.If at any time during the period of partnership any partner wished to retire from the said partnership business, he/she can retire from the said partnership by giving not less than Two Months Notice in writing to the other partner of his/her intention in this behalf." },
+      { text: "11.In the event of death or retirement of any partner, it is hereby agreed that one of the heirs of the deceased partner shall be taken as partner in the place of the deceased partner." },
+      { text: "12.The Partners shall borrow money from bank or private parties or Financial Institutions jointly for the purpose of business which will bind on all the parties." },
+      { text: "13.Any one of the above terms and clauses may be altered, amended or added to, by common consent of both the partners as and when deemed necessary." },
+      { text: "14.In all other respects the partnership shall be governed by the terms of Indian Partnership Act, 1932." },
+      { text: "IN WITNESS WHEREOF WE ALL THE PARTNERS HERETO SET THEIR HANDS TO THIS INDENTURE THE DAY, MONTH AND YEAR FIRST ABOVE WRITTEN:" },
+      { text: "__________________________   (PARTY OF THE FIRST PART)" },
+      { text: "__________________________   (PARTY OF THE SECOND PART)" },
+      { text: "__________________________   (PARTY OF THE THIRD PART)" },
+      { text: "__________________________   (PARTY OF THE FOURTH PART)" },
+      { text: "WITNESSES:", heading: true },
+      { text: "1." },
+      { text: "2." },
     ],
   },
   "mod-title-deeds": {

@@ -182,7 +182,7 @@ export function StampPaperRates() {
               stamp paper, with the margins a sub-registrar expects left clear. If you would
               rather draft it here,{" "}
               <a className="font-semibold text-brand-700 underline underline-offset-4" href="/templates">
-                sixty-two deeds and affidavits
+                sixty-three deeds and affidavits
               </a>{" "}
               are ready to fill in.
             </span>

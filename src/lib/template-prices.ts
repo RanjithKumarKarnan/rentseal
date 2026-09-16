@@ -54,6 +54,7 @@ export const TEMPLATE_PRICES: Record<TemplateId, number> = {
   /* ── Business contract ───────────────────────────────────────────────── */
   "service-provider": 700,
   "corporate-guarantee": 800,
+  "partnership-deed": 800,
 
   /* ── Deeds & undertakings ────────────────────────────────────────────── */
   "indemnity-jewel-slip": 400,

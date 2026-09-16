@@ -3,7 +3,11 @@ import type { TemplateId } from "./agreement-templates";
 import { TAMIL_TEMPLATES, TAMIL_TEMPLATE_IDS } from "./tamil-templates";
 import { DEED_TEMPLATES, DEED_TEMPLATE_IDS } from "./deed-templates";
 import { AFFIDAVIT_TEMPLATES, AFFIDAVIT_TEMPLATE_IDS } from "./affidavit-templates";
-import { CONTRACT_TEMPLATES, CONTRACT_TEMPLATE_IDS } from "./contract-templates";
+import {
+  CONTRACT_TEMPLATES,
+  CONTRACT_TEMPLATE_IDS,
+  type ContractTemplateId,
+} from "./contract-templates";
 
 export interface AgreementTemplate {
   /**
@@ -67,23 +71,36 @@ const AFFIDAVIT_CATALOGUE: AgreementTemplate[] = AFFIDAVIT_TEMPLATE_IDS.map((id)
 });
 
 /**
- * The sale agreements, the corporate guarantee and the two memoranda.
+ * The sale agreements, the corporate guarantee, the partnership deed and the
+ * two memoranda.
  *
  * These sit under the category their instrument belongs to rather than in a set
  * of their own: an agreement for sale is a sale whatever it is written on, and
  * a memorandum of deposit of title deeds is a deed.
  */
+
+/**
+ * The two that are business contracts rather than sales or deeds, with the
+ * term each actually runs for. A guarantee is executed once; a partnership is
+ * at will and runs until the partners end it.
+ */
+const BUSINESS_CONTRACTS: Partial<Record<ContractTemplateId, { term: string; icon: string }>> = {
+  "corporate-guarantee": { term: "One-off", icon: "Handshake" },
+  "partnership-deed": { term: "At will", icon: "Users" },
+};
+
 const CONTRACT_CATALOGUE: AgreementTemplate[] = CONTRACT_TEMPLATE_IDS.map((id) => {
   const t = CONTRACT_TEMPLATES[id];
   const sale = t.baseType === "sale";
+  const business = BUSINESS_CONTRACTS[id];
   return {
     id,
     name: t.name,
     description: t.description,
     baseType: t.baseType,
-    category: (sale ? "Sale" : id === "corporate-guarantee" ? "Business contract" : "Deeds & undertakings") as AgreementTemplate["category"],
-    term: "One-off",
-    icon: sale ? "ShoppingBag" : id === "corporate-guarantee" ? "Handshake" : "Landmark",
+    category: (sale ? "Sale" : business ? "Business contract" : "Deeds & undertakings") as AgreementTemplate["category"],
+    term: business?.term ?? "One-off",
+    icon: sale ? "ShoppingBag" : business?.icon ?? "Landmark",
   };
 });
 
