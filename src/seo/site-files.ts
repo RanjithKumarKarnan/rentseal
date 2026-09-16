@@ -32,7 +32,7 @@ export function sitemap(): SitemapEntry[] {
 
   const staticPages: SitemapEntry[] = (
     [
-      { url: SITE.url, changeFrequency: "weekly", priority: 1 },
+      { url: `${SITE.url}/`, changeFrequency: "weekly", priority: 1 },
       { url: `${SITE.url}/rental-agreement`, changeFrequency: "weekly", priority: 0.9 },
       { url: `${SITE.url}/stamp-paper`, changeFrequency: "weekly", priority: 0.9 },
       { url: `${SITE.url}/templates`, changeFrequency: "monthly", priority: 0.8 },
@@ -116,7 +116,7 @@ export function robotsTxt(): string {
  */
 export function manifestJson(): string {
   return JSON.stringify({
-    name: `${SITE.name} — Stamp Paper & Rental Agreements in Tamil Nadu`,
+    name: `${SITE.name} — Non-Judicial Stamp Paper & Rental Agreements in Tamil Nadu`,
     short_name: SITE.name,
     description: SITE.description,
     start_url: "/",
@@ -126,8 +126,8 @@ export function manifestJson(): string {
     lang: "en-IN",
     categories: ["business", "legal", "productivity"],
     icons: [
-      { src: "/logo.png", sizes: "256x256", type: "image/png", purpose: "any" },
-      { src: "/logo.png", sizes: "256x256", type: "image/png", purpose: "maskable" },
+      { src: "/logo.png", sizes: "512x512", type: "image/png", purpose: "any" },
+      { src: "/logo-maskable.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
     ],
   });
 }

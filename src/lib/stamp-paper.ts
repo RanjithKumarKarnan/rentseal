@@ -146,7 +146,7 @@ export const STAMP_ADD_ONS: StampAddOn[] = [
     id: "green-sheet-a4",
     name: "Green sheet — A4",
     price: 3,
-    blurb: "Continuation paper for a deed that runs past the stamp paper. Priced per sheet.",
+    blurb: "Continuation paper for a deed that runs past the non-judicial stamp paper. Priced per sheet.",
   },
   {
     id: "green-sheet-legal",
@@ -197,10 +197,10 @@ export interface CounterService {
 export const COUNTER_SERVICES: CounterService[] = [
   {
     id: "print-on-stamp-paper",
-    name: "Printing on the stamp paper",
+    name: "Printing on the non-judicial stamp paper",
     price: null,
     blurb:
-      "Upload your own draft and we print it onto the stamp paper before it is delivered. Send it as a PDF or a Word file — the layout is set to leave the margins the sub-registrar expects.",
+      "Upload your own draft and we print it onto the non-judicial stamp paper before it is delivered. Send it as a PDF or a Word file — the layout is set to leave the margins the sub-registrar expects.",
   },
   {
     id: "print-xerox",
@@ -210,16 +210,16 @@ export const COUNTER_SERVICES: CounterService[] = [
   },
   {
     id: "notary-on-stamp-paper",
-    name: "Notary signature on stamp paper",
+    name: "Notary signature on non-judicial stamp paper",
     price: 350,
     blurb:
-      "A notary public attests the document, and two green sheets are included. This is the attestation charge only — the stamp paper itself is priced above.",
+      "A notary public attests the document, and two green sheets are included. This is the attestation charge only — the non-judicial stamp paper itself is priced above.",
   },
   {
     id: "notary-white-sheet",
     name: "Notary signature on white paper",
     price: 100,
-    blurb: "Attestation of a document typed on plain paper rather than stamp paper.",
+    blurb: "Attestation of a document typed on plain paper rather than non-judicial stamp paper.",
   },
 ];
 

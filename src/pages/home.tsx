@@ -14,7 +14,7 @@ import { SITE } from "@/lib/site";
 import { DENOMINATIONS } from "@/lib/stamp-paper";
 
 export const meta: PageMeta = {
-  title: "Stamp Paper & Rental Agreements in Tamil Nadu",
+  title: "Non-Judicial Stamp Paper & Rental Agreements",
   description: SITE.description,
   alternates: { canonical: "/" },
 };
@@ -22,12 +22,12 @@ export const meta: PageMeta = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  serviceType: "Stamp paper supply, delivery and rental agreement drafting",
+  serviceType: "Non-judicial stamp paper supply, delivery and rental agreement drafting",
   provider: { "@id": `${SITE.url}/#organization` },
   areaServed: { "@type": "State", name: "Tamil Nadu" },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Stamp paper and agreement services",
+    name: "Non-judicial stamp paper and agreement services",
     itemListElement: [
       ...DENOMINATIONS.filter((d) => d.value > 0).map((d) => ({
         "@type": "Offer",

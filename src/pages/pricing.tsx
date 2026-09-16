@@ -9,7 +9,7 @@ import { SITE } from "@/lib/site";
 export const meta: PageMeta = {
   title: "Pricing — Agreements and Deeds from ₹300",
   description:
-    "Every deed priced individually, from ₹300, with the plan adding e-stamping, e-signing and delivery on top. Government stamp duty passed through at cost, itemised separately on every invoice. GST applies to our fee alone.",
+    "Every deed priced on its own, from ₹300. Stamp duty passed through at government rate and itemised on every invoice. GST applies to our fee alone.",
   alternates: { canonical: "/pricing" },
 };
 

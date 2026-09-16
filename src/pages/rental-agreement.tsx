@@ -6,7 +6,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { DISTRICTS } from "@/lib/districts";
 import { BUILDER_START, SITE } from "@/lib/site";
 
-const title = "Rental Agreement in Tamil Nadu — All 38 Districts";
+const title = "Rental Agreement Online in Tamil Nadu";
 const description =
   "A legally valid rental agreement anywhere in Tamil Nadu, e-stamped at the government rate. Pick your district for its Sub-Registrar Offices.";
 

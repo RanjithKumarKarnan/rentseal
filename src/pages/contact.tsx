@@ -6,9 +6,9 @@ import { Reveal } from "@/components/ui/motion";
 import { SITE } from "@/lib/site";
 
 export const meta: PageMeta = {
-  title: "Contact Us — Talk to a Person in Tamil or English",
+  title: "Contact Us — Talk to Us in Tamil or English",
   description:
-    "Phone, WhatsApp, email or the form. Tamil and English, Monday to Saturday 9.30am to 5pm. Closed Sundays.",
+    `Call, WhatsApp, email or use the form, in Tamil or English, for non-judicial stamp paper and agreements. ${SITE.hours.summary.replace(" · ", ", ")}.`,
   alternates: { canonical: "/contact" },
 };
 

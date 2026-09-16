@@ -29,9 +29,9 @@ export function StampPaper() {
     <section id="stamp-paper" className="section scroll-mt-20 bg-white">
       <div className="container-page">
         <SectionHeading
-          eyebrow="Stamp paper, delivered"
+          eyebrow="Non-judicial stamp paper, delivered"
           icon={Stamp}
-          title="Licensed stamp paper at your door, anywhere in Tamil Nadu"
+          title="Licensed non-judicial stamp paper at your door, anywhere in Tamil Nadu"
           body="No hunting for a vendor who has shut for lunch, no queue at the treasury. Tell us the denomination and the address — we fetch the paper and a rider brings it to you, with the face value and our charge shown separately."
         />
 
@@ -144,7 +144,7 @@ export function StampPaper() {
               </motion.div>
 
               <ButtonLink href={LEAD_ANCHOR} size="lg" fullWidth className="mt-5 group">
-                Order {active.label} stamp paper
+                Order {active.label} non-judicial stamp paper
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </ButtonLink>
             </div>

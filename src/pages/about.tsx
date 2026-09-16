@@ -10,9 +10,9 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { LEAD_ANCHOR, SITE } from "@/lib/site";
 
 export const meta: PageMeta = {
-  title: "About Us — Legal Documents Ordinary People Can Read",
+  title: "About Us — Legal Documents People Can Read",
   description:
-    "LP Stamp Paper builds rental agreements for Tamil Nadu that are legally sound and written in plain English. Registered in Chennai, serving all 38 districts.",
+    "LP Stamp Paper supplies non-judicial stamp paper and drafts plain-English agreements for Tamil Nadu. Based in Chennai, serving all 38 districts.",
   alternates: { canonical: "/about" },
 };
 

@@ -16,7 +16,7 @@ export function Cities() {
           eyebrow="Delivery coverage"
           icon={Truck}
           title="We deliver to all 38 districts of Tamil Nadu"
-          body="Stamp paper reaches you wherever you are in the state. These are the honest timelines — not a marketing promise we quietly miss."
+          body="Non-judicial stamp paper reaches you wherever you are in the state. These are the honest timelines — not a marketing promise we quietly miss."
         />
 
         {/* Zones */}
@@ -137,7 +137,7 @@ export function Cities() {
                   href="/stamp-paper"
                   className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand-700 underline underline-offset-4"
                 >
-                  Stamp paper in all 38 districts
+                  Non-judicial stamp paper in all 38 districts
                   <ArrowUpRight className="size-3.5" />
                 </Link>
                 <Link

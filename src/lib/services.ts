@@ -23,9 +23,9 @@ export const SERVICES: ServiceContent[] = [
     h1: "Residential rental agreement, drafted for Tamil Nadu",
     intro:
       "The 11-month agreement that covers most lettings in the state — flats, independent houses and villas. E-stamped, signed with Aadhaar OTP, and in your inbox the same day.",
-    metaTitle: "Residential Rental Agreement Online in Tamil Nadu",
+    metaTitle: "Residential Rental Agreement — Tamil Nadu",
     metaDescription:
-      "Create an 11-month residential rental agreement for Tamil Nadu online. E-stamped, notarised, Aadhaar e-signed and delivered by email and WhatsApp across Tamil Nadu.",
+      "Create an 11-month residential rental agreement for Tamil Nadu online — printed on non-judicial stamp paper, notarised and delivered to your door.",
     whoFor: [
       "Owners letting a flat or house to a family",
       "Tenants who want the terms in writing before paying a deposit",
@@ -106,7 +106,7 @@ export const SERVICES: ServiceContent[] = [
     h1: "Commercial rental agreement for offices, shops and warehouses",
     intro:
       "Built for business premises, with the trade licence, GST, fit-out and business-use obligations that a residential template simply doesn't carry.",
-    metaTitle: "Commercial Rental Agreement Online — Tamil Nadu",
+    metaTitle: "Commercial Rental Agreement — Tamil Nadu",
     metaDescription:
       "A commercial rental agreement for an office, shop, showroom or warehouse in Tamil Nadu, with trade licence, GST and fit-out clauses included.",
     whoFor: [
@@ -191,7 +191,7 @@ export const SERVICES: ServiceContent[] = [
       "When the term runs 12 months or longer, registration stops being optional. A lease deed gives you the strongest evidentiary position available — and we handle the registration mechanics.",
     metaTitle: "Lease Deed Registration in Tamil Nadu",
     metaDescription:
-      "Draft and register a lease deed in Tamil Nadu for terms of 12 months or more. Stamp duty and registration fee computed, Sub-Registrar appointment arranged.",
+      "Draft and register a lease deed in Tamil Nadu for 12 months or more. Stamp duty and registration fee worked out, Sub-Registrar visit arranged.",
     whoFor: [
       "Anyone letting for a year or longer",
       "Corporate leases where the tenant's legal team requires registration",
@@ -270,9 +270,9 @@ export const SERVICES: ServiceContent[] = [
     h1: "Leave and licence agreement, drafted so it stays a licence",
     intro:
       "A licence grants permission to occupy without creating an interest in the property. Get the drafting wrong and a court will read it as a tenancy — which is exactly what the owner was trying to avoid.",
-    metaTitle: "Leave and Licence Agreement Online — Tamil Nadu",
+    metaTitle: "Leave and Licence Agreement — Tamil Nadu",
     metaDescription:
-      "Draft a leave and licence agreement for Tamil Nadu that grants occupation without creating a tenancy. E-stamped, Aadhaar e-signed, delivered the same day.",
+      "A leave and licence agreement for Tamil Nadu that grants occupation without a tenancy, printed on non-judicial stamp paper and delivered.",
     whoFor: [
       "Owners who want a cleaner route to possession at the end of the term",
       "Serviced apartments and managed-stay operators",

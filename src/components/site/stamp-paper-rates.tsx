@@ -45,7 +45,7 @@ export function StampPaperRates() {
           eyebrow="Rate card"
           icon={IndianRupee}
           title="What a sheet costs, before anything is printed on it"
-          body="These are the prices for blank, unprinted stamp paper in the four denominations we carry. The face value is what the government charges for the sheet; the difference is what we charge to fetch it and get it to you. An e-Stamp is not a sheet at all — it is a certificate that arrives by email. Delivery is separate and listed further down."
+          body="These are the prices for blank, unprinted non-judicial stamp paper in the four denominations we carry. The face value is what the government charges for the sheet; the difference is what we charge to fetch it and get it to you. An e-Stamp is not a sheet at all — it is a certificate that arrives by email. Delivery is separate and listed further down."
         />
 
         {/* ── Denominations ── */}
@@ -54,7 +54,7 @@ export function StampPaperRates() {
             <div className="flex items-center gap-2 border-b border-line bg-navy-50 px-5 py-3.5">
               <Stamp className="size-4 text-navy-500" />
               <h3 className="text-[13px] font-bold text-navy-950">
-                Stamp paper — blank, without printing
+                Non-judicial stamp paper — blank, without printing
               </h3>
             </div>
             <div className="overflow-x-auto">
@@ -179,7 +179,7 @@ export function StampPaperRates() {
             <span>
               <span className="font-semibold text-navy-950">Send us the draft and we will print it.</span>{" "}
               Upload a PDF or a Word file with your order and it comes back printed on the
-              stamp paper, with the margins a sub-registrar expects left clear. If you would
+              non-judicial stamp paper, with the margins a sub-registrar expects left clear. If you would
               rather draft it here,{" "}
               <a className="font-semibold text-brand-700 underline underline-offset-4" href="/templates">
                 sixty-three deeds and affidavits
@@ -232,7 +232,7 @@ export function StampPaperRates() {
         <Reveal delay={0.1}>
           <div className="mt-8 flex flex-col items-center gap-3">
             <ButtonLink href={LEAD_ANCHOR} size="lg" className="group">
-              Order stamp paper
+              Order non-judicial stamp paper
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
             </ButtonLink>
             <p className="text-center text-[12.5px] text-navy-400">

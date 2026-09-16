@@ -12,7 +12,7 @@ import { FAQS } from "./site";
  * searchable in the same commit.
  */
 
-export type DocKind = "District" | "Agreement" | "Stamp paper" | "Page" | "Question";
+export type DocKind = "District" | "Agreement" | "Non-judicial stamp paper" | "Page" | "Question";
 
 export interface SearchDoc {
   id: string;
@@ -37,7 +37,7 @@ const PAGES: SearchDoc[] = [
     href: "/",
     kind: "Page",
     description:
-      "Stamp paper and rental agreements delivered across all 38 districts of Tamil Nadu.",
+      "Non-judicial stamp paper and rental agreements delivered across all 38 districts of Tamil Nadu.",
     keywords: ["lp", "lp stamp paper", "home", "start", "order"],
   },
   {
@@ -50,11 +50,11 @@ const PAGES: SearchDoc[] = [
   },
   {
     id: "page-stamp-index",
-    title: "Stamp paper by district",
+    title: "Non-judicial stamp paper by district",
     href: "/stamp-paper",
     kind: "Page",
     description: "Non-judicial paper and e-Stamp certificates delivered across the state.",
-    keywords: ["districts", "delivery", "coverage", "stamp paper", "e-stamp", "estamp"],
+    keywords: ["districts", "delivery", "coverage", "stamp paper", "non-judicial stamp paper", "non judicial", "e-stamp", "estamp"],
   },
   {
     id: "page-pricing",
@@ -77,7 +77,7 @@ const PAGES: SearchDoc[] = [
     title: "Frequently asked questions",
     href: "/faq",
     kind: "Page",
-    description: "Stamp paper, delivery, legal validity, stamp duty, process, refunds.",
+    description: "Non-judicial stamp paper, delivery, legal validity, stamp duty, process, refunds.",
     keywords: ["faq", "questions", "help", "support", "doubts"],
   },
   {
@@ -179,7 +179,7 @@ function buildIndex(): SearchDoc[] {
 
     docs.push({
       id: `stamp-${d.slug}`,
-      title: `Stamp paper in ${d.name}`,
+      title: `Non-judicial stamp paper in ${d.name}`,
       href: `/stamp-paper/${d.slug}`,
       kind: "District",
       description: `${zone.eta} delivery · ₹${zone.charge} · ${d.region}`,
@@ -211,9 +211,9 @@ function buildIndex(): SearchDoc[] {
   for (const d of DENOMINATIONS) {
     docs.push({
       id: `denom-${d.value}`,
-      title: `${d.label} stamp paper`,
+      title: `${d.label} non-judicial stamp paper`,
       href: "/stamp-paper",
-      kind: "Stamp paper",
+      kind: "Non-judicial stamp paper",
       description:
         d.price === null ? d.uses.join(" · ") : `${d.price} rupees a sheet · ${d.uses.join(" · ")}`,
       keywords: [
@@ -279,7 +279,7 @@ function contentTokens(tokens: string[]): string[] {
 const KIND_WEIGHT: Record<DocKind, number> = {
   District: 1,
   Agreement: 1,
-  "Stamp paper": 0.95,
+  "Non-judicial stamp paper": 0.95,
   Page: 0.9,
   Question: 0.7,
 };
@@ -404,8 +404,8 @@ export function search(rawQuery: string, limit = 8): SearchResult[] {
 /** Shown in the empty state of the search dialog. */
 export const POPULAR_SEARCHES = [
   "Rental agreement in Chennai",
-  "Stamp paper in Coimbatore",
-  "₹100 stamp paper",
+  "Non-judicial stamp paper in Coimbatore",
+  "₹100 non-judicial stamp paper",
   "Hosur",
   "Stamp duty",
   "Pricing",

@@ -208,7 +208,7 @@ function CostRail() {
           {[
             { label: "This document", value: breakdown.documentFee, hint: "Drafting fee" },
             breakdown.stampPaperFee > 0
-              ? { label: "Stamp paper", value: breakdown.stampPaperFee, hint: describeSheets(draft.options.stampPaperSheets) }
+              ? { label: "Non-judicial stamp paper", value: breakdown.stampPaperFee, hint: describeSheets(draft.options.stampPaperSheets) }
               : null,
             breakdown.extraPageFee > 0
               ? { label: "Extra pages", value: breakdown.extraPageFee, hint: `${draft.options.documentPages} sheets · ₹50 past the first` }

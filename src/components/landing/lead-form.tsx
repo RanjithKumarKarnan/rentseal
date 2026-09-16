@@ -42,7 +42,7 @@ type NotaryChoice = "none" | "stamp-paper" | "white-sheet" | "advise";
 
 const NOTARY_CHOICES: Array<{ value: NotaryChoice; label: string; hint: string }> = [
   { value: "none", label: "Not needed", hint: "Just the paper" },
-  { value: "stamp-paper", label: "On the stamp paper", hint: "₹350, two green sheets included" },
+  { value: "stamp-paper", label: "On the non-judicial stamp paper", hint: "₹350, two green sheets included" },
   { value: "white-sheet", label: "On plain paper", hint: "₹100" },
   { value: "advise", label: "Not sure", hint: "Advise me on the call" },
 ];
@@ -53,7 +53,7 @@ const NOTARY_CHOICES: Array<{ value: NotaryChoice; label: string; hint: string }
 // differently. Burying it under "Agreement" was sending sworn work down a path
 // that never mentions attestation.
 const NEEDS: Array<{ value: Need; label: string; icon: React.ComponentType<{ className?: string }> }> = [
-  { value: "stamp-paper", label: "Stamp paper", icon: Stamp },
+  { value: "stamp-paper", label: "Non-judicial stamp paper", icon: Stamp },
   { value: "agreement", label: "Agreement", icon: FileText },
   { value: "affidavit", label: "Affidavit", icon: Scale },
   { value: "both", label: "Both", icon: PackageCheck },
@@ -195,7 +195,7 @@ export function LeadForm() {
 
             <Reveal delay={0.12}>
               <p className="mt-5 max-w-lg text-[17px] leading-[1.7] text-white/60">
-                Stamp paper, an agreement, or both. Leave your number and one of our team will
+                Non-judicial stamp paper, an agreement, or both. Leave your number and one of our team will
                 call back with a firm quote — the face value, our charge and the delivery all
                 stated up front, nothing hidden. Chennai orders placed before 2pm go out the same day.
               </p>
@@ -469,7 +469,7 @@ export function LeadForm() {
                         <Clock3 className="mt-0.5 size-4 shrink-0 text-navy-400" />
                         <p className="text-[12.5px] leading-relaxed text-navy-500">
                           {need === "both"
-                            ? "Takes about ten minutes. The stamp paper comes with it — we work out the duty from your answers and supply the paper the agreement is printed on. "
+                            ? "Takes about ten minutes. The non-judicial stamp paper comes with it — we work out the duty from your answers and supply the paper the agreement is printed on. "
                             : "Takes about ten minutes and saves as you go. "}
                           <button
                             type="button"
@@ -504,7 +504,7 @@ export function LeadForm() {
                             {DENOMINATIONS.map((d) => (
                               <option key={d.label} value={d.value || "custom"}>
                                 {d.value
-                                  ? `${d.label} stamp paper — delivered`
+                                  ? `${d.label} non-judicial stamp paper — delivered`
                                   : "Any value — e-Stamp, emailed"}
                               </option>
                             ))}

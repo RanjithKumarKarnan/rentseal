@@ -21,10 +21,10 @@ import type { AgreementType, PlanId } from "./types";
 export const SITE = {
   name: "LP Stamp Paper",
   legalName: "LP Enterprises",
-  tagline: "Licensed stamp paper and notarised agreements across Tamil Nadu",
+  tagline: "Licensed non-judicial stamp paper and notarised agreements across Tamil Nadu",
   description:
-    "Licensed non-judicial stamp paper and e-Stamps from ₹120, delivered anywhere in Tamil Nadu — same day in Chennai. Agreements, deeds and affidavits drafted too.",
-  url: "https://lpstamppaper.com",
+    "Non-judicial stamp paper and e-Stamps from ₹120, delivered across Tamil Nadu — same day in Chennai. Agreements, deeds and affidavits drafted too.",
+  url: "https://www.lpstamppaper.in",
   /** Landline. Dialled as 044 within India; the tel: link strips the spaces. */
   phone: "044 4006 8402",
   /** Needs the country code — wa.me will not route a bare ten-digit number. */
@@ -90,7 +90,7 @@ export const SITE = {
  */
 export const NAV_LINKS = [
   { label: "Agreements", href: "/templates" },
-  { label: "Stamp paper", href: "/stamp-paper" },
+  { label: "Non-judicial stamp paper", href: "/stamp-paper" },
   { label: "Online Works", href: "/certificates" },
   { label: "Pricing", href: "/pricing" },
   { label: "How it works", href: "/how-it-works" },
@@ -120,14 +120,14 @@ export const LEAD_ANCHOR = "/#get-started";
 
 export const FOOTER_LINKS = [
   {
-    heading: "Stamp paper",
+    heading: "Non-judicial stamp paper",
     links: [
-      { label: "₹100 stamp paper", href: "/#stamp-paper" },
-      { label: "₹500 stamp paper", href: "/#stamp-paper" },
-      { label: "₹1,000 stamp paper", href: "/#stamp-paper" },
-      { label: "₹5,000 stamp paper", href: "/#stamp-paper" },
+      { label: "₹100 non-judicial stamp paper", href: "/#stamp-paper" },
+      { label: "₹500 non-judicial stamp paper", href: "/#stamp-paper" },
+      { label: "₹1,000 non-judicial stamp paper", href: "/#stamp-paper" },
+      { label: "₹5,000 non-judicial stamp paper", href: "/#stamp-paper" },
       { label: "e-Stamp — any value", href: "/#stamp-paper" },
-      { label: "Stamp paper by district", href: "/stamp-paper" },
+      { label: "Non-judicial stamp paper by district", href: "/stamp-paper" },
       { label: "Bulk orders for firms", href: LEAD_ANCHOR },
     ],
   },
@@ -289,7 +289,7 @@ export const PLANS: Array<{
       { label: "Instant PDF download", included: true },
       { label: "Email delivery", included: true },
       { label: "Cloud storage for 12 months", included: true },
-      { label: "e-Stamp paper procured for you", included: false, hint: "You buy the stamp paper yourself" },
+      { label: "e-Stamp paper procured for you", included: false, hint: "You buy the non-judicial stamp paper yourself" },
       { label: "Aadhaar e-Sign for both parties", included: false },
       { label: "Notary attestation", included: false },
       { label: "WhatsApp delivery", included: false },
@@ -402,32 +402,32 @@ export const FEATURES = [
 
 export const FAQS = [
   {
-    category: "Stamp paper",
-    q: "Which stamp paper denominations do you supply?",
+    category: "Non-judicial stamp paper",
+    q: "Which non-judicial stamp paper denominations do you supply?",
     a: "Physical non-judicial paper in four denominations — ₹100, ₹500, ₹1,000 and ₹5,000 — which covers almost every ordinary transaction. ₹100 is the smallest sheet we carry, so an affidavit or a bond that would once have gone on ₹20 or ₹50 paper is executed on ₹100. Where the duty payable is a specific figure — a lease deed, a sale agreement, a mortgage — we issue an e-Stamp certificate for that exact amount instead, from ₹1 upward with no practical ceiling.",
   },
   {
-    category: "Stamp paper",
-    q: "What does a sheet of stamp paper actually cost?",
+    category: "Non-judicial stamp paper",
+    q: "What does a sheet of non-judicial stamp paper actually cost?",
     a: "The face value plus a procurement charge, and we print both so you can see the difference. ₹100 paper is ₹120, ₹500 is ₹550, ₹1,000 is ₹1,100 and ₹5,000 is ₹5,500 — that is for a blank, unprinted sheet. Delivery is charged separately and stated before you confirm: ₹100 next day in Chennai, ₹200 express anywhere in Tamil Nadu, ₹100 for two to three days, and same day in Chennai by Porter at Porter's own fare. Delivery is free above ₹2,000 of physical paper and free everywhere on ten sheets or more — an e-Stamp is emailed rather than delivered, so its value does not count towards that. Government stamp duty on an e-Stamp is a separate thing and passes through at cost with nothing added.",
   },
   {
-    category: "Stamp paper",
+    category: "Non-judicial stamp paper",
     q: "Which denomination do I need for a rental agreement?",
-    a: "In practice most 11-month residential agreements in Tamil Nadu are executed on ₹100 stamp paper. Strictly, duty under Article 35 is 1% of the total rent across the term plus the deposit, and for a 12-month-or-longer agreement that has to be paid in full through an e-Stamp. Tell us the rent, deposit and duration and we will tell you which applies to you before you order.",
+    a: "In practice most 11-month residential agreements in Tamil Nadu are executed on ₹100 non-judicial stamp paper. Strictly, duty under Article 35 is 1% of the total rent across the term plus the deposit, and for a 12-month-or-longer agreement that has to be paid in full through an e-Stamp. Tell us the rent, deposit and duration and we will tell you which applies to you before you order.",
   },
   {
-    category: "Stamp paper",
-    q: "Can you print my draft on the stamp paper?",
-    a: "Yes. Upload your draft as a PDF or a Word file and we print it onto the paper before it goes out, with the margins a sub-registrar expects left clear. Black-and-white and colour printing and photocopying are available at the counter, charged by the page. If you want it attested as well, a notary signature on stamp paper is ₹350 including two green sheets, or ₹100 on plain paper — that is the attestation alone, the paper is priced separately.",
+    category: "Non-judicial stamp paper",
+    q: "Can you print my draft on the non-judicial stamp paper?",
+    a: "Yes. Upload your draft as a PDF or a Word file and we print it onto the paper before it goes out, with the margins a sub-registrar expects left clear. Black-and-white and colour printing and photocopying are available at the counter, charged by the page. If you want it attested as well, a notary signature on non-judicial stamp paper is ₹350 including two green sheets, or ₹100 on plain paper — that is the attestation alone, the paper is priced separately.",
   },
   {
-    category: "Stamp paper",
-    q: "Is the stamp paper you supply genuine?",
+    category: "Non-judicial stamp paper",
+    q: "Is the non-judicial stamp paper you supply genuine?",
     a: "Yes. Everything is procured through licensed stamp vendors and the state's authorised e-Stamping channel. Each sheet or certificate carries a serial or certificate number you can verify yourself against the Registration Department's records — we print it on your invoice so you can check without asking us.",
   },
   {
-    category: "Stamp paper",
+    category: "Non-judicial stamp paper",
     q: "Can I buy in bulk for my office or firm?",
     a: "Yes. Ten sheets or more ships free anywhere in Tamil Nadu, we can hold a recurring monthly supply against a standing order, and we raise a single GST invoice to your GSTIN rather than one per delivery. It is built for law firms, builders, HR teams and brokers — ask us about account terms.",
   },

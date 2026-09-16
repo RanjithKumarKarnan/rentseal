@@ -4,7 +4,7 @@ import type { PageMeta } from "@/seo/meta";
 
 export const meta: PageMeta = {
   title: "Search",
-  description: `Search rental agreements, stamp paper and delivery across all ${DISTRICTS.length} districts of Tamil Nadu.`,
+  description: `Search rental agreements, non-judicial stamp paper and delivery across all ${DISTRICTS.length} districts of Tamil Nadu.`,
   alternates: { canonical: "/search" },
   // Internal search result pages are low value to index and can open an
   // unbounded crawl space. Left crawlable but not indexed, so the SearchAction

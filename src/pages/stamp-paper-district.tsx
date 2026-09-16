@@ -28,8 +28,8 @@ export function meta({ district: slug = "" }: Params): PageMeta {
   if (!district) return {};
 
   const zone = ZONE_META[district.zone];
-  const title = `Stamp Paper in ${district.name} — ${zone.shortEta}`;
-  const description = `Non-judicial stamp paper and e-Stamps delivered across ${district.name} district, ${zone.eta.toLowerCase()}. ₹100 paper for ₹120, ₹500 for ₹550, ₹1,000 for ₹1,100, ₹5,000 for ₹5,500, and any value on e-Stamp.`;
+  const title = `Non-Judicial Stamp Paper in ${district.name}`;
+  const description = `Non-judicial stamp paper delivered across ${district.name} district, ${zone.eta.toLowerCase()}. ₹100 sheet for ₹120, ₹500 for ₹550, and e-Stamps of any value.`;
 
   return {
     title,
@@ -58,7 +58,7 @@ export default function StampPaperDistrictPage() {
 
   const crumbs = [
     { label: "Home", href: "/" },
-    { label: "Stamp paper", href: "/stamp-paper" },
+    { label: "Non-judicial stamp paper", href: "/stamp-paper" },
     { label: district.name },
   ];
 
@@ -68,12 +68,12 @@ export default function StampPaperDistrictPage() {
         eyebrow={`${district.name} District · ${zone.label}`}
         icon={Stamp}
         crumbs={crumbs}
-        title={`Stamp paper in ${district.name}, delivered to your door`}
+        title={`Non-judicial stamp paper in ${district.name}, delivered to your door`}
         body={`Licensed non-judicial stamp paper and e-Stamp certificates anywhere in ${district.name} district — the face value plus a stated procurement charge, never a figure you find out at the door. ${zone.eta} delivery${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}, and no queue at the vendor's counter.`}
       >
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <ButtonLink href={LEAD_ANCHOR} size="lg" className="group">
-            Order stamp paper for {district.name}
+            Order non-judicial stamp paper for {district.name}
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </ButtonLink>
           <ButtonLink
@@ -137,7 +137,7 @@ export default function StampPaperDistrictPage() {
           <Reveal delay={0.1}>
             <div className="mt-12 rounded-2xl border border-line bg-white p-7 sm:p-9">
               <h2 className="font-display text-[20px] font-bold text-navy-950">
-                What {district.name} buys stamp paper for
+                What {district.name} buys non-judicial stamp paper for
               </h2>
               <p className="mt-4 text-[15px] leading-[1.75] text-navy-600">{district.economy}</p>
               <p className="mt-3 text-[15px] leading-[1.75] text-navy-600">{district.demand}</p>
@@ -292,7 +292,7 @@ export default function StampPaperDistrictPage() {
         <div className="container-page">
           <SectionHeading
             eyebrow={`${district.name} — common questions`}
-            title={`Buying stamp paper in ${district.name}, answered`}
+            title={`Buying non-judicial stamp paper in ${district.name}, answered`}
             body={`Delivery, denominations and verification, with the numbers that apply to ${district.name} rather than a state average.`}
           />
           <Reveal delay={0.1} className="mx-auto mt-14 max-w-3xl">
@@ -315,7 +315,7 @@ export default function StampPaperDistrictPage() {
       {/* Nearby districts */}
       <section className="section border-t border-line bg-white">
         <div className="container-page">
-          <SectionHeading title={`Stamp paper elsewhere in ${district.region}`} align="left" />
+          <SectionHeading title={`Non-judicial stamp paper elsewhere in ${district.region}`} align="left" />
           <div className="mt-8 flex flex-wrap gap-2.5">
             {nearby.map((other) => (
               <Link
@@ -323,7 +323,7 @@ export default function StampPaperDistrictPage() {
                 href={`/stamp-paper/${other.slug}`}
                 className="rounded-full border border-line bg-canvas px-4 py-2.5 text-[14px] font-medium text-navy-600 transition-all hover:border-brand-300 hover:bg-white hover:text-brand-700"
               >
-                Stamp paper in {other.name}
+                Non-judicial stamp paper in {other.name}
               </Link>
             ))}
           </div>
@@ -344,7 +344,7 @@ export default function StampPaperDistrictPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: `${SITE.name} Stamp Paper — ${district.name}`,
+            name: `${SITE.name} — Non-judicial stamp paper, ${district.name}`,
             description: `Non-judicial stamp paper and e-Stamp certificate supply and delivery across ${district.name} district, Tamil Nadu.`,
             url: `${SITE.url}/stamp-paper/${district.slug}`,
             telephone: SITE.phone,

@@ -12,7 +12,7 @@ import { inr } from "@/lib/utils";
 export const meta: PageMeta = {
   title: "Certificates & Registrations — Tamil Nadu",
   description:
-    "Community, income, nativity and OBC certificates, ration card, voter ID, PAN, passport and MSME registration — what each costs and which documents to bring.",
+    "Community, income, nativity and OBC certificates, ration card, voter ID, PAN, passport and MSME registration — what each costs and what to bring.",
   alternates: { canonical: "/certificates" },
 };
 

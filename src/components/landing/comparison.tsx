@@ -6,7 +6,7 @@ const ROWS = [
   { label: "Time to a signed document", old: "3–5 days", now: "Under 10 minutes" },
   { label: "Trips to the Sub-Registrar", old: "1–2 visits, half a day each", now: "None for 11-month agreements" },
   { label: "Drafting", old: "Typist copy-pastes a generic template", old2: true, now: "Clauses generated from your actual answers" },
-  { label: "Stamp paper", old: "Hunt for a licensed vendor", now: "e-Stamp procured for you at government rate" },
+  { label: "Non-judicial stamp paper", old: "Hunt for a licensed vendor", now: "e-Stamp procured for you at government rate" },
   { label: "Signatures", old: "Both parties in the same room", now: "Aadhaar OTP from anywhere" },
   { label: "Notarisation", old: "Find a notary, queue, pay cash", now: "Arranged for you" },
   { label: "Your copy in three years", old: "A folder, if you kept it", now: "In your dashboard, always" },

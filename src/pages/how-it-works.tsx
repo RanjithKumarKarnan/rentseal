@@ -10,9 +10,9 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { LEAD_ANCHOR, SITE } from "@/lib/site";
 
 export const meta: PageMeta = {
-  title: "How It Works — From Blank Form to Signed Agreement",
+  title: "How It Works — Form to Signed Agreement",
   description:
-    "Every step explained: filling the form, generating clauses, sending it to us, the confirming call, payment, e-stamping, Aadhaar e-signing and delivery.",
+    "Every step explained: the form, the clauses, the confirming call, payment, e-stamping, Aadhaar e-signing and delivery on non-judicial stamp paper.",
   alternates: { canonical: "/how-it-works" },
 };
 

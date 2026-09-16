@@ -25,13 +25,13 @@ const STEPS = [
     icon: ShieldCheck,
     step: "Step 2",
     title: "We verify and authorise",
-    body: "Your request is checked for compliance and the government authorised stamp paper is prepared against it.",
+    body: "Your request is checked for compliance and the government authorised non-judicial stamp paper is prepared against it.",
   },
   {
     icon: Truck,
     step: "Step 3",
     title: "Delivered to your door",
-    body: "The original stamp paper reaches the address you gave us — authorised, and ready to use.",
+    body: "The original non-judicial stamp paper reaches the address you gave us — authorised, and ready to use.",
   },
 ];
 
@@ -106,7 +106,7 @@ export function StampPaperHow() {
             eyebrow="Why order here"
             icon={ShieldCheck}
             title="Genuine paper, and you can prove it"
-            body="The point of stamp paper is that it stands up later. Everything below is something you can check rather than take on trust."
+            body="The point of non-judicial stamp paper is that it stands up later. Everything below is something you can check rather than take on trust."
           />
 
           <Stagger className="mt-12 grid gap-4 sm:grid-cols-2" amount={0.1}>

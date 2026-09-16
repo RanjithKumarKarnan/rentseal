@@ -335,7 +335,7 @@ function SendBlock({
           is the empty combination — one certificate for the exact duty, emailed.
         */}
         <div className="rounded-2xl border border-line bg-white p-5">
-          <h3 className="text-[14px] font-bold text-navy-950">Stamp paper</h3>
+          <h3 className="text-[14px] font-bold text-navy-950">Non-judicial stamp paper</h3>
           <p className="mt-0.5 text-[12.5px] leading-relaxed text-navy-500">
             The sheet your deed is printed on, at the shelf price. Add more than one to make up a
             value — two ₹100 sheets, or a ₹500 and a ₹100 together.
@@ -355,7 +355,7 @@ function SendBlock({
               )}
             >
               <span className={cn("text-[14px] font-bold", !isEStamp ? "text-brand-800" : "text-navy-900")}>
-                Physical stamp paper
+                Physical non-judicial stamp paper
               </span>
               <span className="mt-0.5 block text-[12.5px] leading-snug text-navy-500">
                 Delivered to your door. ₹100, ₹500, ₹1,000, ₹5,000 — combine as needed.
@@ -395,7 +395,7 @@ function SendBlock({
                     className="flex items-center justify-between gap-3 rounded-xl border border-line bg-canvas px-4 py-3"
                   >
                     <span className="text-[13.5px] font-semibold text-navy-900">
-                      {label} stamp paper
+                      {label} non-judicial stamp paper
                     </span>
                     <span className="flex items-center gap-3">
                       <span className="tnum text-[13.5px] font-semibold text-navy-950">
@@ -474,7 +474,7 @@ function SendBlock({
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h3 className="flex items-center gap-2 text-[14px] font-bold text-navy-950">
                 <MapPin className="size-4 text-navy-500" />
-                Where should we deliver the stamp paper?
+                Where should we deliver the non-judicial stamp paper?
               </h3>
               {propertyAddress(draft) &&
               draft.options.shippingAddress.trim() !== propertyAddress(draft) ? (
@@ -526,7 +526,7 @@ function SendBlock({
                   Printed &amp; stamped copies
                 </p>
                 <p className="mt-0.5 text-[12.5px] leading-relaxed text-navy-500">
-                  Each one is executed again on its own stamp paper, so each carries the
+                  Each one is executed again on its own non-judicial stamp paper, so each carries the
                   sheet a second time plus {inr(COPY_PAGE_FEE)} a page for printing.
                   {!isEStamp ? (
                     <>
@@ -627,7 +627,7 @@ function SendBlock({
         ) : (
           <div className="rounded-2xl border border-line bg-white p-5">
             <Field
-              label="Date to be printed on the stamp paper"
+              label="Date to be printed on the non-judicial stamp paper"
               hint="Optional"
               help={
                 breakdown.backdatingMonths > 0
@@ -666,7 +666,7 @@ function SendBlock({
               },
               breakdown.stampPaperFee > 0
                 ? {
-                    label: sheets.length > 1 ? `Stamp paper · ${sheets.length} sheets` : "Stamp paper",
+                    label: sheets.length > 1 ? `Non-judicial stamp paper · ${sheets.length} sheets` : "Non-judicial stamp paper",
                     value: breakdown.stampPaperFee,
                     hint: `${sheets.map((v) => DENOMINATIONS.find((d) => d.value === v)?.label ?? `₹${v}`).join(" + ")} · face value plus our charge`,
                   }

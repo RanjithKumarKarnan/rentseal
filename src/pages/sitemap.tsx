@@ -46,14 +46,14 @@ const JOURNEYS = [
     icon: Stamp,
     tone: "emerald" as const,
     kicker: "Path 2",
-    title: "I just need stamp paper",
+    title: "I just need non-judicial stamp paper",
     lead: "Licensed non-judicial paper and e-Stamp certificates brought to your address — ₹100 paper for ₹120, up to ₹5,000, with printing and notary attestation available. Nothing charged until we have spoken.",
     steps: [
       { label: "See denominations and delivery charges", href: "/stamp-paper", note: "₹100, ₹500, ₹1,000 and ₹5,000 sheets, or an e-Stamp for any value." },
       { label: "Check the rate card and your district", href: "/stamp-paper", note: "Same day in Chennai by Porter, 2–3 days statewide." },
       { label: "Tell us what you need", href: LEAD_ANCHOR, note: "We call back with a firm quote before anything is charged." },
     ],
-    cta: { label: "Order stamp paper", href: LEAD_ANCHOR },
+    cta: { label: "Order non-judicial stamp paper", href: LEAD_ANCHOR },
   },
 ];
 
@@ -79,10 +79,10 @@ const SECTIONS = [
     })),
   },
   {
-    heading: "Stamp paper",
+    heading: "Non-judicial stamp paper",
     icon: Stamp,
     links: [
-      { label: "Stamp paper and e-Stamp delivery", href: "/stamp-paper" },
+      { label: "Non-judicial stamp paper and e-Stamp delivery", href: "/stamp-paper" },
       { label: "Denominations and prices", href: "/#stamp-paper" },
       { label: "Delivery coverage and timelines", href: "/#delivery" },
       { label: "Bulk orders for firms", href: LEAD_ANCHOR },
@@ -132,7 +132,7 @@ export default function SiteMapPage() {
         icon={MapIcon}
         crumbs={CRUMBS}
         title="Everything on LP Stamp Paper, and the order to use it in"
-        body="Two things bring people here: an agreement that needs drawing up, or stamp paper that needs delivering. Either way you tell us what you need, we call you to confirm it, payment is taken on that call, and then we deliver — nothing is charged on the website itself."
+        body="Two things bring people here: an agreement that needs drawing up, or non-judicial stamp paper that needs delivering. Either way you tell us what you need, we call you to confirm it, payment is taken on that call, and then we deliver — nothing is charged on the website itself."
       />
 
       {/* ── The two journeys ───────────────────────────────── */}
@@ -254,13 +254,13 @@ export default function SiteMapPage() {
           <SectionHeading
             eyebrow="All 38 districts"
             title="Your district, on two tracks"
-            body="Each district has a rental agreement page and a stamp paper page — stamp duty, the Sub-Registrar offices with jurisdiction, and how long delivery takes there."
+            body="Each district has a rental agreement page and a non-judicial stamp paper page — stamp duty, the Sub-Registrar offices with jurisdiction, and how long delivery takes there."
           />
 
           <div className="mt-10 space-y-8">
             {[
               { label: "Rental agreement in…", base: "/rental-agreement" },
-              { label: "Stamp paper in…", base: "/stamp-paper" },
+              { label: "Non-judicial stamp paper in…", base: "/stamp-paper" },
             ].map((track) => (
               <Reveal key={track.base}>
                 <div className="rounded-2xl border border-line bg-white p-6 shadow-soft">

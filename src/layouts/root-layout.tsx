@@ -11,16 +11,22 @@ const organizationSchema = {
   name: SITE.name,
   legalName: SITE.legalName,
   url: SITE.url,
+  logo: `${SITE.url}/logo.png`,
+  image: `${SITE.url}/logo.png`,
   description: SITE.description,
   telephone: SITE.phone,
   email: SITE.email,
   priceRange: "₹300 – ₹5,500",
+  // SITE.address, in the parts schema.org wants. This read "Prestige Polygon,
+  // 471 Anna Salai, Teynampet 600018" — an address the business is not at —
+  // while every page showed the Mogappair one, and Google trusts neither when
+  // the two disagree.
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Prestige Polygon, 471 Anna Salai, Teynampet",
+    streetAddress: "4/434, J J Nagar, Mogappair West",
     addressLocality: "Chennai",
     addressRegion: "Tamil Nadu",
-    postalCode: "600018",
+    postalCode: "600037",
     addressCountry: "IN",
   },
   areaServed: DISTRICTS.map((d) => ({

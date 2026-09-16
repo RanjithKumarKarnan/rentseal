@@ -194,7 +194,7 @@ export default function DistrictPage() {
                   href={`/stamp-paper/${district.slug}`}
                   className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand-700 underline underline-offset-4"
                 >
-                  Order stamp paper for {district.name} too
+                  Order non-judicial stamp paper for {district.name} too
                   <ArrowRight className="size-3.5" />
                 </Link>
               </div>

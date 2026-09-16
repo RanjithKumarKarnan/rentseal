@@ -239,7 +239,7 @@ export function calculateStampDuty({
   }
   if (extraPrintedCopies > 0) {
     notes.push(
-      `${extraPrintedCopies} extra printed cop${extraPrintedCopies === 1 ? "y" : "ies"} — each is executed on its own stamp paper, so each carries the sheet again plus ₹${COPY_PAGE_FEE} a page for printing.`,
+      `${extraPrintedCopies} extra printed cop${extraPrintedCopies === 1 ? "y" : "ies"} — each is executed on its own non-judicial stamp paper, so each carries the sheet again plus ₹${COPY_PAGE_FEE} a page for printing.`,
     );
   }
   if (softCopy) {

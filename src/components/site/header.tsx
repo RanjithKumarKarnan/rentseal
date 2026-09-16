@@ -83,7 +83,7 @@ export function Header() {
               <span className="pulse-ring" />
               <span className="size-1.5 rounded-full bg-emerald-400" />
             </span>
-            Serving all 38 districts of Tamil Nadu — e-stamped agreements delivered the same day.
+            Serving all 38 districts of Tamil Nadu — non-judicial stamp paper delivered, same day in Chennai.
           </p>
           <div className="flex items-center gap-5 text-white/60">
             <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="flex items-center gap-1.5 transition-colors hover:text-white">
@@ -112,7 +112,11 @@ export function Header() {
         <nav className="container-page flex h-[68px] items-center justify-between gap-6" aria-label="Main">
           <Logo className="shrink-0" />
 
-          <ul className="hidden shrink-0 items-center gap-0.5 lg:flex">
+          {/* The full row needs the 1200px an xl screen gives it — six links, the
+              search field and the call to action. From 1024 to 1279 it ran
+              past the edge and the page scrolled sideways, so those widths get
+              the menu button the phone gets. */}
+          <ul className="hidden shrink-0 items-center gap-0.5 xl:flex">
             {NAV_LINKS.map((link) => {
               if (!("items" in link)) {
                 const active = pathname === link.href;
@@ -186,25 +190,19 @@ export function Header() {
           </ul>
 
           <div className="flex shrink-0 items-center gap-2.5">
-            {/* Desktop: a real-looking field that opens the dialog. */}
-            <button
-              type="button"
-              onClick={() => setSearchOpen(true)}
-              aria-label="Search the site"
-              className="hidden items-center gap-2 rounded-lg border border-line bg-canvas/80 py-2 pr-2 pl-3 text-[14px] text-navy-400 transition-colors hover:border-brand-300 hover:bg-white hover:text-navy-600 xl:flex"
-            >
-              <Search className="size-4" />
-              <span className="pr-6">Search…</span>
-              <kbd className="rounded border border-line bg-white px-1.5 py-0.5 font-sans text-[11px] font-semibold text-navy-400">
-                ⌘K
-              </kbd>
-            </button>
-            {/* Everything below xl gets the icon only. */}
+            {/*
+              The icon at every width. A 170px "Search… ⌘K" field sat here on
+              desktop, but the header's content box is 1200px at any screen
+              size, and with the nav naming "Non-judicial stamp paper" in full
+              the row came to 1269px — the call to action ran off the grid.
+              ⌘K and / still open search from anywhere; the tooltip says so.
+            */}
             <Button
               variant="secondary"
               size="sm"
-              className="!px-2.5 xl:hidden"
+              className="!px-2.5"
               aria-label="Search the site"
+              title="Search (⌘K)"
               onClick={() => setSearchOpen(true)}
             >
               <Search className="size-[18px]" />
@@ -216,7 +214,7 @@ export function Header() {
             <Button
               variant="secondary"
               size="sm"
-              className="!px-2.5 lg:hidden"
+              className="!px-2.5 xl:hidden"
               aria-label="Open menu"
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen(true)}
@@ -233,7 +231,7 @@ export function Header() {
       <AnimatePresence>
         {mobileOpen ? (
           <motion.div
-            className="fixed inset-0 z-50 lg:hidden"
+            className="fixed inset-0 z-50 xl:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -273,7 +271,7 @@ export function Header() {
                   className="mb-2 flex w-full items-center gap-2.5 rounded-xl border border-line bg-canvas px-4 py-3 text-[15px] font-medium text-navy-500"
                 >
                   <Search className="size-[18px]" />
-                  Search districts, agreements, stamp paper…
+                  Search non-judicial stamp paper, agreements…
                 </button>
                 {NAV_LINKS.map((link) => (
                   <div key={link.label} className="mb-7">
@@ -317,7 +315,7 @@ export function Header() {
                   <ArrowRight className="size-4" />
                 </ButtonLink>
                 <ButtonLink href={LEAD_ANCHOR} variant="secondary" size="lg" fullWidth>
-                  Order stamp paper
+                  Order non-judicial stamp paper
                 </ButtonLink>
                 <ButtonLink
                   href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, "")}`}

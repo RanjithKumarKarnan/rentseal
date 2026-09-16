@@ -53,7 +53,7 @@ export interface RouteHead {
   notFound?: boolean;
 }
 
-const SOCIAL_TITLE = `${SITE.name} — Rental agreements for Tamil Nadu in 10 minutes`;
+const SOCIAL_TITLE = `${SITE.name} — Non-judicial stamp paper and rental agreements for Tamil Nadu`;
 
 /** For pages that set no title of their own. */
 const DEFAULT_TITLE = `${SITE.name} — Rental Agreement Online in Tamil Nadu | e-Stamp & e-Sign`;
@@ -71,6 +71,7 @@ export const SITE_META: PageMeta = {
     "commercial rental agreement Chennai",
     "11 month rental agreement",
     "non judicial stamp paper Chennai",
+    "non-judicial stamp paper Tamil Nadu",
     "e-stamp paper Tamil Nadu",
     "affidavit format Tamil Nadu",
   ],
@@ -78,7 +79,7 @@ export const SITE_META: PageMeta = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: SITE.url,
+    url: "/",
     siteName: SITE.name,
     title: SOCIAL_TITLE,
     description: SITE.description,
@@ -105,9 +106,14 @@ export type HeadTag =
   | { tag: "title"; text: string }
   | { tag: "meta" | "link"; attrs: Record<string, string> };
 
-/** "/about" → "https://lpstamppaper.com/about"; the home page has no trailing slash. */
-const absolute = (path: string) =>
-  /^https?:/.test(path) ? path : `${SITE.url}${path === "/" ? "" : path}`;
+/**
+ * "/about" → "https://www.lpstamppaper.in/about", "/" → "https://www.lpstamppaper.in/".
+ *
+ * The home page keeps its slash because that is the address a browser shows and
+ * a crawler requests for it. Written without one, SEO checkers compare the two
+ * strings and report the home page as canonicalised to another URL.
+ */
+const absolute = (path: string) => (/^https?:/.test(path) ? path : `${SITE.url}${path}`);
 
 /** "index, follow, max-video-preview:-1, …", in the order crawlers have always been sent it. */
 function robotsContent(robots: Robots) {

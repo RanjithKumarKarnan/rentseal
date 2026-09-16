@@ -20,7 +20,7 @@ import { SITE } from "@/lib/site";
 export function WhatsAppFab() {
   const number = SITE.whatsapp.replace(/\D/g, "");
   const message = encodeURIComponent(
-    "Hi, I need stamp paper / an agreement. Could you tell me the price and how soon I can get it?",
+    "Hi, I need non-judicial stamp paper / an agreement. Could you tell me the price and how soon I can get it?",
   );
 
   return (

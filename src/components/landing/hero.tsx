@@ -226,7 +226,7 @@ export function Hero() {
                 <span className="rounded-full bg-navy-950 px-2.5 py-1 text-[11px] font-bold text-white">
                   NEW
                 </span>
-                Same-day stamp paper delivery across Chennai
+                Same-day non-judicial stamp paper delivery in Chennai
                 <ArrowRight className="size-3.5 text-navy-400" />
               </span>
             </motion.div>
@@ -240,13 +240,15 @@ export function Hero() {
               {/*
                 The office's own line, and it earns the h1 because it answers
                 the question the page is actually asked: is this a download, or
-                does something arrive? Physical, and at your door.
+                does something arrive? It arrives, at your door. The product is
+                named in full — non-judicial stamp paper — because that is what
+                the office sells and what a customer asks the vendor for.
 
                 "delivered" was a gradient-filled word with an animated
                 hand-drawn underline beneath it. Both are decoration every
                 generated hero reaches for; the emphasis comes from the typeface.
               */}
-              Physical stamp paper and agreements,
+              Non-judicial stamp paper and agreements,
               <br className="hidden sm:block" />{" "}
               <em className="italic font-normal text-brand-800">
                 delivered to your doorstep
@@ -279,9 +281,9 @@ export function Hero() {
                 anchor to a section of this same page, which is not the same
                 order of decision as the two above it.
               */}
-              <div className="flex flex-col gap-3 sm:flex-row">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <ButtonLink href={LEAD_ANCHOR} size="xl" className="group">
-                  Order stamp paper
+                  Order non-judicial stamp paper
                   <ArrowRight className="size-[18px] transition-transform duration-300 group-hover:translate-x-1" />
                 </ButtonLink>
                 <ButtonLink href={BUILDER_START} variant="primary" size="xl" className="group">

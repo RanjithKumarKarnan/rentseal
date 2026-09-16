@@ -10,12 +10,12 @@ import { SITE } from "@/lib/site";
 
 const CRUMBS = [{ label: "Home", href: "/" }, { label: "Search" }];
 
-const KIND_ORDER: DocKind[] = ["District", "Agreement", "Stamp paper", "Page", "Question"];
+const KIND_ORDER: DocKind[] = ["District", "Agreement", "Non-judicial stamp paper", "Page", "Question"];
 
 const KIND_STYLE: Record<DocKind, string> = {
   District: "bg-brand-50 text-brand-700 border-brand-200/80",
   Agreement: "bg-violet-50 text-violet-700 border-violet-200/80",
-  "Stamp paper": "bg-emerald-50 text-emerald-700 border-emerald-200/80",
+  "Non-judicial stamp paper": "bg-emerald-50 text-emerald-700 border-emerald-200/80",
   Page: "bg-navy-100 text-navy-600 border-line",
   Question: "bg-amber-50 text-amber-700 border-amber-200/80",
 };
@@ -86,7 +86,7 @@ export function SearchView({ query }: { query: string }) {
         title={query ? `Results for “${query}”` : "Search LP Stamp Paper"}
         body={
           query
-            ? `${results.length} ${results.length === 1 ? "match" : "matches"} across districts, agreement types, stamp paper and help articles.`
+            ? `${results.length} ${results.length === 1 ? "match" : "matches"} across districts, agreement types, non-judicial stamp paper and help articles.`
             : `Find a district, an agreement type, a denomination or an answer — across all ${DISTRICTS.length} districts of Tamil Nadu.`
         }
       >
@@ -98,7 +98,7 @@ export function SearchView({ query }: { query: string }) {
               type="search"
               name="q"
               defaultValue={query}
-              placeholder="Chennai, lease deed, ₹100 stamp paper…"
+              placeholder="Chennai, lease deed, ₹100 non-judicial stamp paper…"
               aria-label="Search LP Stamp Paper"
               className="h-11 min-w-0 flex-1 bg-transparent text-[15px] text-navy-950 outline-none placeholder:text-navy-400"
             />

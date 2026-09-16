@@ -166,7 +166,7 @@ export function Footer() {
 
         <div className="container-page border-t border-white/10 py-8">
           <h3 className="text-[12px] font-bold tracking-[0.14em] text-white/40 uppercase">
-            Stamp paper by district
+            Non-judicial stamp paper by district
           </h3>
           <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2.5">
             {DISTRICTS.map((district) => (

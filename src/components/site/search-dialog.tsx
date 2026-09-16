@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const KIND_STYLE: Record<DocKind, string> = {
   District: "bg-brand-50 text-brand-700 border-brand-200/80",
   Agreement: "bg-violet-50 text-violet-700 border-violet-200/80",
-  "Stamp paper": "bg-emerald-50 text-emerald-700 border-emerald-200/80",
+  "Non-judicial stamp paper": "bg-emerald-50 text-emerald-700 border-emerald-200/80",
   Page: "bg-navy-100 text-navy-600 border-line",
   Question: "bg-amber-50 text-amber-700 border-amber-200/80",
 };
@@ -133,7 +133,7 @@ export function SearchDialog({
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 type="search"
-                placeholder="Search districts, agreements, stamp paper…"
+                placeholder="Search non-judicial stamp paper, agreements…"
                 aria-label="Search"
                 autoComplete="off"
                 className="h-14 flex-1 bg-transparent text-[15.5px] text-navy-950 outline-none placeholder:text-navy-400 [&::-webkit-search-cancel-button]:hidden"

@@ -17,7 +17,7 @@ export function ogCards(): Array<{ path: string; image: () => Response }> {
       image: () =>
         ogImage({
           eyebrow: "All 38 districts of Tamil Nadu",
-          title: "Stamp paper and rental agreements, delivered",
+          title: "Non-judicial stamp paper and agreements, delivered",
           facts: ["e-Stamped at government rate", "Aadhaar e-Sign", "Same day in Chennai"],
         }),
     },
@@ -35,7 +35,7 @@ export function ogCards(): Array<{ path: string; image: () => Response }> {
       image: () =>
         ogImage({
           eyebrow: "District-wise delivery",
-          title: "Stamp paper delivered across Tamil Nadu",
+          title: "Non-judicial stamp paper across Tamil Nadu",
           facts: [`All ${DISTRICTS.length} districts`, "₹100 – ₹5,000 + e-Stamp", "₹100 paper for ₹120"],
         }),
     },
@@ -57,7 +57,7 @@ export function ogCards(): Array<{ path: string; image: () => Response }> {
       image: () =>
         ogImage({
           eyebrow: `${district.name} district`,
-          title: `Stamp paper in ${district.name}`,
+          title: `Non-judicial stamp paper in ${district.name}`,
           facts: [ZONE_META[district.zone].eta, "₹100 paper for ₹120", `₹100 – ₹5,000 + e-Stamp`],
         }),
     })),

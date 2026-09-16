@@ -49,7 +49,7 @@ export function Features({ limit }: { limit?: number } = {}) {
           eyebrow="Everything included"
           icon={Layers}
           title="Everything you would otherwise chase separately"
-          body="A vendor for the stamp paper, a typist for the draft, a lawyer for the review, a courier for the copy. All of it from one place, on one invoice."
+          body="A vendor for the non-judicial stamp paper, a typist for the draft, a lawyer for the review, a courier for the copy. All of it from one place, on one invoice."
         />
 
         <Stagger className="mt-11 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" amount={0.05}>

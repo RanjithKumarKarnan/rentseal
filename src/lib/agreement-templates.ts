@@ -186,7 +186,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -214,7 +214,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -245,7 +245,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -276,7 +276,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -308,7 +308,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total licence fee over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total licence fee over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -339,7 +339,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -370,7 +370,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -400,7 +400,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -429,7 +429,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -458,7 +458,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -493,7 +493,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -523,7 +523,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -554,7 +554,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total licence fee over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total licence fee over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -585,7 +585,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -616,7 +616,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -646,7 +646,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total licence fee over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total licence fee over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -677,7 +677,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total licence fee over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total licence fee over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -708,7 +708,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -737,7 +737,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -768,7 +768,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -798,7 +798,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -828,7 +828,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -857,7 +857,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",
@@ -886,7 +886,7 @@ const ENGLISH_SPECS: Record<EnglishTemplateId, TemplateSpec> = {
     },
     notes: [
       "Replace every ____ blank. Anything left blank is a gap in the agreement, not a formality.",
-      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the stamp paper for at least that value before printing.",
+      "Stamp duty in Tamil Nadu is 1% of the total rent over the whole term plus any deposit. Buy the non-judicial stamp paper for at least that value before printing.",
       "A term of twelve months or more must be registered before the Sub-Registrar. Eleven months need not be.",
       "Both parties sign every page. Two witnesses sign at the end, with their names and addresses.",
       "This is a drafting aid, not legal advice. Have it checked if the transaction is unusual.",

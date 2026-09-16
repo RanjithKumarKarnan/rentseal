@@ -61,7 +61,7 @@ export const DISTRICTS: District[] = [
     economy:
       "The state's cement and limestone belt, with quarries and plants clustered around Ariyalur and Jayankondam town.",
     demand:
-      "Most agreements here are staff quarters taken by cement and quarry companies, and shop leases along the Ariyalur–Jayankondam road. Stamp paper demand runs to ₹100 rental and affidavit paper.",
+      "Most agreements here are staff quarters taken by cement and quarry companies, and shop leases along the Ariyalur–Jayankondam road. Non-judicial stamp paper demand runs to ₹100 rental and affidavit paper.",
   },
   {
     name: "Chengalpattu",
@@ -901,8 +901,8 @@ export function stampPaperFaqs(d: District): Faq[] {
 
   return [
     {
-      q: `How fast is stamp paper delivered in ${d.name}?`,
-      a: `${d.name} is in our ${zone.label.toLowerCase()} zone, so stamp paper reaches you ${zone.eta.toLowerCase()}${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}. Delivery is ₹${zone.charge}, and free once the physical paper in your order crosses ₹2,000 or ten sheets. An e-Stamp certificate, where your instrument allows one, is emailed within minutes — nothing is delivered, so its value does not count towards that free-delivery threshold.`,
+      q: `How fast is non-judicial stamp paper delivered in ${d.name}?`,
+      a: `${d.name} is in our ${zone.label.toLowerCase()} zone, so non-judicial stamp paper reaches you ${zone.eta.toLowerCase()}${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}. Delivery is ₹${zone.charge}, and free once the physical paper in your order crosses ₹2,000 or ten sheets. An e-Stamp certificate, where your instrument allows one, is emailed within minutes — nothing is delivered, so its value does not count towards that free-delivery threshold.`,
     },
     {
       q: `Do you charge more than the printed value in ${d.name}?`,
@@ -913,7 +913,7 @@ export function stampPaperFaqs(d: District): Faq[] {
       a: `Most 11-month rental agreements in Tamil Nadu are executed on ₹100 paper, and so are affidavits, declarations and indemnity bonds — ₹100 is the smallest sheet we carry. Partnership and commercial deeds go on ₹500, and we stock ₹1,000 and ₹5,000 above that. Where the duty payable is a specific figure — a lease deed, sale agreement or mortgage — only an e-Stamp certificate for that exact amount will do. Tell us what you are executing and we will tell you which applies before you order.`,
     },
     {
-      q: `Is the stamp paper you deliver in ${d.name} genuine?`,
+      q: `Is the non-judicial stamp paper you deliver in ${d.name} genuine?`,
       a: `Yes. Everything is procured through licensed stamp vendors and the state's authorised e-Stamping channel. Each sheet or certificate carries a serial number you can verify yourself against the Registration Department's records, and we print that number on your invoice so you can check without having to ask us.`,
     },
     {
@@ -921,7 +921,7 @@ export function stampPaperFaqs(d: District): Faq[] {
       a: `Every taluk in the district, including ${d.towns.slice(0, 3).join(", ")} and ${d.hq}. If your town is not one we name on this page it is still covered — the ${zone.eta.toLowerCase()} promise applies across ${d.name}, not just to the larger towns.`,
     },
     {
-      q: `Can I order stamp paper in bulk for my firm in ${d.name}?`,
+      q: `Can I order non-judicial stamp paper in bulk for my firm in ${d.name}?`,
       a: `Yes. Ten sheets or more ships free anywhere in ${d.name}, we can hold a recurring monthly supply against a standing order, and we raise a single GST invoice to your GSTIN rather than one per delivery. This is set up for law firms, builders, HR teams and brokers — ask us about account terms.`,
     },
   ];

@@ -15,7 +15,7 @@ export const OG_SIZE = { width: 1200, height: 630 };
 /** Every page that has no card of its own. */
 export const OG_DEFAULT: OgImage = {
   path: "/og/default.png",
-  alt: "LP Stamp Paper — stamp paper and rental agreements across Tamil Nadu",
+  alt: "LP Stamp Paper — non-judicial stamp paper and rental agreements across Tamil Nadu",
 };
 
 export const OG_RENTAL: OgImage = {
@@ -25,7 +25,7 @@ export const OG_RENTAL: OgImage = {
 
 export const OG_STAMP: OgImage = {
   path: "/og/stamp-paper.png",
-  alt: "Stamp paper delivered to all 38 districts of Tamil Nadu",
+  alt: "Non-judicial stamp paper delivered to all 38 districts of Tamil Nadu",
 };
 
 export const ogRentalDistrict = (slug: string): OgImage => ({ path: `/og/rental-agreement/${slug}.png` });
