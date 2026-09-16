@@ -1,8 +1,22 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { ImageResponse } from "@vercel/og";
 import { OG_SIZE } from "@/seo/og";
 
 const NAVY = "#0f172a";
 const BRAND = "#2563eb";
+
+/**
+ * The site's logo, for the brand mark. Cards are drawn by the build in Node
+ * (scripts/prerender.mjs, run from the project root), never in the browser, so
+ * the file is read straight from public/ and inlined — the renderer cannot
+ * fetch a URL that is not deployed yet.
+ */
+let logo: string | undefined;
+function logoDataUrl() {
+  logo ??= `data:image/png;base64,${readFileSync(path.resolve("public/logo.png")).toString("base64")}`;
+  return logo;
+}
 
 /**
  * One card layout for every social preview on the site. Pages pass their own
@@ -47,22 +61,13 @@ export function ogImage({
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <div
-              style={{
-                display: "flex",
-                width: 52,
-                height: 52,
-                borderRadius: 14,
-                background: BRAND,
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 30,
-                fontWeight: 800,
-                color: "white",
-              }}
-            >
-              R
-            </div>
+            {/* The logo on the same white tile the header gives it. */}
+            <img
+              src={logoDataUrl()}
+              width={52}
+              height={52}
+              style={{ borderRadius: 12, background: "white" }}
+            />
             <div style={{ display: "flex", fontSize: 32, fontWeight: 800, color: "white" }}>
               LP Stamp Paper
             </div>

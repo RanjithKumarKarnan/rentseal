@@ -6,16 +6,18 @@ import { cn } from "@/lib/utils";
 const LOGO_SRC = "/logo.png";
 
 /**
- * The client's seal, used as supplied.
+ * The client's LP monogram.
  *
  * Falls back to the drawn mark below if the file is missing, so a forgotten
  * upload shows a logo rather than a broken-image icon in the header of every
  * page.
  *
- * The seal carries its own wording — "LEGAL STAMP PAPER", "NOTARY SERVICES" and
- * the row of service icons — none of which survives being shrunk to the 36px
- * the header gives it. That is why the wordmark still sits beside it: at this
- * size the seal reads as a seal, and the name has to come from the text.
+ * The artwork arrived as a stock layout with "COMPANY" and "LOREMIPSUM"
+ * set under the letters. public/logo.png is the monogram alone, cropped
+ * close so it fills the 36px the header gives it; the business's name comes
+ * from the wordmark beside it. It sits on a white tile rather than a circle —
+ * the letters run corner to corner, a round crop would cut them, and the tile
+ * keeps the navy stroke readable on the dark footer.
  */
 export function LogoMark({ className }: { className?: string }) {
   const [failed, setFailed] = useState(false);
@@ -41,7 +43,7 @@ export function LogoMark({ className }: { className?: string }) {
       alt=""
       aria-hidden="true"
       onError={() => setFailed(true)}
-      className={cn("size-9 shrink-0 rounded-full object-contain", className)}
+      className={cn("size-9 shrink-0 rounded-lg bg-white object-contain", className)}
     />
   );
 }
