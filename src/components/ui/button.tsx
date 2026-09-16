@@ -17,15 +17,28 @@ const VARIANTS: Record<Variant, string> = {
   dark: "bg-navy-950 text-white shadow-lift hover:bg-navy-900 active:bg-navy-800",
 };
 
+/**
+ * Heights are minimums, not fixed, so a label that has to wrap on a phone makes
+ * the button taller instead of spilling out of it. The two large sizes also
+ * take less padding and a point less type below `sm`: "Order non-judicial
+ * stamp paper" then still sits on one line on a 360px screen.
+ */
 const SIZES: Record<Size, string> = {
-  sm: "h-9 px-3.5 text-[13px] gap-1.5 rounded-lg",
-  md: "h-11 px-5 text-[14.5px] gap-2 rounded-xl",
-  lg: "h-[52px] px-7 text-[15.5px] gap-2.5 rounded-xl",
-  xl: "h-[60px] px-9 text-base gap-3 rounded-2xl",
+  sm: "min-h-9 py-1.5 px-3.5 text-[13px] gap-1.5 rounded-lg",
+  md: "min-h-11 py-2 px-5 text-[14.5px] gap-2 rounded-xl",
+  lg: "min-h-[52px] py-2.5 px-5 text-[15px] gap-2 rounded-xl sm:px-7 sm:text-[15.5px] sm:gap-2.5",
+  xl: "min-h-[60px] py-3 px-6 text-[15px] gap-2.5 rounded-2xl sm:px-9 sm:text-base sm:gap-3",
 };
 
+/**
+ * Labels may wrap below `sm`. A button that refuses to wrap is as wide as its
+ * label, and one label wider than the phone — "Order ₹1,000 non-judicial stamp
+ * paper" was — makes the whole page wider than the screen, so the browser zooms
+ * out and every section looks cut off on the right. From `sm` up a label stays
+ * on one line, as it always has.
+ */
 const BASE =
-  "inline-flex items-center justify-center font-semibold whitespace-nowrap select-none " +
+  "inline-flex max-w-full items-center justify-center text-center font-semibold whitespace-normal sm:whitespace-nowrap select-none " +
   "transition-[background-color,border-color,color,box-shadow,transform] duration-200 " +
   "active:translate-y-px disabled:pointer-events-none disabled:opacity-45";
 

@@ -42,7 +42,7 @@ export function CurrentTemplate() {
 
       <Link
         href="/templates"
-        className="group inline-flex shrink-0 items-center gap-2 rounded-xl border border-line px-4 py-2.5 text-[13.5px] font-semibold text-navy-700 transition-colors hover:border-brand-300 hover:text-brand-700"
+        className="group inline-flex max-w-full items-center gap-2 rounded-xl border border-line px-4 py-2.5 text-[13.5px] font-semibold text-navy-700 transition-colors hover:border-brand-300 hover:text-brand-700"
       >
         <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
         Choose a different agreement
