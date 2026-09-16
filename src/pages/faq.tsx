@@ -8,9 +8,9 @@ import { Reveal } from "@/components/ui/motion";
 import { FAQS, SITE } from "@/lib/site";
 
 export const meta: PageMeta = {
-  title: "Frequently Asked Questions",
+  title: "Stamp Paper & Rent Agreement FAQs",
   description:
-    "Legal validity, stamp duty, registration, delivery, renewals and refunds — straight answers about creating a rental agreement online in Tamil Nadu.",
+    "Straight answers on non-judicial stamp paper, bond paper, rent agreements, stamp duty, registration, home delivery and refunds in Tamil Nadu.",
   alternates: { canonical: "/faq" },
 };
 
@@ -25,7 +25,7 @@ export default function FaqPage() {
         eyebrow="Support"
         icon={HelpCircle}
         crumbs={CRUMBS}
-        title="Questions, answered properly"
+        title="Stamp paper and rent agreement questions, answered properly"
         body="Including the ones that cost us money to answer honestly — like when you don't need to register, and when you don't need us at all."
       >
         <div className="flex flex-wrap gap-2">

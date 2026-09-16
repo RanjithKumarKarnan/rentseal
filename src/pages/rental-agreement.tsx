@@ -6,9 +6,9 @@ import { ButtonLink } from "@/components/ui/button";
 import { DISTRICTS } from "@/lib/districts";
 import { BUILDER_START, SITE } from "@/lib/site";
 
-const title = "Rental Agreement Online in Tamil Nadu";
+const title = "Rent Agreement Online in Tamil Nadu";
 const description =
-  "A legally valid rental agreement anywhere in Tamil Nadu, e-stamped at the government rate. Pick your district for its Sub-Registrar Offices.";
+  "A legally valid rent agreement anywhere in Tamil Nadu, drafted online and delivered on non-judicial stamp paper. Pick your district below.";
 
 export const meta: PageMeta = {
   title,
@@ -26,7 +26,7 @@ export default function RentalAgreementIndex() {
         eyebrow="District-wise coverage"
         icon={FileStack}
         crumbs={crumbs}
-        title="Rental agreements, district by district across Tamil Nadu"
+        title="Rent agreements online, district by district across Tamil Nadu"
         body={`We draft, e-stamp and e-sign rental agreements in all ${DISTRICTS.length} districts of the state. Each district page carries its own Sub-Registrar Offices, the towns we deliver to, and the delivery promise that applies there.`}
       >
         <div className="flex flex-col gap-3 sm:flex-row">

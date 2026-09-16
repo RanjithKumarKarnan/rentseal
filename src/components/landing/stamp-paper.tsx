@@ -31,7 +31,7 @@ export function StampPaper() {
         <SectionHeading
           eyebrow="Non-judicial stamp paper, delivered"
           icon={Stamp}
-          title="Licensed non-judicial stamp paper at your door, anywhere in Tamil Nadu"
+          title="Licensed non-judicial stamp paper with home delivery, anywhere in Tamil Nadu"
           body="No hunting for a vendor who has shut for lunch, no queue at the treasury. Tell us the denomination and the address — we fetch the paper and a rider brings it to you, with the face value and our charge shown separately."
         />
 

@@ -45,7 +45,7 @@ export function StampPaperRates() {
           eyebrow="Rate card"
           icon={IndianRupee}
           title="What a sheet costs, before anything is printed on it"
-          body="These are the prices for blank, unprinted non-judicial stamp paper in the four denominations we carry. The face value is what the government charges for the sheet; the difference is what we charge to fetch it and get it to you. An e-Stamp is not a sheet at all — it is a certificate that arrives by email. Delivery is separate and listed further down."
+          body="These are the prices for blank, unprinted non-judicial stamp paper — the sheet most people in Tamil Nadu call bond paper — in the four denominations we carry. The face value is what the government charges for the sheet; the difference is what we charge to fetch it and get it to you. An e-Stamp is not a sheet at all — it is a certificate that arrives by email. Delivery is separate and listed further down."
         />
 
         {/* ── Denominations ── */}

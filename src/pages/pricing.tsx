@@ -7,9 +7,9 @@ import { Comparison } from "@/components/landing/comparison";
 import { SITE } from "@/lib/site";
 
 export const meta: PageMeta = {
-  title: "Pricing — Agreements and Deeds from ₹300",
+  title: "Rent Agreement & Stamp Paper Prices",
   description:
-    "Every deed priced on its own, from ₹300. Stamp duty passed through at government rate and itemised on every invoice. GST applies to our fee alone.",
+    "Rent agreements and deeds from ₹300, non-judicial stamp paper from ₹120. Stamp duty passed through at government rate; GST on our fee alone.",
   alternates: { canonical: "/pricing" },
 };
 

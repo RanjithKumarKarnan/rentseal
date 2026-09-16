@@ -26,8 +26,11 @@ export function meta({ district: slug = "" }: Params): PageMeta {
   const district = getDistrict(slug);
   if (!district) return {};
 
-  const title = `Rental Agreement in ${district.name}`;
-  const description = `Rental agreements in ${district.name} district, e-stamped at the government rate and delivered to you. Covering ${district.sroTowns.length} Sub-Registrar Offices.`;
+  // "Online" wherever it fits inside 60 characters; the four longest district
+  // names take the plain form.
+  const online = `Rent Agreement Online in ${district.name}`;
+  const title = online.length <= 43 ? online : `Rent Agreement in ${district.name}`;
+  const description = `Online rent agreements in ${district.name} district, e-stamped at the government rate and delivered to your home. Covering ${district.sroTowns.length} Sub-Registrar Offices.`;
 
   return {
     title,
@@ -35,6 +38,8 @@ export function meta({ district: slug = "" }: Params): PageMeta {
     alternates: { canonical: `/rental-agreement/${district.slug}` },
     openGraph: { title, description },
     keywords: [
+      `rent agreement ${district.name}`,
+      `online rent agreement ${district.name}`,
       `rental agreement ${district.name}`,
       `rental agreement in ${district.hq}`,
       `online rental agreement ${district.name}`,
@@ -65,8 +70,8 @@ export default function DistrictPage() {
         eyebrow={`${district.name} District · ${district.region}`}
         icon={MapPin}
         crumbs={crumbs}
-        title={`Rental agreement in ${district.name}, done from your phone`}
-        body={`We draft, e-stamp and e-sign rental agreements across every taluk in ${district.name} district — all ${district.sroTowns.length} Sub-Registrar Office jurisdictions. Duty is paid at the government rate, both parties sign with an Aadhaar OTP, and nobody has to visit an office.`}
+        title={`Rent agreement in ${district.name}, done from your phone`}
+        body={`We draft, e-stamp and e-sign rent agreements across every taluk in ${district.name} district — all ${district.sroTowns.length} Sub-Registrar Office jurisdictions — and deliver the printed copy to your home. Duty is paid at the government rate, both parties sign with an Aadhaar OTP, and nobody has to visit an office.`}
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <ButtonLink href={LEAD_ANCHOR} size="lg" className="group">

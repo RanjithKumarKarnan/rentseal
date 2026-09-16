@@ -23,7 +23,7 @@ export const SITE = {
   legalName: "LP Enterprises",
   tagline: "Licensed non-judicial stamp paper and notarised agreements across Tamil Nadu",
   description:
-    "Non-judicial stamp paper and e-Stamps from ₹120, delivered across Tamil Nadu — same day in Chennai. Agreements, deeds and affidavits drafted too.",
+    "Buy non-judicial stamp paper online from ₹120, with home delivery across Tamil Nadu — same day in Chennai. Rent agreements and affidavits drafted too.",
   url: "https://www.lpstamppaper.in",
   /** Landline. Dialled as 044 within India; the tel: link strips the spaces. */
   phone: "044 4006 8402",
@@ -138,7 +138,7 @@ export const FOOTER_LINKS = [
       { label: "Commercial Rental Agreement", href: "/services/commercial-rental-agreement" },
       { label: "Lease Deed", href: "/services/lease-agreement" },
       { label: "Leave & Licence", href: "/services/leave-and-license" },
-      { label: "Rental agreement by district", href: "/rental-agreement" },
+      { label: "Rent agreement by district", href: "/rental-agreement" },
       { label: "All agreement templates", href: "/templates" },
       { label: "Online Works", href: "/certificates" },
       { label: "Talk to us before you order", href: LEAD_ANCHOR },
@@ -405,6 +405,11 @@ export const FAQS = [
     category: "Non-judicial stamp paper",
     q: "Which non-judicial stamp paper denominations do you supply?",
     a: "Physical non-judicial paper in four denominations — ₹100, ₹500, ₹1,000 and ₹5,000 — which covers almost every ordinary transaction. ₹100 is the smallest sheet we carry, so an affidavit or a bond that would once have gone on ₹20 or ₹50 paper is executed on ₹100. Where the duty payable is a specific figure — a lease deed, a sale agreement, a mortgage — we issue an e-Stamp certificate for that exact amount instead, from ₹1 upward with no practical ceiling.",
+  },
+  {
+    category: "Non-judicial stamp paper",
+    q: "Is non-judicial stamp paper the same as bond paper?",
+    a: "Yes. In Tamil Nadu most people ask for \"bond paper\" — or முத்திரைத்தாள் — and mean the same government-issued non-judicial stamp paper we deliver. It is not the thick bond writing paper a stationery shop sells: that carries no stamp value, so an agreement or affidavit typed on it is not stamped.",
   },
   {
     category: "Non-judicial stamp paper",

@@ -60,7 +60,26 @@ const DEFAULT_TITLE = `${SITE.name} — Rental Agreement Online in Tamil Nadu | 
 
 export const SITE_META: PageMeta = {
   description: SITE.description,
+  // Google does not read this tag for ranking — the titles, headings and copy
+  // carry these phrases where it does look. Kept because other engines and
+  // tools still read it.
   keywords: [
+    "non judicial stamp paper online",
+    "buy stamp paper online Tamil Nadu",
+    "stamp paper home delivery Chennai",
+    "stamp paper online Chennai",
+    "100 rupees stamp paper",
+    "bond paper Chennai",
+    "e-stamp paper Chennai",
+    "stamp paper Mogappair",
+    "stamp paper Anna Nagar",
+    "rent agreement Chennai",
+    "online rent agreement Chennai",
+    "house rent agreement Tamil Nadu",
+    "rent agreement format Tamil Nadu",
+    "affidavit Chennai",
+    "notary Chennai",
+    "முத்திரைத்தாள்",
     "rental agreement online",
     "rental agreement Tamil Nadu",
     "rental agreement Chennai",

@@ -23,9 +23,9 @@ export const SERVICES: ServiceContent[] = [
     h1: "Residential rental agreement, drafted for Tamil Nadu",
     intro:
       "The 11-month agreement that covers most lettings in the state — flats, independent houses and villas. E-stamped, signed with Aadhaar OTP, and in your inbox the same day.",
-    metaTitle: "Residential Rental Agreement — Tamil Nadu",
+    metaTitle: "House Rent Agreement Online — Tamil Nadu",
     metaDescription:
-      "Create an 11-month residential rental agreement for Tamil Nadu online — printed on non-judicial stamp paper, notarised and delivered to your door.",
+      "Create an 11-month house rent agreement for Tamil Nadu online — printed on non-judicial stamp paper, notarised and delivered to your door.",
     whoFor: [
       "Owners letting a flat or house to a family",
       "Tenants who want the terms in writing before paying a deposit",
@@ -106,9 +106,9 @@ export const SERVICES: ServiceContent[] = [
     h1: "Commercial rental agreement for offices, shops and warehouses",
     intro:
       "Built for business premises, with the trade licence, GST, fit-out and business-use obligations that a residential template simply doesn't carry.",
-    metaTitle: "Commercial Rental Agreement — Tamil Nadu",
+    metaTitle: "Shop & Office Rent Agreement — Tamil Nadu",
     metaDescription:
-      "A commercial rental agreement for an office, shop, showroom or warehouse in Tamil Nadu, with trade licence, GST and fit-out clauses included.",
+      "A commercial rent agreement for an office, shop, showroom or warehouse in Tamil Nadu, with trade licence, GST and fit-out clauses included.",
     whoFor: [
       "Owners letting office space, a shop or a godown",
       "Businesses taking premises and needing a clean paper trail for GST",

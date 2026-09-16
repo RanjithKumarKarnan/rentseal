@@ -261,9 +261,9 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.18, ease: EASE }}
               className="mt-7 max-w-xl text-[17.5px] leading-[1.65] text-navy-600"
             >
-              Real, licensed non-judicial stamp paper from ₹120 a sheet, carried to your
-              address anywhere in Tamil Nadu — same day in Chennai. And when the agreement
-              needs writing too, we draft it from ₹300, print it on the paper, get it
+              Order licensed non-judicial stamp paper online from ₹120 a sheet, with home
+              delivery anywhere in Tamil Nadu — same day in Chennai. And when you need a rent
+              agreement or affidavit too, we draft it from ₹300, print it on the paper, get it
               attested and bring both to you, without you visiting a single office.
             </motion.p>
 

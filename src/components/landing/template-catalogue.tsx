@@ -43,7 +43,7 @@ export function TemplateCatalogue() {
         eyebrow="Template library"
         icon={LayoutGrid}
         crumbs={CRUMBS}
-        title={`${ENGLISH_COUNT} English templates and ${TAMIL_TEMPLATE_IDS.length} Tamil deeds`}
+        title={`${ENGLISH_COUNT} agreement and affidavit formats, and ${TAMIL_TEMPLATE_IDS.length} Tamil deeds`}
         body="Every document here is a Tamil Nadu compliant draft — lettings, leases, sale deeds, business contracts, affidavits and the office’s own Tamil deeds. Search for the one that matches your situation and the right clauses come with it."
       >
         <div className="max-w-xl">

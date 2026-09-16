@@ -8,9 +8,9 @@ import { ButtonLink } from "@/components/ui/button";
 import { DISTRICTS } from "@/lib/districts";
 import { LEAD_ANCHOR, SITE } from "@/lib/site";
 
-const title = "Non-Judicial Stamp Paper in Tamil Nadu";
+const title = "Non-Judicial Stamp Paper Online — Tamil Nadu";
 const description =
-  "Genuine non-judicial stamp paper delivered across Tamil Nadu: ₹100 for ₹120, ₹500 for ₹550, ₹1,000 for ₹1,100, ₹5,000 for ₹5,500.";
+  "Buy genuine non-judicial stamp paper online with home delivery across Tamil Nadu: ₹100 for ₹120, ₹500 for ₹550, ₹1,000 for ₹1,100.";
 
 export const meta: PageMeta = {
   title,
@@ -28,7 +28,7 @@ export default function StampPaperIndex() {
         eyebrow="District-wise delivery"
         icon={Stamp}
         crumbs={crumbs}
-        title="Government authorised non-judicial stamp paper, delivered to your doorstep"
+        title="Government authorised non-judicial stamp paper online, with home delivery"
         body="Fill in the details online and receive genuine, government authorised non-judicial stamp paper at your door — the face value plus a stated procurement charge, with delivery quoted before you confirm. Same day in Chennai by Porter, ₹100 next day, and ₹100 to ₹200 anywhere else in Tamil Nadu. We can print your draft on it and get it attested too."
       >
         <div className="flex flex-col gap-3 sm:flex-row">

@@ -12,8 +12,8 @@ import { TAMIL_TEMPLATE_IDS } from "@/lib/tamil-templates";
  */
 const ENGLISH_COUNT = TEMPLATES.length - TAMIL_TEMPLATE_IDS.length;
 
-const title = `${TEMPLATES.length} Agreement & Deed Templates — Tamil Nadu`;
-const description = `${ENGLISH_COUNT} English templates and ${TAMIL_TEMPLATE_IDS.length} Tamil deeds — rent, lease, sale, loan, mortgage, indemnity, affidavit and NOC. Ready to print on non-judicial stamp paper.`;
+const title = "Agreement & Affidavit Formats, Tamil Nadu";
+const description = `${ENGLISH_COUNT} English formats and ${TAMIL_TEMPLATE_IDS.length} Tamil deeds: rent agreement, lease, sale, loan, mortgage, indemnity, affidavit and NOC, for non-judicial stamp paper.`;
 
 export const meta: PageMeta = {
   title,

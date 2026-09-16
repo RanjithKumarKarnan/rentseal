@@ -14,7 +14,7 @@ import { SITE } from "@/lib/site";
 import { DENOMINATIONS } from "@/lib/stamp-paper";
 
 export const meta: PageMeta = {
-  title: "Non-Judicial Stamp Paper & Rental Agreements",
+  title: "Non-Judicial Stamp Paper Online in Chennai",
   description: SITE.description,
   alternates: { canonical: "/" },
 };

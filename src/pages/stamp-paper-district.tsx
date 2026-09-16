@@ -28,8 +28,11 @@ export function meta({ district: slug = "" }: Params): PageMeta {
   if (!district) return {};
 
   const zone = ZONE_META[district.zone];
-  const title = `Non-Judicial Stamp Paper in ${district.name}`;
-  const description = `Non-judicial stamp paper delivered across ${district.name} district, ${zone.eta.toLowerCase()}. ₹100 sheet for ₹120, ₹500 for ₹550, and e-Stamps of any value.`;
+  // "Delivery" where the name leaves room for it inside 60 characters — the
+  // four shortest districts. The rest keep the plain form.
+  const withDelivery = `Non-Judicial Stamp Paper Delivery in ${district.name}`;
+  const title = withDelivery.length <= 43 ? withDelivery : `Non-Judicial Stamp Paper in ${district.name}`;
+  const description = `Non-judicial stamp paper home delivery in ${district.name} district, ${zone.eta.toLowerCase()}. ₹100 sheet for ₹120, ₹500 for ₹550, and e-Stamps of any value.`;
 
   return {
     title,
@@ -41,6 +44,9 @@ export function meta({ district: slug = "" }: Params): PageMeta {
       `e-stamp paper ${district.name}`,
       `buy stamp paper in ${district.hq}`,
       `non judicial stamp paper ${district.name}`,
+      `stamp paper home delivery ${district.name}`,
+      `stamp paper online ${district.name}`,
+      `bond paper ${district.name}`,
       `stamp paper delivery ${district.name}`,
       ...district.towns.map((t) => `stamp paper ${t}`),
     ],
@@ -68,8 +74,8 @@ export default function StampPaperDistrictPage() {
         eyebrow={`${district.name} District · ${zone.label}`}
         icon={Stamp}
         crumbs={crumbs}
-        title={`Non-judicial stamp paper in ${district.name}, delivered to your door`}
-        body={`Licensed non-judicial stamp paper and e-Stamp certificates anywhere in ${district.name} district — the face value plus a stated procurement charge, never a figure you find out at the door. ${zone.eta} delivery${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}, and no queue at the vendor's counter.`}
+        title={`Non-judicial stamp paper in ${district.name}, with home delivery`}
+        body={`Licensed non-judicial stamp paper — bond paper, as most people call it — and e-Stamp certificates anywhere in ${district.name} district — the face value plus a stated procurement charge, never a figure you find out at the door. ${zone.eta} delivery${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}, and no queue at the vendor's counter.`}
       >
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <ButtonLink href={LEAD_ANCHOR} size="lg" className="group">
