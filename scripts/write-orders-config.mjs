@@ -18,6 +18,16 @@ import { channels, ordersConfig, ordersConfigPhp } from "./orders-config.mjs";
 
 const root = new URL("../", import.meta.url);
 
+// Vercel serves dist/ as plain files and runs no PHP, so the settings would do
+// nothing there — and .htaccess, which keeps them from being downloaded on
+// Hostinger, is not read either. Anything written here would be public.
+if (process.env.VERCEL) {
+  console.warn(
+    "[orders] building on Vercel: dist/api/orders-config.php not written. PHP does not run on Vercel, so the order forms cannot send from this deployment.",
+  );
+  process.exit(0);
+}
+
 if (!existsSync(new URL("dist/api/orders.php", root))) {
   console.error("[orders] dist/api/orders.php is missing — did `vite build` run first?");
   process.exit(1);
