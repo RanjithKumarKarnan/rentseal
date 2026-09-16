@@ -16,6 +16,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { Badge } from "@/components/ui/card";
 import { BUILDER_START, LEAD_ANCHOR } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { StampBackdrop } from "./stamp-backdrop";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -204,6 +205,9 @@ export function Hero() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-mesh" />
         <div className="absolute inset-0 bg-grid" />
+        {/* The stamp paper itself, under the mesh's colour and over the grid's
+            ruling, so the three read as one sheet rather than three layers. */}
+        <StampBackdrop className="absolute inset-0 size-full" />
         {/* Two 600px blurred colour blobs sat here — the standard generated-hero
             backdrop. A single, much fainter wash keeps depth without the glow. */}
         <div className="absolute -top-40 -right-52 size-[520px] rounded-full bg-brand-400/[0.055] blur-[140px]" />
