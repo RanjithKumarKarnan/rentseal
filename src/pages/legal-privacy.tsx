@@ -50,7 +50,7 @@ const SECTIONS: LegalSection[] = [
     id: "why",
     heading: "Why we process it, and on what basis",
     paragraphs: [
-      "We process your data to perform the contract you entered into with us — drafting the document, procuring the e-stamp, arranging signature, and delivering the result.",
+      "We process your data to perform the contract you entered into with us — drafting the document, procuring the stamp paper, arranging signature, and delivering the result.",
       "We process a limited set of data to comply with legal obligations, including tax and accounting records, which we are required to retain.",
       "We process technical data on the basis of our legitimate interest in keeping the platform secure and working. You can object to this at any time.",
       "We send marketing communications only where you have opted in, and every one carries a working unsubscribe link.",
@@ -64,7 +64,7 @@ const SECTIONS: LegalSection[] = [
     ],
     list: [
       "The licensed e-Sign Application Service Provider, to obtain signatures",
-      "The authorised e-stamping channel, to procure and affix the stamp certificate",
+      "Licensed stamp vendors, to procure the non-judicial stamp paper",
       "Email, SMS and WhatsApp providers, to deliver your document and notifications",
       "Cloud hosting in the ap-south-1 (Mumbai) region, where the platform runs",
       "The notary public attesting the signatures — who sees the document, as they must, in order to attest it",

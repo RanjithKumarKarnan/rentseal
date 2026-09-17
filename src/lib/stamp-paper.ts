@@ -1,22 +1,19 @@
 /**
  * Stamp paper catalogue, counter services and delivery model.
  *
- * Tamil Nadu supplies non-judicial stamp paper through licensed vendors and
- * e-Stamp certificates through the authorised channel. We procure both and
- * charge for the errand — the denominations below are the ones ordinary
- * transactions actually call for.
+ * Tamil Nadu supplies non-judicial stamp paper through licensed vendors. We
+ * procure it and charge for the errand — the denominations below are the ones
+ * ordinary transactions actually call for. The office sells physical,
+ * hard copy paper only: the e-Stamp certificate the site used to offer was
+ * withdrawn on the client's instruction of 17 September 2026.
  *
- * Two conventions, both borrowed from certificates.ts and both there for the
- * same reason:
+ * Two conventions:
  *
  *   - Physical paper is stocked in ₹100, ₹500, ₹1,000 and ₹5,000 and nothing
  *     else. Listing ₹20, ₹50 or ₹200 as "price on request" was still an offer
  *     to supply them, and the office cannot, so they are gone rather than
- *     unpriced. Duty below ₹100 goes on a ₹100 sheet; anything needing an
- *     exact figure goes on an e-Stamp.
- *   - `price: null` survives for the e-Stamp alone, whose value is whatever
- *     the instrument attracts. It renders "Price on request" rather than a
- *     guess — a made-up figure on a price list is one someone is held to.
+ *     unpriced. Duty below ₹100 goes on a ₹100 sheet; a larger figure is made
+ *     up by combining sheets.
  *   - Every price here is the amount payable for the sheet, blank and
  *     unprinted, before delivery. Face value and price are separate fields on
  *     purpose: the difference between them is our procurement charge, and the
@@ -25,14 +22,11 @@
  */
 
 export interface Denomination {
-  /** Face value printed on the sheet. 0 for a variable-value e-Stamp. */
+  /** Face value printed on the sheet. */
   value: number;
   label: string;
-  /**
-   * Rupees payable for one blank sheet, delivery excluded. Null where the
-   * office has not quoted a rate for that denomination.
-   */
-  price: number | null;
+  /** Rupees payable for one blank sheet, delivery excluded. */
+  price: number;
   popular?: boolean;
   uses: string[];
   note?: string;
@@ -71,24 +65,15 @@ export const DENOMINATIONS: Denomination[] = [
     price: 5500,
     uses: ["Property instruments", "Mortgage deeds", "Large commercial leases", "High-value bonds"],
   },
-  {
-    value: 0,
-    label: "Any value",
-    price: null,
-    uses: ["Lease deeds", "Sale deeds", "Mortgage deeds", "Development agreements"],
-    note: "Issued as an e-Stamp certificate for any amount from ₹1 upward, against the exact duty payable. You pay the duty itself plus our charge, confirmed before you order.",
-  },
 ];
 
 /** The quoted denominations, in the order they are sold. */
-export const PRICED_DENOMINATIONS = DENOMINATIONS.filter(
-  (d): d is Denomination & { price: number } => d.price !== null,
-);
+export const PRICED_DENOMINATIONS = DENOMINATIONS;
 
 /** What one blank sheet costs, and what of that is the state's. */
 export function stampPaperPrice(value: number) {
   const d = DENOMINATIONS.find((x) => x.value === value);
-  if (!d || d.price === null) return null;
+  if (!d) return null;
   return { faceValue: d.value, price: d.price, ourCharge: d.price - d.value };
 }
 
@@ -96,8 +81,7 @@ export function stampPaperPrice(value: number) {
  *
  * A deed is not always executed on one sheet. The duty may be met by two ₹100
  * sheets, or a ₹500 and a ₹100 together — so the paper is chosen as a list, and
- * the price, the face value and the label all sum across it. An e-Stamp is the
- * empty list: a single certificate for the exact duty, with no sheet to buy.
+ * the price, the face value and the label all sum across it.
  */
 
 /** What every sheet in the combination costs to procure, added up. */
@@ -112,10 +96,9 @@ export function sheetsFaceValue(sheets: number[]): number {
 
 /**
  * The combination written out for a person: "₹100 + ₹100", "₹500 + ₹100".
- * Empty means an e-Stamp.
  */
 export function describeSheets(sheets: number[]): string {
-  if (!sheets.length) return "e-Stamp — duty only";
+  if (!sheets.length) return "No stamp paper chosen";
   return sheets
     .map((v) => DENOMINATIONS.find((d) => d.value === v)?.label ?? `₹${v}`)
     .join(" + ");
@@ -323,11 +306,8 @@ export const DELIVERY_RULES = {
   /**
    * Rupees of PHYSICAL paper face value above which delivery is waived.
    *
-   * e-Stamp value is excluded, and the name says so because the mistake is easy
-   * and expensive: an e-Stamp is emailed, so there is no delivery to waive, and
-   * an e-Stamp for the duty on a property deed runs to tens of thousands. Let
-   * that count and a single certificate silently ships every sheet in the order
-   * for nothing.
+   * Only the sheets the rider carries count — never a duty figure or anything
+   * else in the order.
    */
   freeAbovePaperValue: 2000,
   bulkFreeFrom: 10,
@@ -343,8 +323,8 @@ export interface StampUseCase {
 export const STAMP_USE_CASES: StampUseCase[] = [
   {
     title: "Rental & lease agreements",
-    denomination: "₹100 or exact duty",
-    body: "For an 11-month let, most people use ₹100 paper. Where the agreement runs 12 months or longer, duty is charged at 1% of the total rent plus deposit and we issue an e-Stamp for that exact figure.",
+    denomination: "₹100 and up",
+    body: "For an 11-month let, most people use ₹100 paper. Where the agreement runs 12 months or longer, duty is charged at 1% of the total rent plus deposit, and we tell you the combination of sheets that covers it before you order.",
   },
   {
     title: "Affidavits & declarations",
@@ -363,8 +343,8 @@ export const STAMP_USE_CASES: StampUseCase[] = [
   },
   {
     title: "Property instruments",
-    denomination: "₹1,000 – ₹5,000, or exact duty",
-    body: "Sale agreements, mortgage deeds, gift and settlement deeds, development agreements — where duty runs into thousands and often only an e-Stamp certificate will do.",
+    denomination: "₹1,000 – ₹5,000",
+    body: "Sale agreements, mortgage deeds, gift and settlement deeds, development agreements — where duty runs into thousands and the higher denominations, combined as needed, carry it.",
   },
   {
     title: "Power of attorney",
@@ -377,9 +357,7 @@ export const STAMP_USE_CASES: StampUseCase[] = [
  * Delivery charge for a zone, given the physical paper in the order.
  *
  * `paperValue` is the face value of the sheets being delivered and nothing
- * else. Do not pass the value of an e-Stamp: it is emailed, it is not part of
- * what the rider carries, and it does not buy free delivery for whatever else
- * is in the order.
+ * else — not the duty, and not anything the rider does not carry.
  */
 export function deliveryCharge(zoneId: string, paperValue: number, sheets = 1) {
   if (paperValue >= DELIVERY_RULES.freeAbovePaperValue) return 0;

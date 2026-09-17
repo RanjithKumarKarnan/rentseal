@@ -32,7 +32,7 @@ export function meta({ district: slug = "" }: Params): PageMeta {
   // names take the plain form.
   const online = `Rent Agreement Online in ${district.name}`;
   const title = online.length <= 43 ? online : `Rent Agreement in ${district.name}`;
-  const description = `Online rent agreements in ${district.name} district, e-stamped at the government rate and delivered to your home. Covering ${district.sroTowns.length} Sub-Registrar Offices.`;
+  const description = `Online rent agreements in ${district.name} district, stamped at the government rate and delivered to your home. Covering ${district.sroTowns.length} Sub-Registrar Offices.`;
 
   return {
     title,
@@ -73,7 +73,7 @@ export default function DistrictPage() {
         icon={MapPin}
         crumbs={crumbs}
         title={`Rent agreement in ${district.name}, done from your phone`}
-        body={`We draft, e-stamp and e-sign rent agreements across every taluk in ${district.name} district — all ${district.sroTowns.length} Sub-Registrar Office jurisdictions — and deliver the printed copy to your home. Duty is paid at the government rate, both parties sign with an Aadhaar OTP, and nobody has to visit an office.`}
+        body={`We draft, stamp and e-sign rent agreements across every taluk in ${district.name} district — all ${district.sroTowns.length} Sub-Registrar Office jurisdictions — and deliver the printed copy to your home. Duty is paid at the government rate, both parties sign with an Aadhaar OTP, and nobody has to visit an office.`}
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <ButtonLink href={LEAD_ANCHOR} size="lg" className="group">
@@ -115,7 +115,7 @@ export default function DistrictPage() {
                 icon: Landmark,
                 label: "Registration needed",
                 value: "12 months+",
-                sub: "an 11-month agreement needs only e-stamping",
+                sub: "an 11-month agreement needs only stamp paper",
               },
               {
                 icon: ShieldCheck,
@@ -174,8 +174,8 @@ export default function DistrictPage() {
                   ))}
                 </div>
                 <p className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-[13px] leading-relaxed text-emerald-900">
-                  Renting for 11 months? You skip all of this. E-stamping alone makes the
-                  agreement valid in evidence, and it happens entirely online.
+                  Renting for 11 months? You skip all of this. Stamp paper alone makes the
+                  agreement valid in evidence, and the rest happens online.
                 </p>
               </div>
             </Reveal>
@@ -216,7 +216,7 @@ export default function DistrictPage() {
         <div className="container-page">
           <SectionHeading
             eyebrow={`Available across ${district.name}`}
-            title="Four agreement types, all e-stamped for Tamil Nadu"
+            title="Four agreement types, all stamped for Tamil Nadu"
             body={`Whether you are letting a flat in ${district.towns[0]} or a godown on the outskirts, the right instrument is here.`}
           />
 
@@ -303,7 +303,7 @@ export default function DistrictPage() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: `${SITE.name} — ${district.name}`,
-            description: `Online rental agreement drafting, e-stamping and e-signing across ${district.name} district, Tamil Nadu.`,
+            description: `Online rental agreement drafting, stamp paper and e-signing across ${district.name} district, Tamil Nadu.`,
             url: `${SITE.url}/rental-agreement/${district.slug}`,
             telephone: SITE.phone,
             priceRange: `${inr(rentAgreementPrice("basic"))} – ${inr(rentAgreementPrice("premium"))}`,

@@ -15,10 +15,10 @@ import type { TemplateId } from "./agreement-templates";
  *
  * Registration is compulsory under s.17(1)(d) of the Registration Act only where the
  * term is 12 months or more; the widely used 11-month agreement is therefore
- * e-stamped and (optionally) notarised, not registered.
+ * stamped and (optionally) notarised, not registered.
  *
  * These are the published slabs. The figure finally debited by the Registration
- * Department at the moment of e-stamping is authoritative — the UI says so.
+ * Department at the moment of stamping is authoritative — the UI says so.
  */
 
 export const TN_STAMP_RATE_UNDER_30Y = 0.01; // 1% of chargeable value
@@ -87,12 +87,12 @@ export interface StampDutyInput {
   notaryRequired?: boolean;
   /** Which of the sixty-two is being drawn. Sets the drafting fee. */
   templateId?: TemplateId;
-  /** Face value of the physical sheet chosen. 0 for an e-Stamp. */
+  /** Face value of the physical sheet chosen. */
   stampPaperValue?: number;
   /**
    * The physical sheets the deed is executed on, e.g. [100, 100] for two ₹100
    * sheets. Preferred over `stampPaperValue`; when omitted it falls back to a
-   * single sheet of `stampPaperValue` (empty for an e-Stamp), so older callers
+   * single sheet of `stampPaperValue`, so older callers
    * keep working.
    */
   stampPaperSheets?: number[];
@@ -129,7 +129,7 @@ export function calculateStampDuty({
   softCopy = false,
 }: StampDutyInput): StampDutyBreakdown {
   // The sheets to price. A caller that gives the list wins; otherwise a single
-  // sheet of the legacy value, and nothing at all for an e-Stamp (value 0).
+  // sheet of the legacy value, and nothing if that is unset.
   const sheets =
     stampPaperSheets && stampPaperSheets.length
       ? stampPaperSheets
@@ -157,8 +157,7 @@ export function calculateStampDuty({
   const platformFee = documentFee;
 
   // The sheets the deed is executed on, at the shelf price, summed across the
-  // combination. An e-Stamp (no sheets) has no shelf price — its cost is the
-  // duty, already counted above.
+  // combination.
   const stampPaperFee = sheetsPrice(sheets);
 
   // Each sheet past the first is a flat printing surcharge.
@@ -230,7 +229,7 @@ export function calculateStampDuty({
     );
   } else {
     notes.push(
-      "An 11-month term does not require registration. Your agreement is e-stamped and legally valid as evidence.",
+      "An 11-month term does not require registration. Your agreement is stamped on non-judicial stamp paper and legally valid as evidence.",
     );
   }
   if (notaryRequired) {

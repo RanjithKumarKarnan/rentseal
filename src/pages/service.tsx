@@ -18,6 +18,7 @@ import { Card } from "@/components/ui/card";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SERVICES, getService } from "@/lib/services";
+import { CHEAPEST_TEMPLATE_PRICE } from "@/lib/template-prices";
 import { LEAD_ANCHOR, SITE } from "@/lib/site";
 import NotFound from "@/pages/not-found";
 
@@ -238,12 +239,12 @@ export default function ServicePage() {
             // than restating its name, address and hours on every service page.
             provider: { "@id": `${SITE.url}/#organization` },
             areaServed: { "@type": "State", name: "Tamil Nadu" },
-            // Drafting starts at ₹300 across the catalogue — the same floor the
+            // Drafting starts at the catalogue's floor — the same figure the
             // homepage's priceRange states, so the two never disagree.
             offers: {
               "@type": "Offer",
               priceCurrency: "INR",
-              price: "300",
+              price: String(CHEAPEST_TEMPLATE_PRICE),
               url: `${SITE.url}/services/${service.slug}`,
               availability: "https://schema.org/InStock",
             },

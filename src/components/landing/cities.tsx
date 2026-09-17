@@ -66,10 +66,6 @@ export function Cities() {
                   Delivery is free above {inr(DELIVERY_RULES.freeAbovePaperValue)} of physical
                   paper, and on {DELIVERY_RULES.bulkFreeFrom} sheets or more
                 </p>
-                <p className="mt-1 text-[13px] leading-relaxed text-emerald-800">
-                  e-Stamp certificates are emailed within minutes — there is nothing to deliver
-                  and no charge at all.
-                </p>
               </div>
             </div>
             <ButtonLink href={LEAD_ANCHOR} variant="emerald" size="lg" className="shrink-0">

@@ -1,52 +1,55 @@
-import { CheckCircle2, Mail, Stamp, Truck } from "lucide-react";
+import { CheckCircle2, Printer, Stamp, Truck } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { NOTARY_FEE } from "@/lib/notary";
 import { DENOMINATIONS } from "@/lib/stamp-paper";
+import { inr } from "@/lib/utils";
 
 /**
- * Physical stamp paper or an e-Stamp — the choice most buyers are making when
- * they search, whether they call it "physical", "hard copy" or "bond paper".
- * Every line here restates what the rate card and the FAQ already promise.
+ * Physical stamp paper, said plainly — what buyers mean when they search for
+ * "physical", "hard copy" or "bond paper". Every line here restates what the
+ * rate card and the FAQ already promise.
  */
 
-const SHEETS = DENOMINATIONS.filter((d) => d.value > 0).map((d) => d.label);
+const SHEETS = DENOMINATIONS.map((d) => d.label);
+const HUNDRED = DENOMINATIONS.find((d) => d.value === 100);
 
-const FORMATS = [
+const CARDS = [
   {
     icon: Truck,
     title: "Physical (hard copy) stamp paper",
-    body: `The original, government-issued non-judicial sheet, in ${SHEETS.slice(0, -1).join(", ")} and ${SHEETS[SHEETS.length - 1]}. Your document is printed on it, signed in ink and kept as the hard copy — what most rent agreements, affidavits, indemnity bonds and powers of attorney in Tamil Nadu are executed on.`,
+    body: `The original, government-issued non-judicial sheet, in ${SHEETS.slice(0, -1).join(", ")} and ${SHEETS[SHEETS.length - 1]}. A rider brings it to your door, and a document that needs a higher value goes on a combination of sheets.`,
     points: [
       "Delivered to your door — same day in Chennai",
-      "Your draft printed on it if you send one",
-      "₹100 sheet for ₹120",
+      HUNDRED ? `${HUNDRED.label} sheet for ${inr(HUNDRED.price)}` : "Priced before you order",
+      "Serial number printed on your invoice",
     ],
   },
   {
-    icon: Mail,
-    title: "e-Stamp certificate",
-    body: "A certificate for the exact duty an instrument attracts, from ₹1 upward. It is emailed rather than delivered, and it is what a lease deed, sale agreement or mortgage needs when the duty is a specific figure.",
+    icon: Printer,
+    title: "Printed, signed and attested",
+    body: "Send your draft, or write it here, and it comes back printed on the stamp paper with the margins a sub-registrar expects. Signed in ink, it is the hard copy most rent agreements, affidavits, indemnity bonds and powers of attorney in Tamil Nadu are executed on.",
     points: [
-      "Emailed within minutes",
-      "Any value from ₹1",
-      "Government duty passed through at cost",
+      "Your draft printed on it if you send one",
+      `Notary attestation for ${inr(NOTARY_FEE)}`,
+      "Told the right denomination before you order",
     ],
   },
 ];
 
 export function StampPaperFormats() {
   return (
-    <section id="physical-or-e-stamp" className="section scroll-mt-20 border-t border-line bg-canvas">
+    <section id="physical-stamp-paper" className="section scroll-mt-20 border-t border-line bg-canvas">
       <div className="container-page">
         <SectionHeading
-          eyebrow="Physical or e-Stamp?"
+          eyebrow="Physical stamp paper"
           icon={Stamp}
-          title="Physical stamp paper, hard copy delivered — or an e-Stamp by email"
-          body="We supply both. Tell us what you are executing and we will say which one it needs before you order."
+          title="Physical non-judicial stamp paper — the hard copy, delivered"
+          body="Tell us what you are executing and we will say which denomination it needs before you order."
         />
 
         <Stagger className="mt-12 grid gap-4 md:grid-cols-2" amount={0.1}>
-          {FORMATS.map(({ icon: Icon, title, body, points }) => (
+          {CARDS.map(({ icon: Icon, title, body, points }) => (
             <StaggerItem key={title}>
               <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-6 shadow-soft">
                 <span className="grid size-11 place-items-center rounded-xl bg-navy-950 text-white">

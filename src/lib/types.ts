@@ -137,22 +137,21 @@ export interface AgreementOptions {
    */
   stampPaperDate: string;
   /**
-   * Face value of the physical sheet the deed is executed on. 0 means an
-   * e-Stamp, where duty is the computed figure rather than a shelf price.
+   * Face value of the physical sheet the deed is executed on.
    *
-   * Kept as the representative/primary sheet — the first of `stampPaperSheets`,
-   * or 0 for an e-Stamp — so older readers that expect one number still work.
+   * Kept as the representative/primary sheet — the first of `stampPaperSheets`
+   * — so older readers that expect one number still work.
    */
   stampPaperValue: number;
   /**
    * The physical sheets the deed is executed on, as a combination — e.g.
-   * [100, 100] for two ₹100 sheets, or [500, 100]. An empty list is an e-Stamp.
+   * [100, 100] for two ₹100 sheets, or [500, 100]. Never empty.
    * The stamp-paper charge and its face value sum across this list.
    */
   stampPaperSheets: number[];
   /**
    * Where the physical stamp paper should be delivered. Blank falls back to the
-   * property address; an e-Stamp is emailed, so nothing is delivered.
+   * property address.
    */
   shippingAddress: string;
   /**
@@ -244,7 +243,7 @@ export interface StampDutyBreakdown {
   registrationRequired: boolean;
   platformFee: number;
   lawyerFee: number;
-  /** The chosen sheets, at the shelf price, summed. Zero on an e-Stamp. */
+  /** The chosen sheets, at the shelf price, summed. */
   stampPaperFee: number;
   /** Printing surcharge for a document past the first sheet. */
   extraPageFee: number;
@@ -273,7 +272,7 @@ export type OrderStatus =
   | "draft"
   | "payment-pending"
   | "lawyer-review"
-  | "e-stamp"
+  | "stamping"
   | "awaiting-signature"
   | "completed"
   | "expiring";

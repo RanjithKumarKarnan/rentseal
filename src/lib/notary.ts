@@ -13,7 +13,7 @@ import { AFFIDAVIT_TEMPLATE_IDS } from "./affidavit-templates";
  * it out.
  *
  * Everything else — a letting, a lease, a sale, a licence, an indemnity — is
- * valid on execution and, once e-stamped, stands as evidence without a notary.
+ * valid on execution and, once stamped, stands as evidence without a notary.
  * Attestation there buys extra proof of who signed, which is worth having and
  * is worth being asked about rather than charged for silently. Those stay a
  * checkbox.

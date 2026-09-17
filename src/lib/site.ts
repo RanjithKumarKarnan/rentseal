@@ -128,8 +128,7 @@ export const FOOTER_LINKS = [
       { label: "₹500 non-judicial stamp paper", href: "/#stamp-paper" },
       { label: "₹1,000 non-judicial stamp paper", href: "/#stamp-paper" },
       { label: "₹5,000 non-judicial stamp paper", href: "/#stamp-paper" },
-      { label: "e-Stamp — any value", href: "/#stamp-paper" },
-      { label: "Physical (hard copy) stamp paper", href: "/stamp-paper#physical-or-e-stamp" },
+      { label: "Physical (hard copy) stamp paper", href: "/stamp-paper#physical-stamp-paper" },
       { label: "Non-judicial stamp paper by district", href: "/stamp-paper" },
       { label: "Bulk orders for firms", href: LEAD_ANCHOR },
     ],
@@ -292,7 +291,7 @@ export const PLANS: Array<{
       { label: "Instant PDF download", included: true },
       { label: "Email delivery", included: true },
       { label: "Cloud storage for 12 months", included: true },
-      { label: "e-Stamp paper procured for you", included: false, hint: "You buy the non-judicial stamp paper yourself" },
+      { label: "Non-judicial stamp paper procured for you", included: false, hint: "You buy the stamp paper yourself" },
       { label: "Aadhaar e-Sign for both parties", included: false },
       { label: "Notary attestation", included: false },
       { label: "WhatsApp delivery", included: false },
@@ -304,7 +303,7 @@ export const PLANS: Array<{
     name: "Standard",
     price: CHEAPEST_TEMPLATE_PRICE,
     from: true,
-    tagline: "Everything digital — e-stamped, e-signed, delivered. Nobody visits an office.",
+    tagline: "Stamped, e-signed and delivered. Nobody visits an office.",
     delivery: "Same day, usually under 4 hours",
     recommended: true,
     cta: "Choose Standard",
@@ -314,7 +313,7 @@ export const PLANS: Array<{
       { label: "Instant PDF download", included: true },
       { label: "Email delivery", included: true },
       { label: "Cloud storage, unlimited", included: true },
-      { label: "e-Stamp paper procured for you", included: true, hint: "Duty charged at government rate, no markup" },
+      { label: "Non-judicial stamp paper procured for you", included: true, hint: "Paper charged at its listed rate" },
       { label: "Aadhaar e-Sign for both parties", included: true },
       { label: "Notary attestation", included: false, hint: `Add for ₹${NOTARY_FEE}` },
       { label: "WhatsApp delivery", included: true },
@@ -335,7 +334,7 @@ export const PLANS: Array<{
       { label: "Instant PDF download", included: true },
       { label: "Email delivery", included: true },
       { label: "Cloud storage, unlimited", included: true },
-      { label: "e-Stamp paper procured for you", included: true },
+      { label: "Non-judicial stamp paper procured for you", included: true },
       { label: "Aadhaar e-Sign for both parties", included: true },
       { label: "Notary attestation", included: true, hint: `₹${NOTARY_FEE} notary fee, included in the price` },
       { label: "WhatsApp delivery", included: true },
@@ -382,15 +381,15 @@ export const HOW_IT_WORKS = [
   {
     step: "04",
     title: "We stamp, you sign, we deliver",
-    body: "We procure the e-stamp at the exact government rate and affix it. Both parties e-sign with Aadhaar OTP, the PDF reaches your email and WhatsApp, and the paper copy comes to your door.",
+    body: "We procure the non-judicial stamp paper and print your agreement on it. Both parties e-sign with Aadhaar OTP, the PDF reaches your email and WhatsApp, and the paper copy comes to your door.",
     time: "1 minute",
   },
 ] as const;
 
 export const FEATURES = [
   { icon: "Truck", title: "Delivered to your door", body: "Same day inside Chennai by Porter at cost, ₹100 next day, ₹200 express anywhere in Tamil Nadu and ₹100 in two to three days. Free above ₹2,000 of physical paper." },
-  { icon: "Stamp", title: "Four denominations, always in stock", body: "₹100 paper is ₹120, ₹500 is ₹550, ₹1,000 is ₹1,100 and ₹5,000 is ₹5,500 — the four we carry. Anything needing an exact figure goes on an e-Stamp certificate for any value from ₹1 upward." },
-  { icon: "ShieldCheck", title: "Licensed and verifiable", body: "Procured through authorised vendors and the state e-Stamp channel. Every sheet carries a certificate number you can check yourself." },
+  { icon: "Stamp", title: "Four denominations, always in stock", body: "₹100 paper is ₹120, ₹500 is ₹550, ₹1,000 is ₹1,100 and ₹5,000 is ₹5,500 — the four we carry, combined when a document needs a higher value." },
+  { icon: "ShieldCheck", title: "Licensed and verifiable", body: "Procured through licensed stamp vendors. Every sheet carries a serial number you can check yourself." },
   { icon: "Wand2", title: "Clauses that write themselves", body: "Say the flat is furnished and an inventory clause appears. Allow pets and the pet clause writes itself. No legal drafting required." },
   { icon: "PenTool", title: "Aadhaar e-Sign", body: "Both parties sign with an OTP on their own phone. Legally valid under Section 3A of the Information Technology Act, 2000." },
   { icon: "Scale", title: "Notarised signatures", body: "Signatures on your agreement are attested by a notary public — the standard proof that the parties signed it, and who they were." },
@@ -407,12 +406,12 @@ export const FAQS = [
   {
     category: "Non-judicial stamp paper",
     q: "Which non-judicial stamp paper denominations do you supply?",
-    a: "Physical non-judicial paper in four denominations — ₹100, ₹500, ₹1,000 and ₹5,000 — which covers almost every ordinary transaction. ₹100 is the smallest sheet we carry, so an affidavit or a bond that would once have gone on ₹20 or ₹50 paper is executed on ₹100. Where the duty payable is a specific figure — a lease deed, a sale agreement, a mortgage — we issue an e-Stamp certificate for that exact amount instead, from ₹1 upward with no practical ceiling.",
+    a: "Physical non-judicial paper in four denominations — ₹100, ₹500, ₹1,000 and ₹5,000 — which covers almost every ordinary transaction. ₹100 is the smallest sheet we carry, so an affidavit or a bond that would once have gone on ₹20 or ₹50 paper is executed on ₹100. Where the duty payable is a larger figure — a lease deed, a sale agreement, a mortgage — we combine sheets to cover it and tell you the combination before you order.",
   },
   {
     category: "Non-judicial stamp paper",
-    q: "Do you deliver physical stamp paper, or only e-Stamps?",
-    a: "Both. The ₹100, ₹500, ₹1,000 and ₹5,000 sheets are physical non-judicial stamp paper — the original, government-issued hard copy — and a rider brings them to your door. An e-Stamp is a certificate for an exact amount of duty, and it is emailed instead. Most rent agreements and affidavits in Tamil Nadu still go on the physical sheet; tell us what you are executing and we will say which one it needs before you order.",
+    q: "Is the stamp paper you deliver a physical sheet?",
+    a: "Yes. Everything we supply is physical non-judicial stamp paper — the original, government-issued hard copy in ₹100, ₹500, ₹1,000 and ₹5,000 — and a rider brings it to your door. Most rent agreements and affidavits in Tamil Nadu go on a ₹100 sheet; tell us what you are executing and we will say which denomination it needs before you order.",
   },
   {
     category: "Non-judicial stamp paper",
@@ -422,12 +421,12 @@ export const FAQS = [
   {
     category: "Non-judicial stamp paper",
     q: "What does a sheet of non-judicial stamp paper actually cost?",
-    a: "The face value plus a procurement charge, and we print both so you can see the difference. ₹100 paper is ₹120, ₹500 is ₹550, ₹1,000 is ₹1,100 and ₹5,000 is ₹5,500 — that is for a blank, unprinted sheet. Delivery is charged separately and stated before you confirm: ₹100 next day in Chennai, ₹200 express anywhere in Tamil Nadu, ₹100 for two to three days, and same day in Chennai by Porter at Porter's own fare. Delivery is free above ₹2,000 of physical paper and free everywhere on ten sheets or more — an e-Stamp is emailed rather than delivered, so its value does not count towards that. Government stamp duty on an e-Stamp is a separate thing and passes through at cost with nothing added.",
+    a: "The face value plus a procurement charge, and we print both so you can see the difference. ₹100 paper is ₹120, ₹500 is ₹550, ₹1,000 is ₹1,100 and ₹5,000 is ₹5,500 — that is for a blank, unprinted sheet. Delivery is charged separately and stated before you confirm: ₹100 next day in Chennai, ₹200 express anywhere in Tamil Nadu, ₹100 for two to three days, and same day in Chennai by Porter at Porter's own fare. Delivery is free above ₹2,000 of physical paper and free everywhere on ten sheets or more.",
   },
   {
     category: "Non-judicial stamp paper",
     q: "Which denomination do I need for a rental agreement?",
-    a: "In practice most 11-month residential agreements in Tamil Nadu are executed on ₹100 non-judicial stamp paper. Strictly, duty under Article 35 is 1% of the total rent across the term plus the deposit, and for a 12-month-or-longer agreement that has to be paid in full through an e-Stamp. Tell us the rent, deposit and duration and we will tell you which applies to you before you order.",
+    a: "In practice most 11-month residential agreements in Tamil Nadu are executed on ₹100 non-judicial stamp paper. Strictly, duty under Article 35 is 1% of the total rent across the term plus the deposit, and for a 12-month-or-longer agreement the stamp paper has to cover that full amount. Tell us the rent, deposit and duration and we will tell you which applies to you before you order.",
   },
   {
     category: "Non-judicial stamp paper",
@@ -437,7 +436,7 @@ export const FAQS = [
   {
     category: "Non-judicial stamp paper",
     q: "Is the non-judicial stamp paper you supply genuine?",
-    a: "Yes. Everything is procured through licensed stamp vendors and the state's authorised e-Stamping channel. Each sheet or certificate carries a serial or certificate number you can verify yourself against the Registration Department's records — we print it on your invoice so you can check without asking us.",
+    a: "Yes. Everything is procured through licensed stamp vendors. Each sheet carries a serial number you can verify yourself against the Registration Department's records — we print it on your invoice so you can check without asking us.",
   },
   {
     category: "Non-judicial stamp paper",
@@ -457,7 +456,7 @@ export const FAQS = [
   {
     category: "Delivery",
     q: "What if I need it today and I am not in Chennai?",
-    a: "Call us before you order. Depending on the district and the time of day we can sometimes arrange same-day through a local partner, and if we cannot we will say so straight away rather than take the order and disappoint you. An e-Stamp certificate, where your instrument allows one, reaches you by email in minutes.",
+    a: "Call us before you order. Depending on the district and the time of day we can sometimes arrange same-day through a local partner, and if we cannot we will say so straight away rather than take the order and disappoint you.",
   },
   {
     category: "Delivery",
@@ -467,7 +466,7 @@ export const FAQS = [
   {
     category: "Legal validity",
     q: "Is an agreement made on LP Stamp Paper legally valid?",
-    a: "Yes. Your agreement is drafted on a Tamil Nadu compliant template, e-stamped with duty paid to the Government of Tamil Nadu, and signed using Aadhaar e-Sign, which has the same legal effect as a handwritten signature under Section 3A of the Information Technology Act, 2000. It is admissible in evidence in the same way as a paper agreement.",
+    a: "Yes. Your agreement is drafted on a Tamil Nadu compliant template, printed on non-judicial stamp paper with duty paid to the Government of Tamil Nadu, and signed using Aadhaar e-Sign, which has the same legal effect as a handwritten signature under Section 3A of the Information Technology Act, 2000. It is admissible in evidence in the same way as a paper agreement.",
   },
   {
     category: "Legal validity",
@@ -482,7 +481,7 @@ export const FAQS = [
   {
     category: "Legal validity",
     q: "Do I have to have my affidavit notarised?",
-    a: "Yes, and we do not offer it any other way. An affidavit is a sworn statement — until a notary public administers the oath and attests it, it is an unsigned-under-oath piece of paper, and the court, registrar, passport office, bank or college that asked for it will hand it straight back. So attestation is built into the price of every affidavit rather than offered as an extra. On a rental agreement, a lease, a sale or a licence it is genuinely optional: those are valid once executed and e-stamped, and notarisation only adds further proof of who signed. There it stays a tick box.",
+    a: "Yes, and we do not offer it any other way. An affidavit is a sworn statement — until a notary public administers the oath and attests it, it is an unsigned-under-oath piece of paper, and the court, registrar, passport office, bank or college that asked for it will hand it straight back. So attestation is built into the price of every affidavit rather than offered as an extra. On a rental agreement, a lease, a sale or a licence it is genuinely optional: those are valid once executed on stamp paper, and notarisation only adds further proof of who signed. There it stays a tick box.",
   },
   {
     category: "Stamp duty",
@@ -502,7 +501,7 @@ export const FAQS = [
   {
     category: "Process",
     q: "How long does the whole thing actually take?",
-    a: "Filling the form takes most people six to ten minutes. Once we have confirmed your order on the phone, the e-stamped, e-signed PDF is usually with you within four hours of both parties completing their OTP. Notary attestation adds up to 24 hours.",
+    a: "Filling the form takes most people six to ten minutes. Once we have confirmed your order on the phone, the stamped, e-signed PDF is usually with you within four hours of both parties completing their OTP. Notary attestation adds up to 24 hours.",
   },
   {
     category: "Process",
@@ -512,7 +511,7 @@ export const FAQS = [
   {
     category: "Process",
     q: "Can I edit the agreement after I have paid?",
-    a: "You can edit freely until the e-stamp is affixed. Once the stamp is on the instrument, the document is fixed — that is a legal constraint, not a product one. If something is wrong after stamping, contact support within 48 hours and we will re-issue at cost.",
+    a: "You can edit freely until the agreement is printed on the stamp paper. Once it is, the document is fixed — that is a legal constraint, not a product one. If something is wrong after stamping, contact support within 48 hours and we will re-issue at cost.",
   },
   {
     category: "Delivery",
@@ -532,7 +531,7 @@ export const FAQS = [
   {
     category: "Refunds",
     q: "What is your refund policy?",
-    a: "Full refund if you cancel before the e-stamp is procured — no questions, no forms. After the e-stamp is procured, the government duty is non-refundable because it has already been paid to the state, but we refund our platform fee in full if the fault is ours. Refunds reach your account in five to seven working days.",
+    a: "Full refund if you cancel before the stamp paper is procured — no questions, no forms. After the stamp paper is procured, its value is non-refundable because it has already been paid to the state, but we refund our platform fee in full if the fault is ours. Refunds reach your account in five to seven working days.",
   },
   {
     category: "Support",

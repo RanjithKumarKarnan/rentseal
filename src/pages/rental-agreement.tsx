@@ -27,7 +27,7 @@ export default function RentalAgreementIndex() {
         icon={FileStack}
         crumbs={crumbs}
         title="Rent agreements online, district by district across Tamil Nadu"
-        body={`We draft, e-stamp and e-sign rental agreements in all ${DISTRICTS.length} districts of the state. Each district page carries its own Sub-Registrar Offices, the towns we deliver to, and the delivery promise that applies there.`}
+        body={`We draft, stamp and e-sign rental agreements in all ${DISTRICTS.length} districts of the state. Each district page carries its own Sub-Registrar Offices, the towns we deliver to, and the delivery promise that applies there.`}
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <ButtonLink href={BUILDER_START} size="lg" className="group">

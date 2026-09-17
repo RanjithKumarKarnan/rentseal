@@ -123,8 +123,8 @@ export function agreementRow(draft: AgreementDraft, notes = ""): OrderRow {
     stampPaperCombo: describeSheets(draft.options.stampPaperSheets),
     stampPaperFee: String(breakdown.stampPaperFee),
     extraPageFee: String(breakdown.extraPageFee),
-    // Where the physical paper ships. Blank on an e-Stamp; the office falls back
-    // to the property address if the customer left it empty.
+    // Where the physical paper ships. The office falls back to the property
+    // address if the customer left it empty.
     shippingAddress: draft.options.shippingAddress || (draft.options.stampPaperSheets.length ? propertyAddress(draft) : ""),
     documentPages: String(draft.options.documentPages),
     // platformFee includes the document's own price; the email lists that

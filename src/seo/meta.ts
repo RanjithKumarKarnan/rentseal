@@ -56,7 +56,7 @@ export interface RouteHead {
 const SOCIAL_TITLE = `${SITE.name} — Non-judicial stamp paper and rental agreements for Tamil Nadu`;
 
 /** For pages that set no title of their own. */
-const DEFAULT_TITLE = `${SITE.name} — Rental Agreement Online in Tamil Nadu | e-Stamp & e-Sign`;
+const DEFAULT_TITLE = `${SITE.name} — Rental Agreement Online in Tamil Nadu | Stamp Paper & e-Sign`;
 
 export const SITE_META: PageMeta = {
   description: SITE.description,
@@ -80,13 +80,11 @@ export const SITE_META: PageMeta = {
     "stamp paper for rent agreement",
     "stamp paper for affidavit",
     "500 rupees stamp paper",
-    "e-stamp vs physical stamp paper",
     "buy stamp paper online Tamil Nadu",
     "stamp paper home delivery Chennai",
     "stamp paper online Chennai",
     "100 rupees stamp paper",
     "bond paper Chennai",
-    "e-stamp paper Chennai",
     "stamp paper Mogappair",
     "stamp paper Anna Nagar",
     "rent agreement Chennai",
@@ -100,14 +98,13 @@ export const SITE_META: PageMeta = {
     "rental agreement Tamil Nadu",
     "rental agreement Chennai",
     "online rent agreement Coimbatore",
-    "e-stamp rental agreement",
+    "rent agreement on stamp paper",
     "lease agreement Tamil Nadu",
     "leave and license agreement",
     "commercial rental agreement Chennai",
     "11 month rental agreement",
     "non judicial stamp paper Chennai",
     "non-judicial stamp paper Tamil Nadu",
-    "e-stamp paper Tamil Nadu",
     "affidavit format Tamil Nadu",
   ],
   alternates: { canonical: "/" },

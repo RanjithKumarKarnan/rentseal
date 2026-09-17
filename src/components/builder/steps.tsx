@@ -612,7 +612,7 @@ export function TermsStep() {
             help={
               t.durationMonths >= 12
                 ? "12 months or more — registration at the Sub-Registrar Office becomes compulsory."
-                : "Under 12 months — no registration required, only e-stamping."
+                : "Under 12 months — no registration required, only stamp paper."
             }
           >
             {(id) => (

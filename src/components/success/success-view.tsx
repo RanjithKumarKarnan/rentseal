@@ -44,8 +44,8 @@ const PIPELINE = [
   {
     id: "stamp",
     icon: Stamp,
-    title: "e-Stamp procured and affixed",
-    body: "Duty remitted to the Government of Tamil Nadu. Certificate attached to page 1.",
+    title: "Stamp paper procured",
+    body: "Non-judicial stamp paper bought from a licensed vendor, with duty going to the Government of Tamil Nadu.",
     ms: 3000,
   },
   {

@@ -16,10 +16,6 @@ import { sheetsPrice } from "./stamp-paper";
  *   - A soft copy is a scan. There is no sheet, so there is no stamp charge —
  *     only the ₹10 a page for producing it. It is charged once however many
  *     people it is sent to, because a file is not a thing you make twice.
- *
- * On an e-Stamp there is no shelf price for the sheet, so a printed copy is the
- * per-page charge alone. The certificate itself is issued for the exact duty
- * and that is already in the quote.
  */
 
 /** Rupees per page, for a printed copy or a soft one. */

@@ -3,8 +3,8 @@
  * location page on the site.
  *
  * Two page families are generated from this list:
- *   /rental-agreement/[district]   — agreement drafting, e-stamping, e-signing
- *   /stamp-paper/[district]        — non-judicial paper and e-Stamp delivery
+ *   /rental-agreement/[district]   — agreement drafting, stamping, e-signing
+ *   /stamp-paper/[district]        — non-judicial stamp paper delivery
  *
  * `zone` ties a district to a DELIVERY_ZONE in ./stamp-paper.ts, so ETA and
  * delivery charge on a location page always match the coverage section on the
@@ -871,11 +871,11 @@ export function rentalFaqs(d: District): Faq[] {
   return [
     {
       q: `Is an online rental agreement legally valid in ${d.name}?`,
-      a: `Yes. The agreement is drafted on a Tamil Nadu compliant template, e-stamped with duty paid to the Government of Tamil Nadu, and signed using Aadhaar e-Sign — which has the same legal effect as a handwritten signature under Section 3A of the Information Technology Act, 2000. It is admissible in evidence in ${d.name} exactly as a paper agreement would be. Nothing about the district changes its validity.`,
+      a: `Yes. The agreement is drafted on a Tamil Nadu compliant template, printed on non-judicial stamp paper with duty paid to the Government of Tamil Nadu, and signed using Aadhaar e-Sign — which has the same legal effect as a handwritten signature under Section 3A of the Information Technology Act, 2000. It is admissible in evidence in ${d.name} exactly as a paper agreement would be. Nothing about the district changes its validity.`,
     },
     {
       q: `Do I have to visit a Sub-Registrar Office in ${d.name}?`,
-      a: `Not for an 11-month agreement — e-stamping alone makes it valid in evidence, and the whole thing happens online. Registration only becomes compulsory once the term reaches 12 months, under Section 17(1)(d) of the Registration Act, 1908. If that applies to you, ${d.name} has Sub-Registrar Offices at ${d.sroTowns.slice(0, 4).join(", ")}${d.sroTowns.length > 4 ? " and other taluk headquarters" : ""}, and we book the slot at whichever one has jurisdiction over your property.`,
+      a: `Not for an 11-month agreement — properly stamped non-judicial stamp paper alone makes it valid in evidence, and the rest happens online. Registration only becomes compulsory once the term reaches 12 months, under Section 17(1)(d) of the Registration Act, 1908. If that applies to you, ${d.name} has Sub-Registrar Offices at ${d.sroTowns.slice(0, 4).join(", ")}${d.sroTowns.length > 4 ? " and other taluk headquarters" : ""}, and we book the slot at whichever one has jurisdiction over your property.`,
     },
     {
       q: `How much stamp duty will I pay on a rental agreement in ${d.name}?`,
@@ -902,11 +902,11 @@ export function stampPaperFaqs(d: District): Faq[] {
   return [
     {
       q: `How fast is non-judicial stamp paper delivered in ${d.name}?`,
-      a: `${d.name} is in our ${zone.label.toLowerCase()} zone, so non-judicial stamp paper reaches you ${zone.eta.toLowerCase()}${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}. Delivery is ₹${zone.charge}, and free once the physical paper in your order crosses ₹2,000 or ten sheets. An e-Stamp certificate, where your instrument allows one, is emailed within minutes — nothing is delivered, so its value does not count towards that free-delivery threshold.`,
+      a: `${d.name} is in our ${zone.label.toLowerCase()} zone, so non-judicial stamp paper reaches you ${zone.eta.toLowerCase()}${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}. Delivery is ₹${zone.charge}, and free once the physical paper in your order crosses ₹2,000 or ten sheets.`,
     },
     {
-      q: `Do you deliver physical stamp paper in ${d.name}, or only e-Stamps?`,
-      a: `Both. The ₹100, ₹500, ₹1,000 and ₹5,000 sheets are physical non-judicial stamp paper — the original hard copy — delivered to your door in ${d.name} ${zone.eta.toLowerCase()}. An e-Stamp certificate for an exact amount of duty is emailed instead. Tell us what you are executing and we will say which one it needs before you order.`,
+      q: `Is the stamp paper you deliver in ${d.name} a physical sheet?`,
+      a: `Yes. The ₹100, ₹500, ₹1,000 and ₹5,000 sheets are physical non-judicial stamp paper — the original hard copy — delivered to your door in ${d.name} ${zone.eta.toLowerCase()}. Tell us what you are executing and we will say which denomination it needs before you order.`,
     },
     {
       q: `Do you charge more than the printed value in ${d.name}?`,
@@ -914,11 +914,11 @@ export function stampPaperFaqs(d: District): Faq[] {
     },
     {
       q: `Which denomination do I need?`,
-      a: `Most 11-month rental agreements in Tamil Nadu are executed on ₹100 paper, and so are affidavits, declarations and indemnity bonds — ₹100 is the smallest sheet we carry. Partnership and commercial deeds go on ₹500, and we stock ₹1,000 and ₹5,000 above that. Where the duty payable is a specific figure — a lease deed, sale agreement or mortgage — only an e-Stamp certificate for that exact amount will do. Tell us what you are executing and we will tell you which applies before you order.`,
+      a: `Most 11-month rental agreements in Tamil Nadu are executed on ₹100 paper, and so are affidavits, declarations and indemnity bonds — ₹100 is the smallest sheet we carry. Partnership and commercial deeds go on ₹500, and we stock ₹1,000 and ₹5,000 above that. Where the duty payable is a larger figure — a lease deed, sale agreement or mortgage — we combine sheets to cover it. Tell us what you are executing and we will tell you which applies before you order.`,
     },
     {
       q: `Is the non-judicial stamp paper you deliver in ${d.name} genuine?`,
-      a: `Yes. Everything is procured through licensed stamp vendors and the state's authorised e-Stamping channel. Each sheet or certificate carries a serial number you can verify yourself against the Registration Department's records, and we print that number on your invoice so you can check without having to ask us.`,
+      a: `Yes. Everything is procured through licensed stamp vendors. Each sheet carries a serial number you can verify yourself against the Registration Department's records, and we print that number on your invoice so you can check without having to ask us.`,
     },
     {
       q: `Where in ${d.name} do you deliver?`,

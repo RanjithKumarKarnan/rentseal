@@ -15,7 +15,8 @@ import {
 import { ButtonLink } from "@/components/ui/button";
 import { Badge } from "@/components/ui/card";
 import { BUILDER_START, LEAD_ANCHOR } from "@/lib/site";
-import { cn } from "@/lib/utils";
+import { CHEAPEST_TEMPLATE_PRICE } from "@/lib/template-prices";
+import { cn, inr } from "@/lib/utils";
 import { StampBackdrop } from "./stamp-backdrop";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -52,7 +53,7 @@ function AgreementMock() {
       {/* title block */}
       <div className="text-center">
         <p className="text-[9px] font-bold tracking-[0.22em] text-navy-400 uppercase">
-          Government of Tamil Nadu · e-Stamp
+          Government of Tamil Nadu · Non-Judicial
         </p>
         {/* Set as text, not a heading. It is the title printed on a drawing
             of an agreement, and marking it up as h3 put a level-three heading
@@ -149,7 +150,7 @@ function AgreementMock() {
             <div>
               <BadgeCheck className="mx-auto size-4 text-emerald-600" />
               <p className="mt-0.5 text-[7px] font-bold tracking-[0.1em] text-emerald-700 uppercase">
-                e-Stamped
+                Stamped
               </p>
               <p className="text-[6.5px] font-semibold text-emerald-600/80">TN · ₹3,200</p>
             </div>
@@ -263,7 +264,7 @@ export function Hero() {
             >
               Order licensed non-judicial stamp paper online — the physical, hard copy sheet,
               from ₹120 — with home delivery anywhere in Tamil Nadu, same day in Chennai. And when you need a rent
-              agreement or affidavit too, we draft it from ₹300, print it on the paper, get it
+              agreement or affidavit too, we draft it from {inr(CHEAPEST_TEMPLATE_PRICE)}, print it on the paper, get it
               attested and bring both to you, without you visiting a single office.
             </motion.p>
 
@@ -340,7 +341,7 @@ export function Hero() {
                   </p>
                   <p className="mt-1 text-[13px] leading-relaxed text-navy-500">
                     Stamp duty is paid in full to the Government of Tamil Nadu, and every sheet
-                    and e-Stamp carries a number you can verify against the Registration
+                    carries a number you can verify against the Registration
                     Department&apos;s own records. We print it on your invoice.
                   </p>
                 </div>
@@ -368,8 +369,8 @@ export function Hero() {
                 className="-top-6 -left-8 lg:-left-14"
                 delay={1.2}
                 icon={Stamp}
-                title="e-Stamp affixed"
-                sub="₹3,200 paid to Govt. of TN"
+                title="Stamp paper attached"
+                sub="₹100 non-judicial sheet"
                 tint="bg-brand-600"
               />
               <FloatChip

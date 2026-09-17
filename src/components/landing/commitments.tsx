@@ -23,7 +23,7 @@ const COMMITMENTS = [
   {
     icon: BadgeCheck,
     title: "Every certificate is verifiable",
-    body: "Each sheet and e-Stamp carries a serial number you can check against the Registration Department's records. We print it on your invoice so you can verify us without asking us.",
+    body: "Each sheet carries a serial number you can check against the Registration Department's records. We print it on your invoice so you can verify us without asking us.",
   },
   {
     icon: Scale,
@@ -38,7 +38,7 @@ const COMMITMENTS = [
   {
     icon: RefreshCw,
     title: "Refunds without a process",
-    body: "Cancel before the e-stamp is procured and you get everything back — no form, no questions. After that, the government duty is genuinely gone, but our fee comes back in full if the fault is ours.",
+    body: "Cancel before the stamp paper is procured and you get everything back — no form, no questions. After that, the paper's value is genuinely gone, but our fee comes back in full if the fault is ours.",
   },
   {
     icon: ShieldCheck,

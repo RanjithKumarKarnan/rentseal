@@ -8,6 +8,9 @@ import type { TemplateId } from "./agreement-templates";
  * to the catalogue and forget to price it, and the build fails here rather than
  * the card rendering a blank where the price should be.
  *
+ * No document drafts for less than MINIMUM_DRAFT_PRICE — the client's floor of
+ * 17 September 2026. The Tamil loan bond, listed at ₹300, was raised to it.
+ *
  * This is the drafting fee alone. Stamp paper, notary attestation and delivery
  * are quoted on top, each from its own list — see stamp-paper.ts and notary.ts.
  */
@@ -82,7 +85,7 @@ export const TEMPLATE_PRICES: Record<TemplateId, number> = {
   "ta-house-lease": 350,
   "ta-general-lease": 350,
   "ta-rent-renewal": 350,
-  "ta-loan": 300,
+  "ta-loan": 350,
   "ta-mortgage-loan": 350,
   "ta-sale-agreement": 700,
   "ta-absolute-sale": 700,
@@ -94,10 +97,16 @@ export const TEMPLATE_PRICES: Record<TemplateId, number> = {
   "ta-business-advance": 500,
 };
 
-/** The drafting fee for a template. */
+/** The least any document costs to draft. */
+export const MINIMUM_DRAFT_PRICE = 350;
+
+/** The drafting fee for a template, never below the floor. */
 export function templatePrice(id: TemplateId): number {
-  return TEMPLATE_PRICES[id];
+  return Math.max(MINIMUM_DRAFT_PRICE, TEMPLATE_PRICES[id]);
 }
 
-/** Cheapest document on the list, for "from ₹300" copy. */
-export const CHEAPEST_TEMPLATE_PRICE = Math.min(...Object.values(TEMPLATE_PRICES));
+/** Cheapest document on the list, for "from ₹350" copy. */
+export const CHEAPEST_TEMPLATE_PRICE = Math.max(
+  MINIMUM_DRAFT_PRICE,
+  Math.min(...Object.values(TEMPLATE_PRICES)),
+);

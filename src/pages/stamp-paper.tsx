@@ -28,7 +28,6 @@ export const meta: PageMeta = {
     "hard copy stamp paper",
     "hard copy stamp paper online",
     "original stamp paper",
-    "e-stamp vs physical stamp paper",
     "buy stamp paper online",
     "stamp paper online Tamil Nadu",
     "stamp paper home delivery",
@@ -40,7 +39,6 @@ export const meta: PageMeta = {
     "stamp paper for rent agreement",
     "stamp paper for affidavit",
     "bond paper",
-    "e-stamp paper Tamil Nadu",
   ],
 };
 

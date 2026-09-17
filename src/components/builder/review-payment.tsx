@@ -187,10 +187,9 @@ function SendBlock({
 }) {
   const { draft, setPlan, update } = useAgreement();
 
-  // The paper is a combination of sheets now — one, several, or none (e-Stamp).
-  // stampPaperValue is kept in step as the first sheet so older readers work.
+  // The paper is a combination of one or more sheets. stampPaperValue is kept
+  // in step as the first sheet so older readers work.
   const sheets = draft.options.stampPaperSheets;
-  const isEStamp = sheets.length === 0;
   const [addValue, setAddValue] = useState<number>(500);
   const setSheets = (next: number[]) =>
     update({ options: { stampPaperSheets: next, stampPaperValue: next[0] ?? 0 } });
@@ -330,8 +329,8 @@ function SendBlock({
 
           Chosen as a combination rather than a single value: the duty may be met
           by two ₹100 sheets or a ₹500 and a ₹100 together, so sheets are added
-          and removed one at a time and the charge sums across them. The e-Stamp
-          is the empty combination — one certificate for the exact duty, emailed.
+          and removed one at a time and the charge sums across them. There is
+          always at least one: the office sells physical paper only.
         */}
         <div className="rounded-2xl border border-line bg-white p-5">
           <h3 className="text-[14px] font-bold text-navy-950">Non-judicial stamp paper</h3>
@@ -340,104 +339,58 @@ function SendBlock({
             value — two ₹100 sheets, or a ₹500 and a ₹100 together.
           </p>
 
-          <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
-            <button
-              type="button"
-              onClick={() => {
-                if (isEStamp) setSheets([100]);
-              }}
-              className={cn(
-                "rounded-xl border p-4 text-left transition-all duration-200",
-                !isEStamp
-                  ? "border-brand-600 bg-brand-50/60 shadow-[0_0_0_3px_rgb(37_99_235/0.10)]"
-                  : "border-line bg-white hover:border-navy-300",
-              )}
-            >
-              <span className={cn("text-[14px] font-bold", !isEStamp ? "text-brand-800" : "text-navy-900")}>
-                Physical non-judicial stamp paper
-              </span>
-              <span className="mt-0.5 block text-[12.5px] leading-snug text-navy-500">
-                Delivered to your door. ₹100, ₹500, ₹1,000, ₹5,000 — combine as needed.
-              </span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setSheets([])}
-              className={cn(
-                "rounded-xl border p-4 text-left transition-all duration-200",
-                isEStamp
-                  ? "border-brand-600 bg-brand-50/60 shadow-[0_0_0_3px_rgb(37_99_235/0.10)]"
-                  : "border-line bg-white hover:border-navy-300",
-              )}
-            >
-              <span className={cn("text-[14px] font-bold", isEStamp ? "text-brand-800" : "text-navy-900")}>
-                e-Stamp — any value
-              </span>
-              <span className="mt-0.5 block text-[12.5px] leading-snug text-navy-500">
-                Emailed as a certificate for the exact duty. Nothing to deliver.
-              </span>
-            </button>
-          </div>
-
-          {isEStamp ? (
-            <p className="mt-4 rounded-xl border border-brand-200 bg-brand-50/60 px-4 py-3 text-[12.5px] leading-relaxed text-brand-800">
-              An e-Stamp is issued for the exact duty payable and emailed to you — there is no sheet
-              to buy or deliver, and its cost is the duty itself.
-            </p>
-          ) : (
-            <div className="mt-4 space-y-2.5">
-              {sheets.map((v, i) => {
-                const label = DENOMINATIONS.find((d) => d.value === v)?.label ?? `₹${v}`;
-                return (
-                  <div
-                    key={`${v}-${i}`}
-                    className="flex items-center justify-between gap-3 rounded-xl border border-line bg-canvas px-4 py-3"
-                  >
-                    <span className="text-[13.5px] font-semibold text-navy-900">
-                      {label} non-judicial stamp paper
-                    </span>
-                    <span className="flex items-center gap-3">
-                      <span className="tnum text-[13.5px] font-semibold text-navy-950">
-                        {inr(stampPaperPrice(v)?.price ?? 0)}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => setSheets(sheets.filter((_, n) => n !== i))}
-                        disabled={sheets.length <= 1}
-                        aria-label={`Remove one ${label} sheet`}
-                        className="grid size-8 shrink-0 place-items-center rounded-lg border border-line bg-white text-navy-400 transition-colors hover:border-rose-300 hover:bg-rose-50 hover:text-rose-600 disabled:pointer-events-none disabled:opacity-40"
-                      >
-                        <X className="size-4" />
-                      </button>
-                    </span>
-                  </div>
-                );
-              })}
-
-              <div className="flex flex-wrap items-center gap-2.5 pt-1">
-                <Select
-                  aria-label="Denomination to add"
-                  value={String(addValue)}
-                  onChange={(e) => setAddValue(Number(e.target.value))}
-                  className="w-auto min-w-[9.5rem]"
+          <div className="mt-4 space-y-2.5">
+            {sheets.map((v, i) => {
+              const label = DENOMINATIONS.find((d) => d.value === v)?.label ?? `₹${v}`;
+              return (
+                <div
+                  key={`${v}-${i}`}
+                  className="flex items-center justify-between gap-3 rounded-xl border border-line bg-canvas px-4 py-3"
                 >
-                  {PRICED_DENOMINATIONS.map((d) => (
-                    <option key={d.value} value={d.value}>
-                      {d.label} — {inr(d.price)}
-                    </option>
-                  ))}
-                </Select>
-                <Button variant="secondary" size="sm" onClick={() => setSheets([...sheets, addValue])}>
-                  <Plus className="size-4" />
-                  Add a sheet
-                </Button>
-                <span className="ml-auto text-[13px] text-navy-500">
-                  Paper total{" "}
-                  <span className="tnum font-semibold text-navy-950">{inr(sheetsPrice(sheets))}</span>
-                </span>
-              </div>
+                  <span className="text-[13.5px] font-semibold text-navy-900">
+                    {label} non-judicial stamp paper
+                  </span>
+                  <span className="flex items-center gap-3">
+                    <span className="tnum text-[13.5px] font-semibold text-navy-950">
+                      {inr(stampPaperPrice(v)?.price ?? 0)}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setSheets(sheets.filter((_, n) => n !== i))}
+                      disabled={sheets.length <= 1}
+                      aria-label={`Remove one ${label} sheet`}
+                      className="grid size-8 shrink-0 place-items-center rounded-lg border border-line bg-white text-navy-400 transition-colors hover:border-rose-300 hover:bg-rose-50 hover:text-rose-600 disabled:pointer-events-none disabled:opacity-40"
+                    >
+                      <X className="size-4" />
+                    </button>
+                  </span>
+                </div>
+              );
+            })}
+
+            <div className="flex flex-wrap items-center gap-2.5 pt-1">
+              <Select
+                aria-label="Denomination to add"
+                value={String(addValue)}
+                onChange={(e) => setAddValue(Number(e.target.value))}
+                className="w-auto min-w-[9.5rem]"
+              >
+                {PRICED_DENOMINATIONS.map((d) => (
+                  <option key={d.value} value={d.value}>
+                    {d.label} — {inr(d.price)}
+                  </option>
+                ))}
+              </Select>
+              <Button variant="secondary" size="sm" onClick={() => setSheets([...sheets, addValue])}>
+                <Plus className="size-4" />
+                Add a sheet
+              </Button>
+              <span className="ml-auto text-[13px] text-navy-500">
+                Paper total{" "}
+                <span className="tnum font-semibold text-navy-950">{inr(sheetsPrice(sheets))}</span>
+              </span>
             </div>
-          )}
+          </div>
         </div>
 
         {/* How many sheets the finished deed runs to — drives the printing
@@ -466,40 +419,37 @@ function SendBlock({
           </Field>
         </div>
 
-        {/* Where the physical paper is delivered. An e-Stamp is emailed, so this
-            only appears when there is a sheet to send. */}
-        {!isEStamp ? (
-          <div className="rounded-2xl border border-line bg-white p-5">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <h3 className="flex items-center gap-2 text-[14px] font-bold text-navy-950">
-                <MapPin className="size-4 text-navy-500" />
-                Where should we deliver the non-judicial stamp paper?
-              </h3>
-              {propertyAddress(draft) &&
-              draft.options.shippingAddress.trim() !== propertyAddress(draft) ? (
-                <button
-                  type="button"
-                  onClick={() => update({ options: { shippingAddress: propertyAddress(draft) } })}
-                  className="text-[12.5px] font-semibold text-brand-700 underline underline-offset-4"
-                >
-                  Same as property address
-                </button>
-              ) : null}
-            </div>
-            <div className="mt-3">
-              <Textarea
-                rows={2}
-                value={draft.options.shippingAddress}
-                onChange={(e) => update({ options: { shippingAddress: e.target.value } })}
-                placeholder="Door no, street, locality, city, PIN — where the rider should deliver"
-              />
-            </div>
-            <p className="mt-2 text-[12px] leading-relaxed text-navy-400">
-              Delivery is quoted on the confirming call — same day in Chennai by Porter, ₹100–₹200
-              elsewhere in Tamil Nadu.
-            </p>
+        {/* Where the physical paper is delivered. */}
+        <div className="rounded-2xl border border-line bg-white p-5">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h3 className="flex items-center gap-2 text-[14px] font-bold text-navy-950">
+              <MapPin className="size-4 text-navy-500" />
+              Where should we deliver the non-judicial stamp paper?
+            </h3>
+            {propertyAddress(draft) &&
+            draft.options.shippingAddress.trim() !== propertyAddress(draft) ? (
+              <button
+                type="button"
+                onClick={() => update({ options: { shippingAddress: propertyAddress(draft) } })}
+                className="text-[12.5px] font-semibold text-brand-700 underline underline-offset-4"
+              >
+                Same as property address
+              </button>
+            ) : null}
           </div>
-        ) : null}
+          <div className="mt-3">
+            <Textarea
+              rows={2}
+              value={draft.options.shippingAddress}
+              onChange={(e) => update({ options: { shippingAddress: e.target.value } })}
+              placeholder="Door no, street, locality, city, PIN — where the rider should deliver"
+            />
+          </div>
+          <p className="mt-2 text-[12px] leading-relaxed text-navy-400">
+            Delivery is quoted on the confirming call — same day in Chennai by Porter, ₹100–₹200
+            elsewhere in Tamil Nadu.
+          </p>
+        </div>
 
         {/*
           Extra copies.
@@ -527,28 +477,13 @@ function SendBlock({
                 <p className="mt-0.5 text-[12.5px] leading-relaxed text-navy-500">
                   Each one is executed again on its own non-judicial stamp paper, so each carries the
                   sheet a second time plus {inr(COPY_PAGE_FEE)} a page for printing.
-                  {!isEStamp ? (
-                    <>
-                      {" "}
-                      On {inr(sheetsPrice(sheets))} of paper over{" "}
-                      {draft.options.documentPages} page
-                      {draft.options.documentPages === 1 ? "" : "s"}, that is{" "}
-                      <span className="font-semibold text-navy-800">
-                        {inr(printedCopyUnitPrice(draft.options.documentPages, sheets))} a copy
-                      </span>
-                      .
-                    </>
-                  ) : (
-                    <>
-                      {" "}
-                      You have chosen an e-Stamp, which has no sheet to buy again, so a
-                      printed copy is the {inr(COPY_PAGE_FEE)} a page alone —{" "}
-                      <span className="font-semibold text-navy-800">
-                        {inr(printedCopyUnitPrice(draft.options.documentPages, sheets))} a copy
-                      </span>
-                      .
-                    </>
-                  )}
+                  {" "}
+                  On {inr(sheetsPrice(sheets))} of paper over {draft.options.documentPages} page
+                  {draft.options.documentPages === 1 ? "" : "s"}, that is{" "}
+                  <span className="font-semibold text-navy-800">
+                    {inr(printedCopyUnitPrice(draft.options.documentPages, sheets))} a copy
+                  </span>
+                  .
                 </p>
               </div>
               <Stepper

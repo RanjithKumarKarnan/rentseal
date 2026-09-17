@@ -10,7 +10,7 @@ import { SITE } from "@/lib/site";
 export const meta: PageMeta = {
   title: "Rent Agreement & Stamp Paper Prices",
   description:
-    "Rent agreements and deeds from ₹300, non-judicial stamp paper from ₹120. Stamp duty passed through at government rate; GST on our fee alone.",
+    "Rent agreements and deeds from ₹350, non-judicial stamp paper from ₹120. Stamp duty passed through at government rate; GST on our fee alone.",
   alternates: { canonical: "/pricing" },
 };
 

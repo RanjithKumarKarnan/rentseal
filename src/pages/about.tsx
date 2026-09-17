@@ -60,12 +60,12 @@ const PRINCIPLES = [
   {
     step: "02",
     title: "Everything we hand you can be checked without us",
-    body: "Non-judicial paper comes through licensed stamp vendors, and e-Stamp certificates through the state's authorised channel. Each carries a serial or certificate number, printed on your invoice, that you can verify against the Registration Department's own records.",
+    body: "Non-judicial stamp paper comes through licensed stamp vendors. Each sheet carries a serial number, printed on your invoice, that you can verify against the Registration Department's own records.",
   },
   {
     step: "03",
     title: "The eleven-month term is a legal choice, not a sales one",
-    body: "Section 17(1)(d) of the Registration Act, 1908 makes registration compulsory at twelve months. Below that, e-stamping alone makes an agreement admissible in evidence. We default to eleven months because it is what most lettings need — and we tell you the moment your term crosses the line.",
+    body: "Section 17(1)(d) of the Registration Act, 1908 makes registration compulsory at twelve months. Below that, properly stamped non-judicial stamp paper alone makes an agreement admissible in evidence. We default to eleven months because it is what most lettings need — and we tell you the moment your term crosses the line.",
   },
   {
     step: "04",

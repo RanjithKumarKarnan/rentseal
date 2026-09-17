@@ -2,6 +2,8 @@ import { DISTRICTS, NOTABLE_TOWNS, ZONE_META } from "./districts";
 import { SERVICES } from "./services";
 import { DENOMINATIONS } from "./stamp-paper";
 import { FAQS } from "./site";
+import { CHEAPEST_TEMPLATE_PRICE } from "./template-prices";
+import { inr } from "./utils";
 
 /**
  * Search over the whole site, built from the same data the pages render.
@@ -53,8 +55,8 @@ const PAGES: SearchDoc[] = [
     title: "Non-judicial stamp paper by district",
     href: "/stamp-paper",
     kind: "Page",
-    description: "Non-judicial paper and e-Stamp certificates delivered across the state.",
-    keywords: ["districts", "delivery", "coverage", "stamp paper", "non-judicial stamp paper", "non judicial", "e-stamp", "estamp",
+    description: "Physical non-judicial stamp paper delivered across the state.",
+    keywords: ["districts", "delivery", "coverage", "stamp paper", "non-judicial stamp paper", "non judicial",
                "physical stamp paper", "hard copy stamp paper", "hardcopy", "original stamp paper", "bond paper",
                "stamp paper near me", "stamp vendor", "home delivery"],
   },
@@ -63,15 +65,15 @@ const PAGES: SearchDoc[] = [
     title: "Pricing",
     href: "/pricing",
     kind: "Page",
-    description: "Every deed priced individually from ₹300, on Basic, Standard or Premium — what each plan adds.",
-    keywords: ["price", "cost", "plans", "fees", "charges", "how much", "300", "350", "400"],
+    description: `Every deed priced individually from ${inr(CHEAPEST_TEMPLATE_PRICE)}, on Basic, Standard or Premium — what each plan adds.`,
+    keywords: ["price", "cost", "plans", "fees", "charges", "how much", "350", "400", "rate card"],
   },
   {
     id: "page-how",
     title: "How it works",
     href: "/how-it-works",
     kind: "Page",
-    description: "Every step between your first click and a signed, e-stamped agreement.",
+    description: "Every step between your first click and a signed, stamped agreement.",
     keywords: ["process", "steps", "procedure", "timeline", "how long", "esign", "aadhaar"],
   },
   {
@@ -144,7 +146,7 @@ const PAGES: SearchDoc[] = [
     title: "Refund policy",
     href: "/legal/refund",
     kind: "Page",
-    description: "Full refund before the e-stamp is procured; government duty is not refundable.",
+    description: "Full refund before the stamp paper is procured; its value is not refundable afterwards.",
     keywords: ["refund", "cancel", "cancellation", "money back"],
   },
 ];
@@ -190,8 +192,6 @@ function buildIndex(): SearchDoc[] {
         d.slug,
         ...localNames,
         "stamp paper",
-        "e-stamp",
-        "estamp",
         "non judicial",
         "bond paper",
         "physical stamp paper",
@@ -229,7 +229,8 @@ function buildIndex(): SearchDoc[] {
         "stamp paper",
         "non judicial",
         "denomination",
-        ...(d.value > 0 ? ["physical stamp paper", "hard copy"] : ["e-stamp", "estamp"]),
+        "physical stamp paper",
+        "hard copy",
         ...d.uses,
       ],
     });

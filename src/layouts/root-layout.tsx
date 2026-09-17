@@ -2,6 +2,8 @@ import { Outlet, ScrollRestoration } from "react-router";
 import { MotionProvider } from "@/components/ui/motion-provider";
 import { DISTRICTS } from "@/lib/districts";
 import { SITE } from "@/lib/site";
+import { CHEAPEST_TEMPLATE_PRICE } from "@/lib/template-prices";
+import { inr } from "@/lib/utils";
 import { HeadManager } from "@/seo/head-manager";
 
 const organizationSchema = {
@@ -16,7 +18,7 @@ const organizationSchema = {
   description: SITE.description,
   telephone: SITE.phone,
   email: SITE.email,
-  priceRange: "₹300 – ₹5,500",
+  priceRange: `${inr(CHEAPEST_TEMPLATE_PRICE)} – ₹5,500`,
   // SITE.address, in the parts schema.org wants. This read "Prestige Polygon,
   // 471 Anna Salai, Teynampet 600018" — an address the business is not at —
   // while every page showed the Mogappair one, and Google trusts neither when

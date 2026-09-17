@@ -45,8 +45,8 @@ export function StampPaper() {
                     Choose your denomination
                   </h3>
                   <p className="mt-1.5 text-[13.5px] text-navy-500">
-                    Four denominations of physical, hard copy paper from ₹120, and e-Stamp
-                    certificates for any value. The paper is delivered; the e-Stamp is emailed.
+                    Four denominations of physical, hard copy paper from ₹120, delivered to your
+                    door and combined when a document needs a higher value.
                   </p>
                 </div>
                 <Badge tone="emerald" className="hidden shrink-0 sm:inline-flex">
@@ -103,11 +103,7 @@ export function StampPaper() {
                           isActive ? "text-white/70" : "text-navy-400",
                         )}
                       >
-                        {d.value === 0
-                          ? "Emailed, any value"
-                          : d.price === null
-                            ? "Price on request"
-                            : `${inr(d.price)} a sheet`}
+                        {`${inr(d.price)} a sheet`}
                       </span>
                     </button>
                   );
@@ -195,7 +191,6 @@ export function StampPaper() {
                   {[
                     `Delivery is free above ${inr(DELIVERY_RULES.freeAbovePaperValue)} of physical paper`,
                     `Free everywhere on ${DELIVERY_RULES.bulkFreeFrom} sheets or more`,
-                    "e-Stamp certificates are emailed, so nothing is delivered and their value does not count towards that threshold",
                   ].map((line) => (
                     <p key={line} className="flex items-start gap-2 text-[12.5px] leading-relaxed text-white/70">
                       <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-emerald-400" />
@@ -210,7 +205,7 @@ export function StampPaper() {
                   {
                     icon: ShieldCheck,
                     title: "Licensed source",
-                    body: "Procured through authorised vendors and the state e-Stamp channel. Every sheet is verifiable.",
+                    body: "Procured through licensed stamp vendors. Every sheet is verifiable.",
                   },
                   {
                     icon: Bike,

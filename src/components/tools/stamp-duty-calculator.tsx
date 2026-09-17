@@ -116,7 +116,7 @@ export function StampDutyCalculator() {
             <p className="mt-2 text-[12.5px] text-navy-500">
               {months >= 12
                 ? "12 months or more — registration at the Sub-Registrar Office is compulsory under Section 17 of the Registration Act, 1908."
-                : "Under 12 months — e-stamping only, no registration needed. This is why the 11-month agreement is standard in Tamil Nadu."}
+                : "Under 12 months — stamp paper only, no registration needed. This is why the 11-month agreement is standard in Tamil Nadu."}
             </p>
           </div>
 
@@ -324,7 +324,7 @@ export function StampDutyCalculator() {
             </Badge>
             <p className="text-[12.5px] leading-relaxed text-amber-900">
               These are the published Tamil Nadu rates for a lease of under 30 years. The figure
-              finally debited by the Registration Department at the moment of e-stamping is the
+              finally debited by the Registration Department at the moment of stamping is the
               authoritative one. If it differs by even a rupee, we refund the difference — we
               never keep a surplus on a government charge.
             </p>

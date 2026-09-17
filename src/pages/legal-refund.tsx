@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 export const meta: PageMeta = {
   title: "Refund Policy",
   description:
-    "Full refund before the e-stamp is procured, no questions asked. What happens after stamping, and how to raise a refund request.",
+    "Full refund before the stamp paper is procured, no questions asked. What happens after stamping, and how to raise a refund request.",
   alternates: { canonical: "/legal/refund" },
 };
 
@@ -20,16 +20,16 @@ const SECTIONS: LegalSection[] = [
   },
   {
     id: "before-stamping",
-    heading: "Before the e-stamp is procured — full refund",
+    heading: "Before the stamp paper is procured — full refund",
     paragraphs: [
-      "Cancel at any point before we procure the e-stamp certificate and you receive 100% of what you paid, including our fee and the notary fee if you added one.",
+      "Cancel at any point before we procure the stamp paper and you receive 100% of what you paid, including our fee and the notary fee if you added one.",
       "No form, no reason required, no retention call. Message us on WhatsApp or email and it is done.",
       "Refunds are initiated within one working day and reach your original payment method in five to seven working days, depending on your bank.",
     ],
   },
   {
     id: "after-stamping",
-    heading: "After the e-stamp is procured",
+    heading: "After the stamp paper is procured",
     paragraphs: [
       "Once the stamp certificate is procured, the duty has been remitted to the Government of Tamil Nadu. That money is no longer with us and the state does not refund it, so the stamp duty and any registration fee become non-refundable.",
       "Our own fee remains refundable in full where the fault lies with us — a drafting error we introduced, a delivery failure, a duplicate charge, or attestation we promised and did not deliver on time.",
@@ -40,7 +40,7 @@ const SECTIONS: LegalSection[] = [
     id: "our-mistakes",
     heading: "If we get it wrong",
     paragraphs: [
-      "Tell us within 48 hours of delivery and we will re-issue the corrected agreement at our own cost, including a fresh e-stamp where one is needed. You pay nothing further.",
+      "Tell us within 48 hours of delivery and we will re-issue the corrected agreement at our own cost, including fresh stamp paper where it is needed. You pay nothing further.",
       "If you would rather have your money than a corrected document, we refund our entire fee and the notary fee. The stamp duty already remitted is refunded only to the extent the Registration Department permits, and we will pursue that on your behalf.",
     ],
   },
@@ -48,7 +48,7 @@ const SECTIONS: LegalSection[] = [
     id: "overcollection",
     heading: "If we collected more duty than was due",
     paragraphs: [
-      "The difference comes back to you automatically. You do not have to notice it, ask for it, or fill in anything. We reconcile every e-stamp against what we collected, and any surplus is refunded to the original payment method within seven working days.",
+      "The difference comes back to you automatically. You do not have to notice it, ask for it, or fill in anything. We reconcile every order against what we collected, and any surplus is refunded to the original payment method within seven working days.",
       "We never keep a surplus on a government charge. Not as a fee, not as a credit, not as a rounding.",
     ],
   },

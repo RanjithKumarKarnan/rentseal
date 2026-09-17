@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 export const meta: PageMeta = {
   title: "Terms of Service",
   description:
-    "The terms on which LP Stamp Paper provides document automation, e-stamping, e-signing and delivery services in Tamil Nadu.",
+    "The terms on which LP Stamp Paper provides document drafting, non-judicial stamp paper, e-signing and delivery services in Tamil Nadu.",
   alternates: { canonical: "/legal/terms" },
 };
 
@@ -52,10 +52,10 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
-    id: "e-stamp-e-sign",
-    heading: "e-Stamping and electronic signatures",
+    id: "stamp-paper-e-sign",
+    heading: "Stamp paper and electronic signatures",
     paragraphs: [
-      "e-Stamp certificates are procured through authorised channels. Once a stamp is affixed to an instrument, the document is fixed and cannot be edited — this is a legal constraint, not a limitation of our software.",
+      "Non-judicial stamp paper is procured through licensed stamp vendors. Once a document is printed on the stamp paper, it is fixed and cannot be edited — this is a legal constraint, not a limitation of our software.",
       "Electronic signatures are applied using Aadhaar e-Sign through a licensed Application Service Provider. An electronic signature so affixed has the same legal effect as a handwritten signature under Section 3A of the Information Technology Act, 2000, read with the Second Schedule to that Act.",
       "We do not store your Aadhaar authentication data. The OTP verification takes place between you and the authentication infrastructure.",
     ],

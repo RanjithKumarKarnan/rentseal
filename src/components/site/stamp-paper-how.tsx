@@ -39,7 +39,7 @@ const REASONS = [
   {
     icon: ShieldCheck,
     title: "Government authorised",
-    body: "Every sheet comes through a licensed vendor or the state e-Stamp channel, and carries a number you can check against the Registration Department's own records.",
+    body: "Every sheet comes through a licensed stamp vendor, and carries a number you can check against the Registration Department's own records.",
   },
   {
     icon: Timer,

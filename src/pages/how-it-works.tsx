@@ -13,7 +13,7 @@ import { rentAgreementPrice } from "@/lib/stamp-duty";
 export const meta: PageMeta = {
   title: "How It Works — Form to Signed Agreement",
   description:
-    "Every step explained: the form, the clauses, the confirming call, payment, e-stamping, Aadhaar e-signing and delivery on non-judicial stamp paper.",
+    "Every step explained: the form, the clauses, the confirming call, payment, stamping, Aadhaar e-signing and delivery on non-judicial stamp paper.",
   alternates: { canonical: "/how-it-works" },
 };
 

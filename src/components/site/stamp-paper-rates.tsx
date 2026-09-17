@@ -45,7 +45,7 @@ export function StampPaperRates() {
           eyebrow="Rate card"
           icon={IndianRupee}
           title="What a sheet costs, before anything is printed on it"
-          body="These are the prices for blank, unprinted non-judicial stamp paper — the sheet most people in Tamil Nadu call bond paper — in the four denominations we carry. The face value is what the government charges for the sheet; the difference is what we charge to fetch it and get it to you. An e-Stamp is not a sheet at all — it is a certificate that arrives by email. Delivery is separate and listed further down."
+          body="These are the prices for blank, unprinted non-judicial stamp paper — the sheet most people in Tamil Nadu call bond paper — in the four denominations we carry. The face value is what the government charges for the sheet; the difference is what we charge to fetch it and get it to you. Delivery is separate and listed further down."
         />
 
         {/* ── Denominations ── */}
@@ -82,9 +82,7 @@ export function StampPaperRates() {
                               {d.popular ? <Badge tone="dark">Most used</Badge> : null}
                             </span>
                             <span className="mt-0.5 block text-[11.5px] text-navy-400">
-                              {d.value === 0
-                                ? "e-Stamp certificate · emailed"
-                                : "Non-judicial paper · delivered"}
+                              Non-judicial paper · delivered
                             </span>
                           </div>
                         </div>
@@ -116,8 +114,8 @@ export function StampPaperRates() {
             <p className="border-t border-line bg-canvas px-5 py-3.5 text-[12.5px] leading-relaxed text-navy-500">
               Those four are the physical denominations we carry — ₹100 is the smallest
               sheet, so an affidavit or a bond that would once have gone on ₹20 or ₹50 paper is
-              executed on ₹100. Anything needing an exact figure goes on an e-Stamp instead,
-              where the government duty passes through at cost whatever it comes to.
+              executed on ₹100. A document needing a higher value goes on a combination of
+              sheets, and we tell you which before you order.
             </p>
           </div>
         </Reveal>
@@ -218,7 +216,6 @@ export function StampPaperRates() {
               {[
                 `Free above ${inr(DELIVERY_RULES.freeAbovePaperValue)} of physical paper`,
                 `Free everywhere on ${DELIVERY_RULES.bulkFreeFrom} sheets or more`,
-                "An e-Stamp is emailed, so there is nothing to ship — and its value does not count towards the free-delivery threshold",
               ].map((line) => (
                 <p key={line} className="flex items-start gap-2 text-[12.5px] leading-relaxed text-white/70">
                   <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-emerald-400" />

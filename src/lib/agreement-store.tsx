@@ -162,6 +162,12 @@ export function AgreementProvider({
             createDraft(initialType, want),
             parsed as DeepPartial<AgreementDraft>,
           );
+          // A draft saved when the site still offered e-Stamps may hold no
+          // sheets at all. The office sells physical paper only, so it comes
+          // back with the ₹100 sheet every new draft starts on.
+          if (!merged.options.stampPaperSheets?.length) {
+            merged.options = { ...merged.options, stampPaperSheets: [100], stampPaperValue: 100 };
+          }
           // A URL naming a template must win outright. A URL naming only an
           // instrument is broader: any of its templates is a legitimate draft
           // to come back to, so a saved warehouse survives /create/commercial.

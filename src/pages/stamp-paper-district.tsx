@@ -32,7 +32,7 @@ export function meta({ district: slug = "" }: Params): PageMeta {
   // four shortest districts. The rest keep the plain form.
   const withDelivery = `Non-Judicial Stamp Paper Delivery in ${district.name}`;
   const title = withDelivery.length <= 43 ? withDelivery : `Non-Judicial Stamp Paper in ${district.name}`;
-  const description = `Physical non-judicial stamp paper home delivery in ${district.name}, ${zone.eta.toLowerCase()}. ₹100 sheet for ₹120, ₹500 for ₹550, and e-Stamps of any value.`;
+  const description = `Physical non-judicial stamp paper home delivery in ${district.name}, ${zone.eta.toLowerCase()}. ₹100 sheet for ₹120, ₹500 for ₹550, ₹1,000 for ₹1,100.`;
 
   return {
     title,
@@ -41,7 +41,6 @@ export function meta({ district: slug = "" }: Params): PageMeta {
     openGraph: { title, description },
     keywords: [
       `stamp paper ${district.name}`,
-      `e-stamp paper ${district.name}`,
       `buy stamp paper in ${district.hq}`,
       `non judicial stamp paper ${district.name}`,
       `stamp paper home delivery ${district.name}`,
@@ -79,7 +78,7 @@ export default function StampPaperDistrictPage() {
         icon={Stamp}
         crumbs={crumbs}
         title={`Non-judicial stamp paper in ${district.name}, with home delivery`}
-        body={`Licensed non-judicial stamp paper — the physical, hard copy sheet most people call bond paper — and e-Stamp certificates, anywhere in ${district.name} district. You pay the face value plus a stated procurement charge, never a figure you find out at the door. ${zone.eta} delivery${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}, and no queue at the vendor's counter.`}
+        body={`Licensed non-judicial stamp paper — the physical, hard copy sheet most people call bond paper — delivered anywhere in ${district.name} district. You pay the face value plus a stated procurement charge, never a figure you find out at the door. ${zone.eta} delivery${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}, and no queue at the vendor's counter.`}
       >
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <ButtonLink href={LEAD_ANCHOR} size="lg" className="group">
@@ -163,7 +162,7 @@ export default function StampPaperDistrictPage() {
             eyebrow={`In stock for ${district.name}`}
             icon={Stamp}
             title="Every denomination, priced before you order"
-            body="Each sheet is the face value printed on it plus our charge for fetching it, and both figures are shown. Delivery is quoted separately before you confirm, and government stamp duty on an e-Stamp passes through at cost."
+            body="Each sheet is the face value printed on it plus our charge for fetching it, and both figures are shown. Delivery is quoted separately before you confirm."
           />
 
           <Stagger className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" amount={0.08}>
@@ -216,7 +215,7 @@ export default function StampPaperDistrictPage() {
             eyebrow="Which one do you need?"
             icon={FileCheck2}
             title={`Common instruments we stamp for ${district.name}`}
-            body="Tell us what you are executing and we will tell you the denomination before you order — including when only an e-Stamp for the exact duty will do."
+            body="Tell us what you are executing and we will tell you the denomination before you order — including when a higher value needs sheets combined."
           />
 
           <Stagger className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" amount={0.08}>
@@ -273,15 +272,14 @@ export default function StampPaperDistrictPage() {
                   Verify what we deliver
                 </h2>
                 <p className="mt-3 text-[14.5px] leading-[1.7] text-navy-600">
-                  Everything is procured through licensed stamp vendors and the state&apos;s
-                  authorised e-Stamping channel. Every sheet or certificate carries a serial number
-                  you can check yourself against the Registration Department&apos;s records — we
+                  Everything is procured through licensed stamp vendors. Every sheet carries a
+                  serial number you can check yourself against the Registration Department&apos;s records — we
                   print it on your invoice so you never have to ask us for it.
                 </p>
                 <p className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-[13px] leading-relaxed text-emerald-900">
-                  Need it faster than {zone.eta.toLowerCase()}? An e-Stamp certificate is emailed
-                  within minutes — where your instrument allows one, there is nothing to deliver
-                  and no delivery charge at all.
+                  Need it faster than {zone.eta.toLowerCase()}? Call us before you order —
+                  depending on the time of day we can sometimes arrange same-day delivery through a
+                  local partner, and we will say straight away if we cannot.
                 </p>
                 <Link
                   href={`/rental-agreement/${district.slug}`}
@@ -355,7 +353,7 @@ export default function StampPaperDistrictPage() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: `${SITE.name} — Non-judicial stamp paper, ${district.name}`,
-            description: `Non-judicial stamp paper and e-Stamp certificate supply and delivery across ${district.name} district, Tamil Nadu.`,
+            description: `Non-judicial stamp paper supply and delivery across ${district.name} district, Tamil Nadu.`,
             url: `${SITE.url}/stamp-paper/${district.slug}`,
             telephone: SITE.phone,
             priceRange: "₹120 – ₹5,500",

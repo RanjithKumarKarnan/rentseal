@@ -502,10 +502,8 @@ export function LeadForm() {
                             required
                           >
                             {DENOMINATIONS.map((d) => (
-                              <option key={d.label} value={d.value || "custom"}>
-                                {d.value
-                                  ? `${d.label} non-judicial stamp paper — delivered`
-                                  : "Any value — e-Stamp, emailed"}
+                              <option key={d.label} value={d.value}>
+                                {`${d.label} non-judicial stamp paper — delivered`}
                               </option>
                             ))}
                             <option value="not-sure">I&apos;m not sure — advise me</option>

@@ -22,7 +22,7 @@ export const SERVICES: ServiceContent[] = [
     name: "Residential Rental Agreement",
     h1: "Residential rental agreement, drafted for Tamil Nadu",
     intro:
-      "The 11-month agreement that covers most lettings in the state — flats, independent houses and villas. E-stamped, signed with Aadhaar OTP, and in your inbox the same day.",
+      "The 11-month agreement that covers most lettings in the state — flats, independent houses and villas. Printed on non-judicial stamp paper, signed with Aadhaar OTP, and in your inbox the same day.",
     metaTitle: "House Rent Agreement Online — Tamil Nadu",
     metaDescription:
       "Create an 11-month house rent agreement for Tamil Nadu online — printed on non-judicial stamp paper, notarised and delivered to your door.",
@@ -294,7 +294,7 @@ export const SERVICES: ServiceContent[] = [
       },
       {
         title: "Same digital pipeline",
-        body: "E-stamped, Aadhaar e-signed, delivered on email and WhatsApp, stored in your dashboard. Nothing about the licence structure slows any of it down.",
+        body: "Stamped, Aadhaar e-signed, delivered on email and WhatsApp, stored in your dashboard. Nothing about the licence structure slows any of it down.",
       },
     ],
     clauses: [
@@ -334,7 +334,7 @@ export const SERVICES: ServiceContent[] = [
       },
       {
         q: "Does it need to be registered?",
-        a: "The same rule applies as for a lease — registration turns on the term. Under 12 months, e-stamping alone. Twelve months or more and registration becomes compulsory.",
+        a: "The same rule applies as for a lease — registration turns on the term. Under 12 months, stamp paper alone. Twelve months or more and registration becomes compulsory.",
       },
       {
         q: "Can I use this for a normal family letting?",

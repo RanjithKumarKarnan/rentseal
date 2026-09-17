@@ -20,7 +20,7 @@ export function ogCards(): Array<{ path: string; image: () => Response }> {
         ogImage({
           eyebrow: "All 38 districts of Tamil Nadu",
           title: "Non-judicial stamp paper and agreements, delivered",
-          facts: ["e-Stamped at government rate", "Aadhaar e-Sign", "Same day in Chennai"],
+          facts: ["Genuine stamp paper", "Aadhaar e-Sign", "Same day in Chennai"],
         }),
     },
     {
@@ -29,7 +29,7 @@ export function ogCards(): Array<{ path: string; image: () => Response }> {
         ogImage({
           eyebrow: "District-wise coverage",
           title: "Rental agreements across Tamil Nadu",
-          facts: [`All ${DISTRICTS.length} districts`, "e-Stamped · Aadhaar e-signed", `From ${inr(rentAgreementPrice("basic"))}`],
+          facts: [`All ${DISTRICTS.length} districts`, "Stamped · Aadhaar e-signed", `From ${inr(rentAgreementPrice("basic"))}`],
         }),
     },
     {
@@ -38,7 +38,7 @@ export function ogCards(): Array<{ path: string; image: () => Response }> {
         ogImage({
           eyebrow: "District-wise delivery",
           title: "Non-judicial stamp paper across Tamil Nadu",
-          facts: [`All ${DISTRICTS.length} districts`, "₹100 – ₹5,000 + e-Stamp", "₹100 paper for ₹120"],
+          facts: [`All ${DISTRICTS.length} districts`, "₹100 – ₹5,000 sheets", "₹100 paper for ₹120"],
         }),
     },
     ...DISTRICTS.map((district) => ({
@@ -48,7 +48,7 @@ export function ogCards(): Array<{ path: string; image: () => Response }> {
           eyebrow: `${district.name} district`,
           title: `Rental agreement in ${district.name}`,
           facts: [
-            "e-Stamped · Aadhaar e-signed",
+            "Stamped · Aadhaar e-signed",
             `${district.sroTowns.length} SROs covered`,
             `${district.region}`,
           ],
@@ -60,7 +60,7 @@ export function ogCards(): Array<{ path: string; image: () => Response }> {
         ogImage({
           eyebrow: `${district.name} district`,
           title: `Non-judicial stamp paper in ${district.name}`,
-          facts: [ZONE_META[district.zone].eta, "₹100 paper for ₹120", `₹100 – ₹5,000 + e-Stamp`],
+          facts: [ZONE_META[district.zone].eta, "₹100 paper for ₹120", "₹100 – ₹5,000 sheets"],
         }),
     })),
     ...SERVICES.map((service) => ({
@@ -69,7 +69,7 @@ export function ogCards(): Array<{ path: string; image: () => Response }> {
         ogImage({
           eyebrow: "Drafted for Tamil Nadu",
           title: service.name,
-          facts: [`${service.clauses.length} clauses`, "e-Stamped · Aadhaar e-signed", "Notarised"],
+          facts: [`${service.clauses.length} clauses`, "Stamped · Aadhaar e-signed", "Notarised"],
         }),
     })),
   ];
