@@ -20,6 +20,8 @@ import { Counter, Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ZONE_META, getDistrict, nearbyDistricts, rentalFaqs } from "@/lib/districts";
 import { AGREEMENT_TYPES, LEAD_ANCHOR, SITE } from "@/lib/site";
+import { rentAgreementPrice } from "@/lib/stamp-duty";
+import { inr } from "@/lib/utils";
 import NotFound from "@/pages/not-found";
 
 export function meta({ district: slug = "" }: Params): PageMeta {
@@ -87,7 +89,8 @@ export default function DistrictPage() {
           </ButtonLink>
         </div>
         <p className="mt-4 text-[13.5px] text-navy-500">
-          Free until you pay · Nobody visits the Sub-Registrar Office · From ₹349
+          Free until you pay · Nobody visits the Sub-Registrar Office · From{" "}
+          {inr(rentAgreementPrice("basic"))}
         </p>
       </PageHero>
 
@@ -303,7 +306,7 @@ export default function DistrictPage() {
             description: `Online rental agreement drafting, e-stamping and e-signing across ${district.name} district, Tamil Nadu.`,
             url: `${SITE.url}/rental-agreement/${district.slug}`,
             telephone: SITE.phone,
-            priceRange: "₹349 – ₹1499",
+            priceRange: `${inr(rentAgreementPrice("basic"))} – ${inr(rentAgreementPrice("premium"))}`,
             areaServed: {
               "@type": "AdministrativeArea",
               name: `${district.name} district`,

@@ -8,6 +8,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/motion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { LEAD_ANCHOR, SITE } from "@/lib/site";
+import { rentAgreementPrice } from "@/lib/stamp-duty";
 
 export const meta: PageMeta = {
   title: "How It Works — Form to Signed Agreement",
@@ -123,7 +124,11 @@ export default function HowItWorksPage() {
             "@type": "HowTo",
             name: "How to create a rental agreement online in Tamil Nadu",
             totalTime: "PT10M",
-            estimatedCost: { "@type": "MonetaryAmount", currency: "INR", value: "799" },
+            estimatedCost: {
+              "@type": "MonetaryAmount",
+              currency: "INR",
+              value: String(rentAgreementPrice("standard")),
+            },
             step: DETAIL.map((d, i) => ({
               "@type": "HowToStep",
               position: i + 1,

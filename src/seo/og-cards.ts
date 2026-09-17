@@ -1,6 +1,8 @@
 import { DISTRICTS, ZONE_META } from "@/lib/districts";
 import { ogImage } from "@/lib/og";
 import { SERVICES } from "@/lib/services";
+import { rentAgreementPrice } from "@/lib/stamp-duty";
+import { inr } from "@/lib/utils";
 import { OG_DEFAULT, OG_RENTAL, OG_STAMP, ogRentalDistrict, ogService, ogStampDistrict } from "./og";
 
 /**
@@ -27,7 +29,7 @@ export function ogCards(): Array<{ path: string; image: () => Response }> {
         ogImage({
           eyebrow: "District-wise coverage",
           title: "Rental agreements across Tamil Nadu",
-          facts: [`All ${DISTRICTS.length} districts`, "e-Stamped · Aadhaar e-signed", "From ₹349"],
+          facts: [`All ${DISTRICTS.length} districts`, "e-Stamped · Aadhaar e-signed", `From ${inr(rentAgreementPrice("basic"))}`],
         }),
     },
     {
