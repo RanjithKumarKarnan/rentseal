@@ -35,6 +35,9 @@
   --color-brand-800: #1e40af;
   --color-brand-900: #1e3a8a;
 
+  /* The navy of the "P" in the LP monogram (public/logo.png), sampled. */
+  --color-logo-navy: #1e4274;
+
   /* Semantic surfaces */
   --color-canvas: #f8fafc;
   --color-card: #ffffff;

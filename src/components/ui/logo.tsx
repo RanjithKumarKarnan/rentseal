@@ -110,7 +110,9 @@ export function Logo({
             inverted ? "text-white" : "text-navy-950",
           )}
         >
-          LP <span className={inverted ? "text-brand-300" : "text-brand-600"}>Stamp Paper</span>
+          {/* The monogram's "P" navy. On the dark footer that navy would vanish,
+              so the inverted wordmark keeps its light blue. */}
+          LP <span className={inverted ? "text-brand-300" : "text-logo-navy"}>Stamp Paper</span>
         </span>
         {showTag ? (
           <span
