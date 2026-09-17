@@ -905,6 +905,10 @@ export function stampPaperFaqs(d: District): Faq[] {
       a: `${d.name} is in our ${zone.label.toLowerCase()} zone, so non-judicial stamp paper reaches you ${zone.eta.toLowerCase()}${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}. Delivery is ₹${zone.charge}, and free once the physical paper in your order crosses ₹2,000 or ten sheets. An e-Stamp certificate, where your instrument allows one, is emailed within minutes — nothing is delivered, so its value does not count towards that free-delivery threshold.`,
     },
     {
+      q: `Do you deliver physical stamp paper in ${d.name}, or only e-Stamps?`,
+      a: `Both. The ₹100, ₹500, ₹1,000 and ₹5,000 sheets are physical non-judicial stamp paper — the original hard copy — delivered to your door in ${d.name} ${zone.eta.toLowerCase()}. An e-Stamp certificate for an exact amount of duty is emailed instead. Tell us what you are executing and we will say which one it needs before you order.`,
+    },
+    {
       q: `Do you charge more than the printed value in ${d.name}?`,
       a: `No. You pay exactly the denomination printed on the sheet plus the flat ₹${zone.charge} delivery charge for ${d.name}, both stated before you confirm. We do not mark up the paper and we do not mark up government duty — the platform fee is the only thing we earn, and GST at 18% applies to that fee alone.`,
     },

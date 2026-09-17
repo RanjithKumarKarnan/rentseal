@@ -23,6 +23,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "Non-judicial stamp paper supply, delivery and rental agreement drafting",
+  alternateName: ["Physical stamp paper delivery", "Hard copy stamp paper delivery", "Bond paper delivery"],
   provider: { "@id": `${SITE.url}/#organization` },
   areaServed: { "@type": "State", name: "Tamil Nadu" },
   hasOfferCatalog: {
@@ -31,7 +32,7 @@ const serviceSchema = {
     itemListElement: [
       ...DENOMINATIONS.filter((d) => d.value > 0).map((d) => ({
         "@type": "Offer",
-        name: `${d.label} non-judicial stamp paper`,
+        name: `${d.label} non-judicial stamp paper (physical sheet)`,
         price: String(d.value),
         priceCurrency: "INR",
       })),
@@ -68,11 +69,11 @@ export default function HomePage() {
       <Certificates />
       <HowItWorks />
       <Commitments />
-      <FaqSection limit={5} />
+      <FaqSection limit={6} />
 
       {/* Schema must describe what is actually on the page — it marked up eight
           questions while ten were rendered. */}
-      <FaqSchema limit={5} />
+      <FaqSchema limit={6} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}

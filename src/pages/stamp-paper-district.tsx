@@ -32,7 +32,7 @@ export function meta({ district: slug = "" }: Params): PageMeta {
   // four shortest districts. The rest keep the plain form.
   const withDelivery = `Non-Judicial Stamp Paper Delivery in ${district.name}`;
   const title = withDelivery.length <= 43 ? withDelivery : `Non-Judicial Stamp Paper in ${district.name}`;
-  const description = `Non-judicial stamp paper home delivery in ${district.name} district, ${zone.eta.toLowerCase()}. ₹100 sheet for ₹120, ₹500 for ₹550, and e-Stamps of any value.`;
+  const description = `Physical non-judicial stamp paper home delivery in ${district.name}, ${zone.eta.toLowerCase()}. ₹100 sheet for ₹120, ₹500 for ₹550, and e-Stamps of any value.`;
 
   return {
     title,
@@ -48,6 +48,10 @@ export function meta({ district: slug = "" }: Params): PageMeta {
       `stamp paper online ${district.name}`,
       `bond paper ${district.name}`,
       `stamp paper delivery ${district.name}`,
+      `physical stamp paper ${district.name}`,
+      `hard copy stamp paper ${district.name}`,
+      `stamp vendor ${district.hq}`,
+      `stamp paper shop ${district.hq}`,
       ...district.towns.map((t) => `stamp paper ${t}`),
     ],
   };
@@ -75,7 +79,7 @@ export default function StampPaperDistrictPage() {
         icon={Stamp}
         crumbs={crumbs}
         title={`Non-judicial stamp paper in ${district.name}, with home delivery`}
-        body={`Licensed non-judicial stamp paper — bond paper, as most people call it — and e-Stamp certificates anywhere in ${district.name} district — the face value plus a stated procurement charge, never a figure you find out at the door. ${zone.eta} delivery${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}, and no queue at the vendor's counter.`}
+        body={`Licensed non-judicial stamp paper — the physical, hard copy sheet most people call bond paper — and e-Stamp certificates, anywhere in ${district.name} district. You pay the face value plus a stated procurement charge, never a figure you find out at the door. ${zone.eta} delivery${zone.cutOff ? ` — ${zone.cutOff.toLowerCase()}` : ""}, and no queue at the vendor's counter.`}
       >
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <ButtonLink href={LEAD_ANCHOR} size="lg" className="group">

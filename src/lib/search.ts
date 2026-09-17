@@ -54,7 +54,9 @@ const PAGES: SearchDoc[] = [
     href: "/stamp-paper",
     kind: "Page",
     description: "Non-judicial paper and e-Stamp certificates delivered across the state.",
-    keywords: ["districts", "delivery", "coverage", "stamp paper", "non-judicial stamp paper", "non judicial", "e-stamp", "estamp"],
+    keywords: ["districts", "delivery", "coverage", "stamp paper", "non-judicial stamp paper", "non judicial", "e-stamp", "estamp",
+               "physical stamp paper", "hard copy stamp paper", "hardcopy", "original stamp paper", "bond paper",
+               "stamp paper near me", "stamp vendor", "home delivery"],
   },
   {
     id: "page-pricing",
@@ -192,6 +194,8 @@ function buildIndex(): SearchDoc[] {
         "estamp",
         "non judicial",
         "bond paper",
+        "physical stamp paper",
+        "hard copy",
         d.region,
       ],
     });
@@ -225,6 +229,7 @@ function buildIndex(): SearchDoc[] {
         "stamp paper",
         "non judicial",
         "denomination",
+        ...(d.value > 0 ? ["physical stamp paper", "hard copy"] : ["e-stamp", "estamp"]),
         ...d.uses,
       ],
     });
@@ -406,6 +411,7 @@ export const POPULAR_SEARCHES = [
   "Rental agreement in Chennai",
   "Non-judicial stamp paper in Coimbatore",
   "₹100 non-judicial stamp paper",
+  "Physical stamp paper",
   "Hosur",
   "Stamp duty",
   "Pricing",

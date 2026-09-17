@@ -31,7 +31,7 @@ export function StampPaper() {
         <SectionHeading
           eyebrow="Non-judicial stamp paper, delivered"
           icon={Stamp}
-          title="Licensed non-judicial stamp paper with home delivery, anywhere in Tamil Nadu"
+          title="Physical non-judicial stamp paper with home delivery, anywhere in Tamil Nadu"
           body="No hunting for a vendor who has shut for lunch, no queue at the treasury. Tell us the denomination and the address — we fetch the paper and a rider brings it to you, with the face value and our charge shown separately."
         />
 
@@ -45,8 +45,8 @@ export function StampPaper() {
                     Choose your denomination
                   </h3>
                   <p className="mt-1.5 text-[13.5px] text-navy-500">
-                    Four physical denominations from ₹120, and e-Stamp certificates for any
-                    value. The paper is delivered; the e-Stamp is emailed.
+                    Four denominations of physical, hard copy paper from ₹120, and e-Stamp
+                    certificates for any value. The paper is delivered; the e-Stamp is emailed.
                   </p>
                 </div>
                 <Badge tone="emerald" className="hidden shrink-0 sm:inline-flex">

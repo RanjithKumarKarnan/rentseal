@@ -64,7 +64,23 @@ export const SITE_META: PageMeta = {
   // carry these phrases where it does look. Kept because other engines and
   // tools still read it.
   keywords: [
+    "non judicial stamp paper",
     "non judicial stamp paper online",
+    "physical stamp paper",
+    "physical stamp paper online",
+    "physical stamp paper home delivery",
+    "hard copy stamp paper",
+    "hard copy stamp paper delivery",
+    "original stamp paper",
+    "stamp paper online",
+    "buy stamp paper online",
+    "stamp paper near me",
+    "stamp vendor near me",
+    "stamp paper price",
+    "stamp paper for rent agreement",
+    "stamp paper for affidavit",
+    "500 rupees stamp paper",
+    "e-stamp vs physical stamp paper",
     "buy stamp paper online Tamil Nadu",
     "stamp paper home delivery Chennai",
     "stamp paper online Chennai",

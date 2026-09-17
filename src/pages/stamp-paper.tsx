@@ -2,6 +2,7 @@ import type { PageMeta } from "@/seo/meta";
 import { ArrowRight, Stamp } from "lucide-react";
 import { BreadcrumbSchema, PageHero } from "@/components/site/page-hero";
 import { DistrictIndex } from "@/components/site/district-index";
+import { StampPaperFormats } from "@/components/site/stamp-paper-formats";
 import { StampPaperHow } from "@/components/site/stamp-paper-how";
 import { StampPaperRates } from "@/components/site/stamp-paper-rates";
 import { ButtonLink } from "@/components/ui/button";
@@ -10,13 +11,37 @@ import { LEAD_ANCHOR, SITE } from "@/lib/site";
 
 const title = "Non-Judicial Stamp Paper Online — Tamil Nadu";
 const description =
-  "Buy genuine non-judicial stamp paper online with home delivery across Tamil Nadu: ₹100 for ₹120, ₹500 for ₹550, ₹1,000 for ₹1,100.";
+  "Buy physical non-judicial stamp paper online — hard copy sheets with home delivery across Tamil Nadu: ₹100 for ₹120, ₹500 for ₹550, ₹1,000 for ₹1,100.";
 
 export const meta: PageMeta = {
   title,
   description,
   alternates: { canonical: "/stamp-paper" },
   openGraph: { title, description },
+  keywords: [
+    "non judicial stamp paper",
+    "non judicial stamp paper online",
+    "non-judicial stamp paper Tamil Nadu",
+    "physical stamp paper",
+    "physical stamp paper online",
+    "physical stamp paper home delivery",
+    "hard copy stamp paper",
+    "hard copy stamp paper online",
+    "original stamp paper",
+    "e-stamp vs physical stamp paper",
+    "buy stamp paper online",
+    "stamp paper online Tamil Nadu",
+    "stamp paper home delivery",
+    "stamp paper near me",
+    "stamp paper price",
+    "100 rupees stamp paper",
+    "500 rupees stamp paper",
+    "1000 rupees stamp paper",
+    "stamp paper for rent agreement",
+    "stamp paper for affidavit",
+    "bond paper",
+    "e-stamp paper Tamil Nadu",
+  ],
 };
 
 const crumbs = [{ label: "Home", href: "/" }, { label: "Non-judicial stamp paper" }];
@@ -28,8 +53,8 @@ export default function StampPaperIndex() {
         eyebrow="District-wise delivery"
         icon={Stamp}
         crumbs={crumbs}
-        title="Government authorised non-judicial stamp paper online, with home delivery"
-        body="Fill in the details online and receive genuine, government authorised non-judicial stamp paper at your door — the face value plus a stated procurement charge, with delivery quoted before you confirm. Same day in Chennai by Porter, ₹100 next day, and ₹100 to ₹200 anywhere else in Tamil Nadu. We can print your draft on it and get it attested too."
+        title="Physical non-judicial stamp paper online, with home delivery"
+        body="Fill in the details online and receive genuine, government authorised non-judicial stamp paper at your door — the original hard copy, at the face value plus a stated procurement charge, with delivery quoted before you confirm. Same day in Chennai by Porter, ₹100 next day, and ₹100 to ₹200 anywhere else in Tamil Nadu. We can print your draft on it and get it attested too."
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <ButtonLink href={LEAD_ANCHOR} size="lg" className="group">
@@ -48,6 +73,8 @@ export default function StampPaperIndex() {
       </PageHero>
 
       <StampPaperRates />
+
+      <StampPaperFormats />
 
       <StampPaperHow />
 

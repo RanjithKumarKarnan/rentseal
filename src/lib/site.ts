@@ -23,7 +23,7 @@ export const SITE = {
   legalName: "LP Enterprises",
   tagline: "Licensed non-judicial stamp paper and notarised agreements across Tamil Nadu",
   description:
-    "Buy non-judicial stamp paper online from ₹120, with home delivery across Tamil Nadu — same day in Chennai. Rent agreements and affidavits drafted too.",
+    "Buy physical non-judicial stamp paper online from ₹120 — the hard copy, delivered home across Tamil Nadu, same day in Chennai. Rent agreements too.",
   url: "https://www.lpstamppaper.in",
   /** Landline. Dialled as 044 within India; the tel: link strips the spaces. */
   phone: "044 4006 8402",
@@ -127,6 +127,7 @@ export const FOOTER_LINKS = [
       { label: "₹1,000 non-judicial stamp paper", href: "/#stamp-paper" },
       { label: "₹5,000 non-judicial stamp paper", href: "/#stamp-paper" },
       { label: "e-Stamp — any value", href: "/#stamp-paper" },
+      { label: "Physical (hard copy) stamp paper", href: "/stamp-paper#physical-or-e-stamp" },
       { label: "Non-judicial stamp paper by district", href: "/stamp-paper" },
       { label: "Bulk orders for firms", href: LEAD_ANCHOR },
     ],
@@ -408,6 +409,11 @@ export const FAQS = [
   },
   {
     category: "Non-judicial stamp paper",
+    q: "Do you deliver physical stamp paper, or only e-Stamps?",
+    a: "Both. The ₹100, ₹500, ₹1,000 and ₹5,000 sheets are physical non-judicial stamp paper — the original, government-issued hard copy — and a rider brings them to your door. An e-Stamp is a certificate for an exact amount of duty, and it is emailed instead. Most rent agreements and affidavits in Tamil Nadu still go on the physical sheet; tell us what you are executing and we will say which one it needs before you order.",
+  },
+  {
+    category: "Non-judicial stamp paper",
     q: "Is non-judicial stamp paper the same as bond paper?",
     a: "Yes. In Tamil Nadu most people ask for \"bond paper\" — or முத்திரைத்தாள் — and mean the same government-issued non-judicial stamp paper we deliver. It is not the thick bond writing paper a stationery shop sells: that carries no stamp value, so an agreement or affidavit typed on it is not stamped.",
   },
@@ -440,6 +446,11 @@ export const FAQS = [
     category: "Delivery",
     q: "Where in Tamil Nadu do you deliver?",
     a: "All 38 districts. Inside Chennai it is ₹100 for next day, or same day by Porter charged at Porter's own fare. Anywhere else in Tamil Nadu is ₹200 for express delivery or ₹100 for two to three working days — Coimbatore, Madurai, Trichy, Salem, Tiruppur, Erode, Vellore, Hosur, Tirunelveli and Thoothukudi are the quickest of them.",
+  },
+  {
+    category: "Delivery",
+    q: "Where can I buy stamp paper near me?",
+    a: `You do not need to find a stamp vendor near you — we bring physical non-judicial stamp paper to your door in all 38 districts of Tamil Nadu, same day in Chennai by Porter or next day for ₹100. If you are close to Mogappair, Anna Nagar, Ambattur or Padi, you can also collect it from our counter at ${SITE.address}.`,
   },
   {
     category: "Delivery",
