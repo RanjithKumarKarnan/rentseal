@@ -2,6 +2,7 @@ import type { PageMeta } from "@/seo/meta";
 import { Tag } from "lucide-react";
 import { BreadcrumbSchema, PageHero } from "@/components/site/page-hero";
 import { PricingCards } from "@/components/landing/pricing-cards";
+import { DocumentRateCard } from "@/components/landing/document-rate-card";
 import { FaqSection } from "@/components/landing/faq-section";
 import { Comparison } from "@/components/landing/comparison";
 import { SITE } from "@/lib/site";
@@ -28,6 +29,7 @@ export default function PricingPage() {
       />
 
       <PricingCards withHeading={false} />
+      <DocumentRateCard />
       <Comparison />
       <FaqSection limit={14} />
 

@@ -1,4 +1,6 @@
 import { DISTRICTS, NOTABLE_TOWNS } from "./districts";
+import { NOTARY_FEE } from "./notary";
+import { CHEAPEST_TEMPLATE_PRICE } from "./template-prices";
 import type { AgreementType, PlanId } from "./types";
 
 /**
@@ -275,11 +277,11 @@ export const PLANS: Array<{
   {
     id: "basic",
     name: "Basic",
-    // Every deed is priced individually now, so a plan can only quote a floor:
-    // the cheapest document plus whatever the plan adds. Showing a flat ₹349
-    // beside a quote that reads ₹800 is how a customer stops believing the
-    // pricing page.
-    price: 300,
+    // Every deed is priced individually on the office's rate card, so a plan
+    // can only quote a floor: the cheapest document plus whatever the plan
+    // adds, which is nothing except Premium's notary (see planExtra in
+    // stamp-duty.ts). Shipping is never in these figures.
+    price: CHEAPEST_TEMPLATE_PRICE,
     from: true,
     tagline: "A clean, compliant draft you print and sign yourself.",
     delivery: "Instant download",
@@ -300,7 +302,7 @@ export const PLANS: Array<{
   {
     id: "standard",
     name: "Standard",
-    price: 750,
+    price: CHEAPEST_TEMPLATE_PRICE,
     from: true,
     tagline: "Everything digital — e-stamped, e-signed, delivered. Nobody visits an office.",
     delivery: "Same day, usually under 4 hours",
@@ -314,7 +316,7 @@ export const PLANS: Array<{
       { label: "Cloud storage, unlimited", included: true },
       { label: "e-Stamp paper procured for you", included: true, hint: "Duty charged at government rate, no markup" },
       { label: "Aadhaar e-Sign for both parties", included: true },
-      { label: "Notary attestation", included: false, hint: "Add for ₹350" },
+      { label: "Notary attestation", included: false, hint: `Add for ₹${NOTARY_FEE}` },
       { label: "WhatsApp delivery", included: true },
       { label: "Doorstep delivery of stamped copy", included: false },
     ],
@@ -322,7 +324,7 @@ export const PLANS: Array<{
   {
     id: "premium",
     name: "Premium",
-    price: 1450,
+    price: CHEAPEST_TEMPLATE_PRICE + NOTARY_FEE,
     from: true,
     tagline: "Signatures attested by a notary, and a stamped copy reaches your door.",
     delivery: "Verified within 24 hours",
@@ -335,9 +337,9 @@ export const PLANS: Array<{
       { label: "Cloud storage, unlimited", included: true },
       { label: "e-Stamp paper procured for you", included: true },
       { label: "Aadhaar e-Sign for both parties", included: true },
-      { label: "Notary attestation", included: true, hint: "Signatures attested by a notary public" },
+      { label: "Notary attestation", included: true, hint: `₹${NOTARY_FEE} notary fee, included in the price` },
       { label: "WhatsApp delivery", included: true },
-      { label: "Doorstep delivery of stamped copy", included: true, hint: "Within Tamil Nadu" },
+      { label: "Doorstep delivery of stamped copy", included: true, hint: "Anywhere in Tamil Nadu · shipping charged at the delivery rate" },
     ],
   },
 ];
@@ -520,7 +522,7 @@ export const FAQS = [
   {
     category: "Delivery",
     q: "Do I get a physical copy?",
-    a: "On the Premium plan we courier a printed, stamped copy anywhere in Tamil Nadu at no extra cost, typically in two to three working days. On other plans the stamped copy comes at the normal delivery charge — ₹100 next day in Chennai, ₹200 express or ₹100 in two to three days elsewhere in Tamil Nadu — or you can collect it from our counter. An extra printed copy is the stamp paper again plus ₹10 a page.",
+    a: "Yes — the stamped original is yours. It comes at the normal delivery charge, on every plan — ₹100 next day in Chennai, ₹200 express or ₹100 in two to three days elsewhere in Tamil Nadu — or you can collect it from our counter. An extra printed copy is the stamp paper again plus ₹10 a page.",
   },
   {
     category: "Renewal",

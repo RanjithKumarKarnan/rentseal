@@ -217,13 +217,6 @@ function CostRail() {
             breakdown.registrationRequired
               ? { label: "Registration fee", value: breakdown.registrationFee, hint: "1% · Govt of TN" }
               : null,
-            breakdown.platformFee - breakdown.documentFee > 0
-              ? {
-                  label: "Service",
-                  value: breakdown.platformFee - breakdown.documentFee,
-                  hint: draft.plan === "premium" ? "Premium" : "Standard",
-                }
-              : null,
             breakdown.lawyerFee > 0
               ? {
                   label: "Notary attestation",

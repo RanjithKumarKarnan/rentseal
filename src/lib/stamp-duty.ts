@@ -46,24 +46,20 @@ export function extraPageFeeForPages(pages: number): number {
 /**
  * What each plan adds on top of the document's own price.
  *
- * Every deed is now priced individually — ₹300 for a Tamil loan bond, ₹800 for
- * a detailed sale agreement — so the drafting fee comes from the template and
- * the plan only prices the service wrapped around it. The uplifts are the gaps
- * the three plans already stood at (₹349 / ₹799 / ₹1,499), kept exactly so the
- * ladder between them is unchanged and nothing here is a figure nobody quoted.
+ * The document's price is the office's rate card (template-prices.ts), and on
+ * the client's instruction of 17 September 2026 that is what every plan
+ * charges. Standard and Premium used to add ₹450 and ₹1,150 — the gaps the old
+ * flat ₹349 / ₹799 / ₹1,499 plans stood at — which appear nowhere on the rate
+ * card and made the price section read far higher than the office's own list.
  *
- * Basic is the document and nothing else, so it adds nothing.
- *
- * Premium's `lawyer: 0` is the point, not an oversight. Its card lists notary
- * attestation as included and it was also adding the fee to the quote, so the
- * one plan that sold attestation as part of the price was the one charging
- * separately for it. Included means included.
+ * The one thing a plan still adds is Premium's notary attestation, charged at
+ * the notary's own rate for the document's length — the same fee any other plan
+ * pays when it opts in. Shipping is never part of a plan: it is quoted
+ * separately from the delivery list.
  */
-export const PLAN_FEES: Record<PlanId, { platform: number; lawyer: number }> = {
-  basic: { platform: 0, lawyer: 0 },
-  standard: { platform: 450, lawyer: 0 },
-  premium: { platform: 1150, lawyer: 0 },
-};
+export function planExtra(plan: PlanId, documentPages = 1): number {
+  return plan === "premium" ? notaryFeeForPages(documentPages) : 0;
+}
 
 /**
  * The 11-month residential agreement on a plan — the figure a "rent agreement
@@ -71,7 +67,7 @@ export const PLAN_FEES: Record<PlanId, { platform: number; lawyer: number }> = {
  * leave the old figure behind in a heading or a schema.
  */
 export function rentAgreementPrice(plan: PlanId): number {
-  return templatePrice("residential-11-month") + PLAN_FEES[plan].platform;
+  return templatePrice("residential-11-month") + planExtra(plan);
 }
 
 export interface StampDutyInput {
@@ -155,10 +151,10 @@ export function calculateStampDuty({
     ? Math.round(chargeableValue * TN_REGISTRATION_RATE)
     : 0;
 
-  const fees = PLAN_FEES[plan];
-  // The document's own price, plus whatever the plan wraps around it.
+  // The document's rate-card price. No plan adds a service fee to it — see
+  // planExtra — so this is the whole of our drafting charge.
   const documentFee = templateId ? templatePrice(templateId) : 0;
-  const platformFee = documentFee + fees.platform;
+  const platformFee = documentFee;
 
   // The sheets the deed is executed on, at the shelf price, summed across the
   // combination. An e-Stamp (no sheets) has no shelf price — its cost is the
@@ -168,12 +164,13 @@ export function calculateStampDuty({
   // Each sheet past the first is a flat printing surcharge.
   const extraPageFee = extraPageFeeForPages(documentPages);
 
-  // Premium bundles notary attestation; other plans pay for it if they opt in,
-  // or if the instrument is one that is void without it. The fee covers the
-  // first four sheets and charges for every one after them.
+  // Premium includes notary attestation, at the notary's own rate; other plans
+  // pay the same fee if they opt in, or if the instrument is one that is void
+  // without it. The fee covers the first four sheets and charges for every one
+  // after them.
   const lawyerFee =
     plan === "premium"
-      ? fees.lawyer
+      ? planExtra(plan, documentPages)
       : lawyerReview || notaryRequired
         ? notaryFeeForPages(documentPages)
         : 0;
