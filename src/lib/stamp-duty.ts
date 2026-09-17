@@ -65,6 +65,15 @@ export const PLAN_FEES: Record<PlanId, { platform: number; lawyer: number }> = {
   premium: { platform: 1150, lawyer: 0 },
 };
 
+/**
+ * The 11-month residential agreement on a plan — the figure a "rent agreement
+ * from" line quotes. Worked out rather than typed, so a price change cannot
+ * leave the old figure behind in a heading or a schema.
+ */
+export function rentAgreementPrice(plan: PlanId): number {
+  return templatePrice("residential-11-month") + PLAN_FEES[plan].platform;
+}
+
 export interface StampDutyInput {
   monthlyRent: number;
   securityDeposit: number;

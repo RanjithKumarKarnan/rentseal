@@ -1,6 +1,8 @@
 import { Check, Scale, X } from "lucide-react";
 import { Reveal } from "@/components/ui/motion";
 import { LogoMark } from "@/components/ui/logo";
+import { CHEAPEST_TEMPLATE_PRICE } from "@/lib/template-prices";
+import { inr } from "@/lib/utils";
 
 const ROWS = [
   { label: "Time to a signed document", old: "3–5 days", now: "Under 10 minutes" },
@@ -10,7 +12,7 @@ const ROWS = [
   { label: "Signatures", old: "Both parties in the same room", now: "Aadhaar OTP from anywhere" },
   { label: "Notarisation", old: "Find a notary, queue, pay cash", now: "Arranged for you" },
   { label: "Your copy in three years", old: "A folder, if you kept it", now: "In your dashboard, always" },
-  { label: "Cost", old: "₹1,500–4,000 in fees and running around", now: "From ₹349 plus government duty" },
+  { label: "Cost", old: "₹1,500–4,000 in fees and running around", now: `From ${inr(CHEAPEST_TEMPLATE_PRICE)} plus government duty` },
 ];
 
 export function Comparison() {

@@ -509,7 +509,7 @@ export const FAQS = [
   {
     category: "Delivery",
     q: "Do I get a physical copy?",
-    a: "On the Premium plan we courier a printed, stamped copy anywhere in Tamil Nadu at no extra cost, typically in two to three working days. On other plans you can order one for ₹299.",
+    a: "On the Premium plan we courier a printed, stamped copy anywhere in Tamil Nadu at no extra cost, typically in two to three working days. On other plans the stamped copy comes at the normal delivery charge — ₹100 next day in Chennai, ₹200 express or ₹100 in two to three days elsewhere in Tamil Nadu — or you can collect it from our counter. An extra printed copy is the stamp paper again plus ₹10 a page.",
   },
   {
     category: "Renewal",

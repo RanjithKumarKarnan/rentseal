@@ -10,7 +10,8 @@ import { StampPaper } from "@/components/landing/stamp-paper";
 import { Commitments } from "@/components/landing/commitments";
 import { TrustBar } from "@/components/landing/trust-bar";
 import { WhatsAppFab } from "@/components/site/whatsapp-fab";
-import { SITE } from "@/lib/site";
+import { PLANS, SITE } from "@/lib/site";
+import { rentAgreementPrice } from "@/lib/stamp-duty";
 import { DENOMINATIONS } from "@/lib/stamp-paper";
 
 export const meta: PageMeta = {
@@ -35,9 +36,12 @@ const serviceSchema = {
         price: String(d.value),
         priceCurrency: "INR",
       })),
-      { "@type": "Offer", name: "Rental agreement — Basic", price: "350", priceCurrency: "INR" },
-      { "@type": "Offer", name: "Rental agreement — Standard", price: "800", priceCurrency: "INR" },
-      { "@type": "Offer", name: "Rental agreement — Premium", price: "1500", priceCurrency: "INR" },
+      ...PLANS.map((plan) => ({
+        "@type": "Offer",
+        name: `Rental agreement — ${plan.name}`,
+        price: String(rentAgreementPrice(plan.id)),
+        priceCurrency: "INR",
+      })),
     ],
   },
 };
