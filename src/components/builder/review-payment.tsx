@@ -18,7 +18,7 @@ import { PLANS, SITE } from "@/lib/site";
 import { agreementRow } from "@/lib/orders";
 import { submitOrder } from "@/lib/submit-order";
 import { checkPincode } from "@/lib/pincode";
-import { PLAN_FEES, calculateStampDuty, splitGovernmentAndService } from "@/lib/stamp-duty";
+import { calculateStampDuty, planExtra, splitGovernmentAndService } from "@/lib/stamp-duty";
 import { templatePrice } from "@/lib/template-prices";
 import {
   NOTARY_EXTRA_SHEET_FEE,
@@ -272,7 +272,8 @@ function SendBlock({
                   </div>
                   <p className="tnum mt-1.5 text-[19px] font-bold text-navy-950">
                     {inr(
-                      (tpl ? templatePrice(tpl.id) : 0) + PLAN_FEES[plan.id as PlanId].platform,
+                      (tpl ? templatePrice(tpl.id) : 0) +
+                        planExtra(plan.id as PlanId, draft.options.documentPages),
                     )}
                   </p>
                   <p className="mt-1 text-[12px] leading-snug text-navy-500">{plan.delivery}</p>
@@ -299,9 +300,7 @@ function SendBlock({
                   {NOTARY_MANDATORY_REASON}
                 </p>
                 <p className="mt-1.5 text-[12.5px] text-navy-500">
-                  {draft.plan === "premium"
-                    ? "Your Premium plan already covers it."
-                    : `Charged at ${inr(notaryFeeForPages(draft.options.documentPages))}, shown in the quote below.`}
+                  {`Charged at ${inr(notaryFeeForPages(draft.options.documentPages))}${draft.plan === "premium" ? " as part of Premium" : ""}, shown in the quote below.`}
                 </p>
               </div>
             </div>
@@ -681,16 +680,6 @@ function SendBlock({
               { label: "Stamp duty", value: breakdown.stampDuty, hint: "1% · Govt of TN" },
               breakdown.registrationRequired
                 ? { label: "Registration fee", value: breakdown.registrationFee, hint: "1% · Govt of TN" }
-                : null,
-              breakdown.platformFee - breakdown.documentFee > 0
-                ? {
-                    label: `${draft.plan === "premium" ? "Premium" : "Standard"} service`,
-                    value: breakdown.platformFee - breakdown.documentFee,
-                    hint:
-                      draft.plan === "premium"
-                        ? "e-Stamp, e-Sign, notary and doorstep delivery"
-                        : "e-Stamp and Aadhaar e-Sign",
-                  }
                 : null,
               breakdown.lawyerFee > 0
                 ? {

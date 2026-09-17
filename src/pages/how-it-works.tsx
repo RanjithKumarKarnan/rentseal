@@ -60,7 +60,7 @@ const DETAIL = [
     n: "07",
     title: "It arrives, three ways at once",
     body: "The finished PDF downloads immediately, goes to both parties by email, and arrives on WhatsApp. It also stays in your dashboard permanently — so when you need it three years later for a deposit dispute or a bank KYC, it is one search away. We remind you 45 days before it expires.",
-    aside: "Premium adds a printed stamped copy by courier.",
+    aside: "Premium adds notary attestation. The stamped copy is couriered at the delivery rate.",
   },
 ];
 

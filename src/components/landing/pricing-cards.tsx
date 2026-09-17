@@ -115,7 +115,7 @@ export function PricingCards({
                       )}
                     >
                       <Info className="size-3.5" />
-                      Stamp duty billed separately at government rate
+                      Stamp paper, duty and shipping billed separately
                     </p>
 
                     <div
