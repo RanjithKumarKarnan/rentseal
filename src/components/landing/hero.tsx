@@ -251,7 +251,11 @@ export function Hero() {
               */}
               Non-judicial stamp paper and agreements,
               <br className="hidden sm:block" />{" "}
-              <em className="italic font-normal text-brand-800">
+              {/* Bold, like the rest of the headline. font-normal was a serif's
+                  contrast — Source Serif's regular italic against its bold
+                  roman. Poppins has no regular loaded, so that asked the
+                  browser to slant a weight it did not have. */}
+              <em className="italic text-brand-800">
                 delivered to your doorstep
               </em>
             </motion.h1>

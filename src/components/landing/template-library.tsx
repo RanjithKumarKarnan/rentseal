@@ -218,7 +218,7 @@ export function TemplateLibrary({
                     h2 here the outline stepped from the page h1 to h3 — and
                     "Affidavits", "Lease deed" and the rest are the words people
                     search for. */}
-                <h2 className="flex items-center gap-3 text-[13px] font-medium text-navy-500">
+                <h2 className="flex items-center gap-3 font-sans text-[13px] font-medium text-navy-500">
                   <Badge tone={CATEGORY_TONE[category]}>{category}</Badge>
                   <span>
                     {group.length} template{group.length === 1 ? "" : "s"}

@@ -4,7 +4,7 @@
    type tokens below read them through these variables. */
 :root {
   --font-inter: "Inter Variable";
-  --font-serif: "Source Serif 4 Variable";
+  --font-poppins: "Poppins";
 }
 
 /* ============================================================
@@ -44,7 +44,7 @@
   --color-line: #e2e8f0;
 
   /* Type */
-  --font-display: var(--font-serif), ui-serif, Georgia, "Times New Roman", serif;
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* Radii
@@ -89,10 +89,12 @@
 
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
-    /* A serif does not want the tight tracking a geometric sans needs — the
-       previous -0.022em was tuned for Plus Jakarta Sans and closes up the
-       serifs. */
-    letter-spacing: -0.011em;
+    /* Poppins is drawn from circles, so its default weight reads light at
+       display sizes and its letterforms sit wide apart. Bold is the weight the
+       headings are set in, and the tracking is pulled back in — the -0.011em
+       above was loosened for a serif, which wants the opposite. */
+    font-weight: 700;
+    letter-spacing: -0.021em;
     text-wrap: balance;
   }
 

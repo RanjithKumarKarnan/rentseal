@@ -1,6 +1,11 @@
 import "@fontsource-variable/inter";
-import "@fontsource-variable/source-serif-4/wght.css";
-import "@fontsource-variable/source-serif-4/wght-italic.css";
+// Poppins sets the headings. It has no variable cut on Google Fonts, so each
+// weight is its own file and only the ones headings actually ask for are
+// loaded: bold, and bold italic for the emphasised half of the hero headline.
+// Every weight from 100 to 900 would be most of a megabyte for eight cuts
+// nothing on the site uses.
+import "@fontsource/poppins/700.css";
+import "@fontsource/poppins/700-italic.css";
 import "@/styles/globals.css";
 
 import { StrictMode } from "react";
