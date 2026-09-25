@@ -58,7 +58,8 @@ const PAGES: SearchDoc[] = [
     description: "Physical non-judicial stamp paper delivered across the state.",
     keywords: ["districts", "delivery", "coverage", "stamp paper", "non-judicial stamp paper", "non judicial",
                "physical stamp paper", "hard copy stamp paper", "hardcopy", "original stamp paper", "bond paper",
-               "stamp paper near me", "stamp vendor", "home delivery"],
+               "stamp paper near me", "stamp vendor", "stamp paper vendor", "stamp paper dealers",
+               "stamp paper price", "home delivery"],
   },
   {
     id: "page-pricing",
