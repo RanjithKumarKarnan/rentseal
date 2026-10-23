@@ -62,12 +62,17 @@ export function planExtra(plan: PlanId, documentPages = 1): number {
 }
 
 /**
- * The 11-month residential agreement on a plan — the figure a "rent agreement
- * from" line quotes. Worked out rather than typed, so a price change cannot
- * leave the old figure behind in a heading or a schema.
+ * The 11-month residential agreement — the figure a "rent agreement from" line
+ * quotes. Worked out rather than typed, so a price change cannot leave the old
+ * figure behind in a heading or a schema.
+ *
+ * The plan no longer moves it. Every document is the flat drafting fee and
+ * nothing else is quoted, so Basic, Standard and Premium all come to the same
+ * number; the plan buys delivery speed, not a different price.
  */
-export function rentAgreementPrice(plan: PlanId): number {
-  return templatePrice("residential-11-month") + planExtra(plan);
+export function rentAgreementPrice(plan?: PlanId): number {
+  void plan;
+  return templatePrice("residential-11-month");
 }
 
 export interface StampDutyInput {
@@ -283,6 +288,24 @@ export function calculateStampDuty({
     total,
     notes,
   };
+}
+
+/**
+ * What the customer is quoted for a drafted document.
+ *
+ * One flat drafting fee, and nothing else. The office's instruction of
+ * 23 October 2026: the breakdown that used to sit here — sheet, extra pages,
+ * duty, notary, copies, GST — turned a ₹350 document into a ₹714 estimate on
+ * screen, and the figure finally taken on the confirming call was neither.
+ * Stamp paper, government duty, attestation and delivery are sourced by the
+ * office and settled on that call, so they are no longer quoted up front.
+ *
+ * `calculateStampDuty` still works every component out: the order email carries
+ * them so the counter knows what to source, and the standalone duty calculator
+ * still shows the state's share. This is the one figure the customer sees.
+ */
+export function quotedTotal(b: StampDutyBreakdown): number {
+  return b.documentFee;
 }
 
 /** Government portion vs our portion — used to prove we don't mark up state fees. */

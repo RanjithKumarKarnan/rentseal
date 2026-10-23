@@ -18,7 +18,7 @@ import { PLANS, SITE } from "@/lib/site";
 import { agreementRow } from "@/lib/orders";
 import { submitOrder } from "@/lib/submit-order";
 import { checkPincode } from "@/lib/pincode";
-import { calculateStampDuty, planExtra, splitGovernmentAndService } from "@/lib/stamp-duty";
+import { calculateStampDuty, quotedTotal } from "@/lib/stamp-duty";
 import { templatePrice } from "@/lib/template-prices";
 import {
   NOTARY_EXTRA_SHEET_FEE,
@@ -217,7 +217,7 @@ function SendBlock({
     extraPrintedCopies: draft.options.extraPrintedCopies,
     softCopy: draft.options.softCopy,
   });
-  const split = splitGovernmentAndService(breakdown);
+  const quoted = quotedTotal(breakdown);
 
   const contact = draft.landlord.phone ? draft.landlord : draft.tenant;
   const canSend = contact.phone.replace(/\D/g, "").length >= 10;
@@ -270,10 +270,7 @@ function SendBlock({
                     {plan.recommended ? <Badge tone="brand">Popular</Badge> : null}
                   </div>
                   <p className="tnum mt-1.5 text-[19px] font-bold text-navy-950">
-                    {inr(
-                      (tpl ? templatePrice(tpl.id) : 0) +
-                        planExtra(plan.id as PlanId, draft.options.documentPages),
-                    )}
+                    {inr(templatePrice(draft.templateId))}
                   </p>
                   <p className="mt-1 text-[12px] leading-snug text-navy-500">{plan.delivery}</p>
                 </button>
@@ -592,86 +589,30 @@ function SendBlock({
             </h3>
           </div>
           <dl className="divide-y divide-line">
-            {[
-              {
-                label: "Drafting this document",
-                value: breakdown.documentFee,
-                hint: tpl?.name ?? "Document fee",
-              },
-              breakdown.stampPaperFee > 0
-                ? {
-                    label: sheets.length > 1 ? `Non-judicial stamp paper · ${sheets.length} sheets` : "Non-judicial stamp paper",
-                    value: breakdown.stampPaperFee,
-                    hint: `${sheets.map((v) => DENOMINATIONS.find((d) => d.value === v)?.label ?? `₹${v}`).join(" + ")} · face value plus our charge`,
-                  }
-                : null,
-              breakdown.extraPageFee > 0
-                ? {
-                    label: "Extra-page printing",
-                    value: breakdown.extraPageFee,
-                    hint: `${draft.options.documentPages} sheets · ₹50 each past the first`,
-                  }
-                : null,
-              { label: "Stamp duty", value: breakdown.stampDuty, hint: "1% · Govt of TN" },
-              breakdown.registrationRequired
-                ? { label: "Registration fee", value: breakdown.registrationFee, hint: "1% · Govt of TN" }
-                : null,
-              breakdown.lawyerFee > 0
-                ? {
-                    label: "Notary attestation",
-                    value: breakdown.lawyerFee,
-                    hint: `${draft.options.documentPages} sheet${draft.options.documentPages === 1 ? "" : "s"}${notaryRequired ? " · required" : ""}`,
-                  }
-                : null,
-              breakdown.printedCopiesFee > 0
-                ? {
-                    label: `Extra printed cop${draft.options.extraPrintedCopies === 1 ? "y" : "ies"}`,
-                    value: breakdown.printedCopiesFee,
-                    hint: `${draft.options.extraPrintedCopies} × ${inr(printedCopyUnitPrice(draft.options.documentPages, sheets))} · sheet plus printing`,
-                  }
-                : null,
-              breakdown.softCopyFee > 0
-                ? {
-                    label: "Scanned soft copy",
-                    value: breakdown.softCopyFee,
-                    hint: `${draft.options.documentPages} page${draft.options.documentPages === 1 ? "" : "s"} · ${inr(COPY_PAGE_FEE)} a page`,
-                  }
-                : null,
-              breakdown.backdatingFee > 0
-                ? {
-                    label: "Older-dated paper",
-                    value: breakdown.backdatingFee,
-                    hint: `${backdateLabel(breakdown.backdatingMonths)} · ${inr(BACKDATE_FEE_PER_MONTH)} a month`,
-                  }
-                : null,
-              { label: "GST", value: breakdown.gst, hint: "18% on our fee" },
-            ]
-              .filter(Boolean)
-              .map((row) => {
-                const r = row as { label: string; value: number; hint: string };
-                return (
-                  <div key={r.label} className="flex items-start justify-between px-5 py-3">
-                    <dt className="text-[13.5px] text-navy-600">
-                      {r.label}
-                      <span className="block text-[11.5px] text-navy-400">{r.hint}</span>
-                    </dt>
-                    <dd className="tnum text-[14px] font-semibold text-navy-950">{inr(r.value)}</dd>
-                  </div>
-                );
-              })}
+            <div className="flex items-start justify-between px-5 py-3">
+              <dt className="text-[13.5px] text-navy-600">
+                Drafting this document
+                <span className="block text-[11.5px] text-navy-400">
+                  {tpl?.name ?? "Document fee"} · flat for every document
+                </span>
+              </dt>
+              <dd className="tnum text-[14px] font-semibold text-navy-950">
+                {inr(breakdown.documentFee)}
+              </dd>
+            </div>
             <div className="flex items-center justify-between bg-navy-950 px-5 py-4">
               <dt className="text-[13.5px] font-semibold text-white/70">Estimate</dt>
               <dd className="tnum font-display text-[21px] font-bold text-white">
-                {inr(breakdown.total)}
+                {inr(quoted)}
               </dd>
             </div>
           </dl>
         </div>
 
         <p className="text-[12.5px] leading-relaxed text-navy-400">
-          Of this, {inr(split.government)} goes to the Government of Tamil Nadu and{" "}
-          {inr(split.service)} to us. We will confirm the final figure on the call before you
-          pay anything.
+          That is our drafting fee in full, the same for every document. Stamp paper,
+          government duty, attestation and delivery are arranged by us and settled on the
+          confirming call — we go through the figure with you before anything is charged.
         </p>
 
         {/* Who we call */}

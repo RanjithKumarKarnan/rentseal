@@ -18,10 +18,9 @@ import {
 } from "lucide-react";
 import { useAgreement } from "@/lib/agreement-store";
 import { clauseStats, specFor } from "@/lib/clauses";
-import { calculateStampDuty } from "@/lib/stamp-duty";
+import { calculateStampDuty, quotedTotal } from "@/lib/stamp-duty";
 import { isNotaryMandatory } from "@/lib/notary";
 import { stampPaperDateOf } from "@/lib/backdating";
-import { describeSheets } from "@/lib/stamp-paper";
 import { AGREEMENT_TYPES } from "@/lib/site";
 import { TEMPLATES } from "@/lib/templates";
 import { Button, ButtonLink } from "@/components/ui/button";
@@ -195,6 +194,7 @@ function CostRail() {
       }),
     [draft],
   );
+  const quoted = quotedTotal(breakdown);
 
   return (
     <div className="grid gap-4 sm:grid-cols-2">
@@ -205,73 +205,31 @@ function CostRail() {
           <h2 className="text-[13px] font-bold text-navy-950">Running total</h2>
         </div>
         <dl className="divide-y divide-line">
-          {[
-            { label: "This document", value: breakdown.documentFee, hint: "Drafting fee" },
-            breakdown.stampPaperFee > 0
-              ? { label: "Non-judicial stamp paper", value: breakdown.stampPaperFee, hint: describeSheets(draft.options.stampPaperSheets) }
-              : null,
-            breakdown.extraPageFee > 0
-              ? { label: "Extra pages", value: breakdown.extraPageFee, hint: `${draft.options.documentPages} sheets · ₹50 past the first` }
-              : null,
-            { label: "Stamp duty", value: breakdown.stampDuty, hint: "1% · Govt of TN" },
-            breakdown.registrationRequired
-              ? { label: "Registration fee", value: breakdown.registrationFee, hint: "1% · Govt of TN" }
-              : null,
-            breakdown.lawyerFee > 0
-              ? {
-                  label: "Notary attestation",
-                  value: breakdown.lawyerFee,
-                  hint: isNotaryMandatory(draft.templateId) ? "Notary public · required" : "Notary public",
-                }
-              : null,
-            breakdown.printedCopiesFee + breakdown.softCopyFee > 0
-              ? {
-                  label: "Extra copies",
-                  value: breakdown.printedCopiesFee + breakdown.softCopyFee,
-                  hint: [
-                    draft.options.extraPrintedCopies
-                      ? `${draft.options.extraPrintedCopies} printed`
-                      : "",
-                    draft.options.softCopy ? "soft copy" : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" · "),
-                }
-              : null,
-            breakdown.backdatingFee > 0
-              ? {
-                  label: "Older-dated paper",
-                  value: breakdown.backdatingFee,
-                  hint: `${breakdown.backdatingMonths} month${breakdown.backdatingMonths === 1 ? "" : "s"} back`,
-                }
-              : null,
-            { label: "GST", value: breakdown.gst, hint: "18% on our fee" },
-          ]
-            .filter(Boolean)
-            .map((row) => {
-              const r = row as { label: string; value: number; hint: string };
-              return (
-                <div key={r.label} className="flex items-start justify-between px-5 py-2.5">
-                  <dt className="text-[13px] text-navy-600">
-                    {r.label}
-                    <span className="block text-[11px] text-navy-400">{r.hint}</span>
-                  </dt>
-                  <dd className="tnum text-[13.5px] font-semibold text-navy-950">{inr(r.value)}</dd>
-                </div>
-              );
-            })}
+          <div className="flex items-start justify-between px-5 py-2.5">
+            <dt className="text-[13px] text-navy-600">
+              This document
+              <span className="block text-[11px] text-navy-400">Drafting fee · flat for every document</span>
+            </dt>
+            <dd className="tnum text-[13.5px] font-semibold text-navy-950">
+              {inr(breakdown.documentFee)}
+            </dd>
+          </div>
           <div className="flex items-center justify-between bg-navy-950 px-5 py-3.5">
             <dt className="text-[13px] font-semibold text-white/70">Total</dt>
             <motion.dd
-              key={breakdown.total}
+              key={quoted}
               initial={{ opacity: 0.5, y: -3 }}
               animate={{ opacity: 1, y: 0 }}
               className="tnum font-display text-[19px] font-bold text-white"
             >
-              {inr(breakdown.total)}
+              {inr(quoted)}
             </motion.dd>
           </div>
         </dl>
+        <p className="border-t border-line px-5 py-3 text-[11.5px] leading-relaxed text-navy-400">
+          Stamp paper, government duty and delivery are arranged by us and settled on the
+          confirming call.
+        </p>
       </div>
 
       {/* Clause counter */}
@@ -722,10 +680,8 @@ function SummaryRailMobile() {
   });
   return (
     <div className="flex items-center justify-between">
-      <span className="text-[13px] text-navy-500">
-        Stamp duty {inr(breakdown.stampDuty)} · Fee {inr(breakdown.platformFee + breakdown.gst)}
-      </span>
-      <span className="tnum text-[16px] font-bold text-navy-950">{inr(breakdown.total)}</span>
+      <span className="text-[13px] text-navy-500">Drafting fee · all in</span>
+      <span className="tnum text-[16px] font-bold text-navy-950">{inr(quotedTotal(breakdown))}</span>
     </div>
   );
 }

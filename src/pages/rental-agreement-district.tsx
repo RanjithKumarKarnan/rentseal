@@ -306,7 +306,7 @@ export default function DistrictPage() {
             description: `Online rental agreement drafting, stamp paper and e-signing across ${district.name} district, Tamil Nadu.`,
             url: `${SITE.url}/rental-agreement/${district.slug}`,
             telephone: SITE.phone,
-            priceRange: `${inr(rentAgreementPrice("basic"))} – ${inr(rentAgreementPrice("premium"))}`,
+            priceRange: inr(rentAgreementPrice()),
             areaServed: {
               "@type": "AdministrativeArea",
               name: `${district.name} district`,

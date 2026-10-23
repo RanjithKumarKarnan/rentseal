@@ -1,4 +1,4 @@
-import { calculateStampDuty } from "./stamp-duty";
+import { calculateStampDuty, quotedTotal } from "./stamp-duty";
 import { isNotaryMandatory } from "./notary";
 import { describeSheets } from "./stamp-paper";
 import { stampPaperDateOf } from "./backdating";
@@ -76,7 +76,10 @@ export function agreementRow(draft: AgreementDraft, notes = ""): OrderRow {
     contactPhone: primary.phone,
     contactEmail: primary.email,
     city: draft.property.city || draft.property.district,
-    estimate: String(breakdown.total),
+    // What the customer was quoted on screen: the flat drafting fee, nothing
+    // else. The component fees below still go in the email so the counter knows
+    // what to source and what to collect on the call.
+    estimate: String(quotedTotal(breakdown)),
     summary: joinTruthy(
       tpl?.name ?? meta?.name ?? agreementTitle(draft),
       `${draft.terms.durationMonths} months`,
