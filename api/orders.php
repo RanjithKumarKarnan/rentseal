@@ -8,10 +8,12 @@
  * it answers the same /api/orders.php the forms already post to by running the
  * one order desk, public/api/orders.php — the file Hostinger runs directly.
  *
- * Its settings come from the Vercel project's environment variables: SMTP_*,
- * ORDER_EMAIL and TELEGRAM_*, the same names as .env.
+ * Its settings are SMTP_*, ORDER_EMAIL and TELEGRAM_*: the Vercel project's
+ * environment variables where set, otherwise the project's .env files
+ * (_load-env.php).
  */
 
 declare(strict_types=1);
 
+require __DIR__ . '/_load-env.php';
 require __DIR__ . '/../public/api/orders.php';
