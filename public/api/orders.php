@@ -61,14 +61,33 @@ function respond(int $status, array $body): void
     exit;
 }
 
-/** The credentials: beside this file on Hostinger, or wherever `npm run dev` put them. */
+/**
+ * The credentials: beside this file on Hostinger, wherever `npm run dev` put
+ * them, or — on Vercel, where api/orders.php runs this and no file is written —
+ * the project's environment variables.
+ */
 function load_config(): array
 {
     // ORDERS_CONFIG is set only by `npm run dev` (vite.config.ts), which keeps
     // the settings out of the source tree. A web request cannot set it.
     $file = getenv('ORDERS_CONFIG') ?: __DIR__ . '/orders-config.php';
-    $config = is_file($file) ? require $file : [];
+    $config = is_file($file) ? require $file : env_config();
     return is_array($config) ? $config : [];
+}
+
+/** The same keys scripts/orders-config.mjs writes, read from the environment. */
+function env_config(): array
+{
+    $env = static fn (string $name): string => trim((string) getenv($name));
+    return [
+        'smtp_host' => $env('SMTP_HOST'),
+        'smtp_port' => $env('SMTP_PORT') ?: '465',
+        'smtp_user' => $env('SMTP_USER'),
+        'smtp_pass' => $env('SMTP_PASS'),
+        'order_email' => $env('ORDER_EMAIL'),
+        'telegram_bot_token' => $env('TELEGRAM_BOT_TOKEN'),
+        'telegram_chat_id' => $env('TELEGRAM_CHAT_ID'),
+    ];
 }
 
 function setting(array $config, string $key): string

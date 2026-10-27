@@ -4,6 +4,13 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/orders.php": {
+      "runtime": "vercel-php@0.7.4",
+      "maxDuration": 60,
+      "excludeFiles": "{node_modules/**,dist/**,dist-ssr/**,src/**,docs/**,scripts/**,.next/**,.env*}"
+    }
+  },
   "redirects": [
     { "source": "/api/orders-config.php", "destination": "/", "permanent": false },
     { "source": "/:base(rental-agreement|stamp-paper)/trichy", "destination": "/:base/tiruchirappalli", "permanent": true },
