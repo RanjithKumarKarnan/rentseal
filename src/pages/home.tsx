@@ -15,8 +15,10 @@ import { rentAgreementPrice } from "@/lib/stamp-duty";
 import { DENOMINATIONS } from "@/lib/stamp-paper";
 
 export const meta: PageMeta = {
-  title: "Non-Judicial Stamp Paper Online in Chennai",
-  description: SITE.description,
+  // The owner's target phrase for the home page is "online stamp paper Chennai".
+  title: "Online Stamp Paper in Chennai, Delivered Home",
+  description:
+    "Online stamp paper in Chennai: original non-judicial stamp paper from ₹120, delivered to your doorstep across Tamil Nadu. Rental agreements from ₹350.",
   alternates: { canonical: "/" },
 };
 
@@ -34,7 +36,9 @@ const serviceSchema = {
       ...DENOMINATIONS.filter((d) => d.value > 0).map((d) => ({
         "@type": "Offer",
         name: `${d.label} non-judicial stamp paper (physical sheet)`,
-        price: String(d.value),
+        // What the customer pays for the sheet, not its face value — an
+        // assistant quoting this should say ₹120 for a ₹100 sheet, as the page does.
+        price: String(d.price),
         priceCurrency: "INR",
       })),
       ...PLANS.map((plan) => ({

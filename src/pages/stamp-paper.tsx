@@ -9,9 +9,9 @@ import { ButtonLink } from "@/components/ui/button";
 import { DISTRICTS } from "@/lib/districts";
 import { LEAD_ANCHOR, SITE } from "@/lib/site";
 
-const title = "Non-Judicial Stamp Paper Online — Tamil Nadu";
+const title = "Non-Judicial Stamp Paper Online, Home Delivery";
 const description =
-  "Buy physical non-judicial stamp paper online — hard copy sheets with home delivery across Tamil Nadu: ₹100 for ₹120, ₹500 for ₹550, ₹1,000 for ₹1,100.";
+  "Non-judicial stamp paper online with home delivery across Tamil Nadu: original hard copy sheets, ₹100 for ₹120, ₹500 for ₹550, ₹1,000 for ₹1,100.";
 
 export const meta: PageMeta = {
   title,

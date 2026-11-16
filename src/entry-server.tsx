@@ -11,7 +11,7 @@ import { renderHead, tagsForMatches } from "@/seo/meta";
  * with the site files and social cards below. None of it ships to the browser.
  */
 export { prerenderPaths } from "@/seo/paths";
-export { manifestJson, robotsTxt, sitemapXml } from "@/seo/site-files";
+export { llmsTxt, manifestJson, robotsTxt, sitemapXml } from "@/seo/site-files";
 export { ogCards } from "@/seo/og-cards";
 
 export type RenderResult = { redirect: string } | { html: string; head: string };

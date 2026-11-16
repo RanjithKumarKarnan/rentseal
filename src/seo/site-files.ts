@@ -1,6 +1,9 @@
 import { DISTRICTS } from "@/lib/districts";
 import { SERVICES } from "@/lib/services";
 import { SITE } from "@/lib/site";
+import { DELIVERY_ZONES, DENOMINATIONS } from "@/lib/stamp-paper";
+import { FLAT_DOCUMENT_PRICE } from "@/lib/template-prices";
+import { inr } from "@/lib/utils";
 
 /*
  * sitemap.xml, robots.txt and manifest.webmanifest — written by the build
@@ -96,14 +99,120 @@ export function sitemapXml(): string {
   ].join("\n");
 }
 
+/**
+ * AI search and assistant crawlers, named one by one.
+ *
+ * `User-Agent: *` already lets them in, but the owner was told by ChatGPT to
+ * check that OAI-SearchBot is allowed, and an explicit line is what an audit —
+ * human or AI — looks for. A crawler that matches a named group ignores the `*`
+ * group entirely, so the group repeats the /api/ rule rather than inheriting it.
+ */
+const AI_CRAWLERS = [
+  // OpenAI — ChatGPT Search, browsing on a user's behalf, and training.
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "GPTBot",
+  // Perplexity.
+  "PerplexityBot",
+  "Perplexity-User",
+  // Anthropic — Claude search, user fetches and training.
+  "Claude-SearchBot",
+  "Claude-User",
+  "ClaudeBot",
+  "anthropic-ai",
+  // Gemini / AI Overviews, Apple Intelligence, Microsoft Copilot (Bing).
+  "Google-Extended",
+  "Applebot-Extended",
+  "Applebot",
+  "Bingbot",
+  // Others that feed assistants and answer engines.
+  "DuckAssistBot",
+  "Meta-ExternalAgent",
+  "Meta-ExternalFetcher",
+  "Amazonbot",
+  "MistralAI-User",
+  "cohere-ai",
+  "YouBot",
+  "CCBot",
+];
+
 export function robotsTxt(): string {
   return [
     "User-Agent: *",
     "Allow: /",
     "Disallow: /api/",
     "",
-    `Host: ${SITE.url}`,
+    "# AI search engines and assistants are welcome: ChatGPT, Perplexity,",
+    "# Claude, Gemini, Copilot and the rest. A plain-text summary of the",
+    `# business is at ${SITE.url}/llms.txt`,
+    ...AI_CRAWLERS.map((agent) => `User-Agent: ${agent}`),
+    "Allow: /",
+    "Disallow: /api/",
+    "",
     `Sitemap: ${SITE.url}/sitemap.xml`,
+    "",
+  ].join("\n");
+}
+
+/**
+ * llms.txt — the site in plain Markdown, for AI assistants.
+ *
+ * ChatGPT, Perplexity and Claude answer "where can I get stamp paper delivered
+ * in Chennai?" from what they can read quickly and quote with confidence. This
+ * states the facts once — who the business is, what it sells, what it costs,
+ * where it delivers, how to reach it — with links to the pages that say it at
+ * length. It reads the same data the pages do, so a price cannot drift.
+ */
+export function llmsTxt(): string {
+  const metro = DELIVERY_ZONES.find((z) => z.id === "metro");
+  const major = DELIVERY_ZONES.find((z) => z.id === "tier-2");
+  const link = (path: string, label: string, note: string) => `- [${label}](${SITE.url}${path}): ${note}`;
+
+  return [
+    `# ${SITE.name} (${SITE.legalName}, Chennai)`,
+    "",
+    `> ${SITE.name}, run by ${SITE.legalName} from Mogappair West, Chennai, sells original physical non-judicial stamp paper online and delivers it to the customer's doorstep in Chennai and in all ${DISTRICTS.length} districts of Tamil Nadu. It also drafts rental agreements, lease deeds, affidavits and other agreements on that stamp paper, from ${inr(FLAT_DOCUMENT_PRICE)} a document.`,
+    "",
+    "## Key facts",
+    "",
+    `- Business: ${SITE.name}, registered name ${SITE.legalName} (proprietorship, Udyam ${SITE.udyam})`,
+    `- Address: ${SITE.address}, Tamil Nadu, India`,
+    `- Phone: ${SITE.phone} · WhatsApp: ${SITE.whatsapp} · Email: ${SITE.email}`,
+    `- Hours: ${SITE.hours.summary}`,
+    "- Languages: Tamil and English",
+    `- Website: ${SITE.url}`,
+    "",
+    "## Services",
+    "",
+    "- **Online stamp paper in Chennai**: order non-judicial stamp paper online. The original, physical, government-issued sheet (not an e-stamp printout) is bought from a licensed vendor and brought to your door.",
+    `- **Stamp paper home delivery across Tamil Nadu**: ${metro ? `${metro.name} (${metro.districts.join(", ")}) ${metro.eta.toLowerCase()}${metro.cutOff ? ` (or ${metro.cutOff.charAt(0).toLowerCase()}${metro.cutOff.slice(1)})` : ""}; ` : ""}${major ? `${major.name.toLowerCase()} (${major.districts.join(", ")}) express; ` : ""}every other district in 2–3 working days.`,
+    "- **Rental agreement on stamp paper**: 11-month residential and commercial rental agreements, lease deeds and leave-and-licence agreements drafted for Tamil Nadu, printed on stamp paper of the correct duty, notarised and delivered.",
+    "- **Online agreement services in Tamil Nadu**: affidavits, indemnity bonds, NOCs, sale, loan, mortgage, partnership and settlement deeds, in English and Tamil.",
+    "- **Online works**: help with community, income and nativity certificates, PAN, passport, voter ID, ration card and MSME registration.",
+    "",
+    "## Stamp paper prices (physical sheet, before delivery)",
+    "",
+    ...DENOMINATIONS.map((d) => `- ${d.label} stamp paper: ${inr(d.price)} (for ${d.uses.slice(0, 3).join(", ").toLowerCase()})`),
+    `- Agreement drafting: ${inr(FLAT_DOCUMENT_PRICE)} a document; stamp duty passed through at the government rate`,
+    "",
+    "## Main pages",
+    "",
+    link("/", "Online stamp paper in Chennai", "home page, order stamp paper and agreements"),
+    link("/stamp-paper", "Non-judicial stamp paper online", "denominations, prices and home delivery"),
+    link("/rental-agreement", "Rental agreement on stamp paper", "rent agreements for every Tamil Nadu district"),
+    link("/templates", "Online agreement services, Tamil Nadu", "every agreement, deed and affidavit we draft"),
+    link("/pricing", "Prices", "stamp paper, drafting, notary and delivery charges"),
+    link("/how-it-works", "How it works", "from order to the paper at your door"),
+    link("/faq", "FAQ", "stamp duty, registration, delivery and refunds"),
+    link("/contact", "Contact LP Enterprises, Chennai", "phone, WhatsApp, email and address"),
+    "",
+    "## Stamp paper delivery by district",
+    "",
+    ...DISTRICTS.map((d) => link(`/stamp-paper/${d.slug}`, `Stamp paper in ${d.name}`, `home delivery in ${d.name} district`)),
+    "",
+    "## Rental agreements by district",
+    "",
+    ...DISTRICTS.map((d) => link(`/rental-agreement/${d.slug}`, `Rental agreement in ${d.name}`, `online rent agreement for ${d.name} district`)),
     "",
   ].join("\n");
 }

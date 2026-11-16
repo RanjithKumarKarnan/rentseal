@@ -6,9 +6,9 @@ import { ButtonLink } from "@/components/ui/button";
 import { DISTRICTS } from "@/lib/districts";
 import { BUILDER_START, SITE } from "@/lib/site";
 
-const title = "Rent Agreement Online in Tamil Nadu";
+const title = "Rental Agreement on Stamp Paper, Tamil Nadu";
 const description =
-  "A legally valid rent agreement anywhere in Tamil Nadu, drafted online and delivered on non-judicial stamp paper. Pick your district below.";
+  "Rental agreement on stamp paper, anywhere in Tamil Nadu: drafted online, printed on non-judicial stamp paper and delivered home. Pick your district below.";
 
 export const meta: PageMeta = {
   title,

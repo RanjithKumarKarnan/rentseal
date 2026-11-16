@@ -57,6 +57,7 @@ write("404.html", page(await server.render("/404")));
 
 write("sitemap.xml", server.sitemapXml());
 write("robots.txt", server.robotsTxt());
+write("llms.txt", server.llmsTxt());
 write("manifest.webmanifest", server.manifestJson());
 
 const cards = server.ogCards();
@@ -66,5 +67,5 @@ for (const card of cards) {
 
 rmSync(new URL("dist-ssr/", root), { recursive: true, force: true });
 console.log(
-  `[prerender] wrote ${paths.length} pages, 404.html, sitemap.xml, robots.txt, manifest.webmanifest and ${cards.length} social cards`,
+  `[prerender] wrote ${paths.length} pages, 404.html, sitemap.xml, robots.txt, llms.txt, manifest.webmanifest and ${cards.length} social cards`,
 );

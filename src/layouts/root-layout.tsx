@@ -12,6 +12,19 @@ const organizationSchema = {
   "@id": `${SITE.url}/#organization`,
   name: SITE.name,
   legalName: SITE.legalName,
+  // The names people (and assistants) actually use for the office, so a
+  // question about "LP Enterprises Chennai" resolves to this site.
+  alternateName: [SITE.legalName, `${SITE.legalName} Chennai`, `${SITE.name} Chennai`, "LP Stamp Paper Mogappair"],
+  slogan: SITE.tagline,
+  knowsAbout: [
+    "Online stamp paper in Chennai",
+    "Non-judicial stamp paper",
+    "Stamp paper home delivery",
+    "Rental agreement on stamp paper",
+    "Online agreement services in Tamil Nadu",
+    "Tamil Nadu stamp duty",
+    "Affidavits and notary attestation",
+  ],
   url: SITE.url,
   logo: `${SITE.url}/logo.png`,
   image: `${SITE.url}/logo.png`,

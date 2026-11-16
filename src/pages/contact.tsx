@@ -6,9 +6,9 @@ import { Reveal } from "@/components/ui/motion";
 import { SITE } from "@/lib/site";
 
 export const meta: PageMeta = {
-  title: "Contact Us — Mogappair West, Chennai",
+  title: `Contact ${SITE.legalName}, Mogappair West, Chennai`,
   description:
-    `Call, WhatsApp, email or use the form, in Tamil or English, for non-judicial stamp paper and agreements. ${SITE.hours.summary.replace(" · ", ", ")}.`,
+    `${SITE.legalName}, Chennai: call, WhatsApp or email us in Tamil or English for non-judicial stamp paper and agreements. ${SITE.hours.summary.replace(" · ", ", ")}.`,
   alternates: { canonical: "/contact" },
 };
 
