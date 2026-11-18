@@ -9,7 +9,6 @@ import { HowItWorks } from "@/components/landing/how-it-works";
 import { StampPaper } from "@/components/landing/stamp-paper";
 import { Commitments } from "@/components/landing/commitments";
 import { TrustBar } from "@/components/landing/trust-bar";
-import { WhatsAppFab } from "@/components/site/whatsapp-fab";
 import { PLANS, SITE } from "@/lib/site";
 import { rentAgreementPrice } from "@/lib/stamp-duty";
 import { DENOMINATIONS } from "@/lib/stamp-paper";
@@ -87,7 +86,6 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
 
-      <WhatsAppFab />
     </>
   );
 }

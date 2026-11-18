@@ -1,5 +1,5 @@
 import Link from "@/components/ui/link";
-import { ArrowUpRight, Mail, MapPin, MessageCircle, Phone, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, MessageCircle, Navigation, Phone, ShieldCheck } from "lucide-react";
 import { DISTRICTS } from "@/lib/districts";
 import { FOOTER_LINKS, LEAD_ANCHOR, SITE, TRUST_SIGNALS } from "@/lib/site";
 import { Logo } from "@/components/ui/logo";
@@ -82,12 +82,26 @@ export function Footer() {
                 className="flex items-center gap-2.5 transition-colors hover:text-white"
               >
                 <MessageCircle className="size-4 shrink-0 text-emerald-400" />
-                WhatsApp support
+                WhatsApp {SITE.whatsapp}
               </a>
-              <p className="flex items-start gap-2.5">
+              <a
+                href={SITE.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2.5 transition-colors hover:text-white"
+              >
                 <MapPin className="mt-0.5 size-4 shrink-0 text-brand-400" />
                 <span className="leading-relaxed">{SITE.address}</span>
-              </p>
+              </a>
+              <a
+                href={SITE.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-[13px] font-semibold text-white transition-colors hover:border-white/30 hover:bg-white/10"
+              >
+                <Navigation className="size-4 shrink-0 text-brand-400" />
+                Get directions to the shop
+              </a>
             </div>
 
             <div className="mt-7 flex gap-2">

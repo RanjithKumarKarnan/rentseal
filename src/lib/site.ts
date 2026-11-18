@@ -33,6 +33,8 @@ export const SITE = {
   whatsapp: "+91 98434 41460",
   email: "lpscanxerox@gmail.com",
   address: "4/434, J J Nagar, Mogappair West, Chennai 600037",
+  /** Google Maps pin for the counter, sent by the client on 18 November 2026. */
+  mapsUrl: "https://maps.app.goo.gl/jH1Y6rb71eSbV4o19",
   /**
    * A proprietorship, so there is no CIN and no GST registration. Both stay
    * empty and every place that renders them omits the row — the Udyam number

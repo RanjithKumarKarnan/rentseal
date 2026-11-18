@@ -4,6 +4,7 @@ import { HashScroll } from "@/components/site/hash-scroll";
 import { Header } from "@/components/site/header";
 import { MobileCta } from "@/components/site/mobile-cta";
 import { ScreenshotGuard } from "@/components/site/screenshot-guard";
+import { WhatsAppFab } from "@/components/site/whatsapp-fab";
 
 export function SiteLayout() {
   return (
@@ -15,6 +16,7 @@ export function SiteLayout() {
       </main>
       <Footer />
       <MobileCta />
+      <WhatsAppFab />
       {/*
         Marketing routes only. The builder is deliberately left out — the
         agreement there is the customer's own document and they are meant to be
