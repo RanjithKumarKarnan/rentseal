@@ -1,3 +1,4 @@
+import { Phone } from "lucide-react";
 import { SITE } from "@/lib/site";
 
 /**
@@ -18,6 +19,36 @@ import { SITE } from "@/lib/site";
  *     open dialog or menu is never competing with a floating green circle.
  */
 export function WhatsAppFab() {
+  return (
+    <>
+      <CallFab />
+      <WhatsAppButton />
+    </>
+  );
+}
+
+/**
+ * Call button, desktop only, stacked above WhatsApp. Phones already get a
+ * call button in the sticky bottom bar (mobile-cta.tsx), so a second one there
+ * would only crowd the corner.
+ */
+function CallFab() {
+  return (
+    <a
+      href={`tel:${SITE.phone.replace(/\s/g, "")}`}
+      aria-label={`Call us on ${SITE.phone}`}
+      className="fixed right-6 bottom-[5.75rem] z-30 hidden items-center gap-2.5 rounded-full bg-brand-600 py-3 pr-5 pl-3.5 text-white shadow-[0_10px_30px_-8px_rgb(37_99_235/0.6)] transition-transform duration-300 hover:scale-[1.03] lg:flex"
+    >
+      <Phone className="size-5 shrink-0" />
+      <span className="flex flex-col leading-tight">
+        <span className="text-[11px] font-medium text-white/85">Call now</span>
+        <span className="text-[14.5px] font-semibold whitespace-nowrap">{SITE.phone}</span>
+      </span>
+    </a>
+  );
+}
+
+function WhatsAppButton() {
   const number = SITE.whatsapp.replace(/\D/g, "");
   const message = encodeURIComponent(
     "Hi, I need non-judicial stamp paper / an agreement. Could you tell me the price and how soon I can get it?",

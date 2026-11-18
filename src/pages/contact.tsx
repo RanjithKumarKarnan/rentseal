@@ -1,7 +1,8 @@
 import type { PageMeta } from "@/seo/meta";
-import { Clock3, Mail, MapPin, MessageCircle, Phone, Scale } from "lucide-react";
+import { Clock3, Mail, MapPin, MessageCircle, Navigation, Phone, Scale } from "lucide-react";
 import { BreadcrumbSchema, PageHero } from "@/components/site/page-hero";
 import { ContactForm } from "@/components/site/contact-form";
+import { GoogleReviews } from "@/components/landing/google-reviews";
 import { Reveal } from "@/components/ui/motion";
 import { SITE } from "@/lib/site";
 
@@ -106,6 +107,15 @@ export default function ContactPage() {
                     <br />
                     {SITE.address}
                   </p>
+                  <a
+                    href={SITE.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-brand-700 hover:text-brand-800"
+                  >
+                    <Navigation className="size-4" />
+                    Get directions on Google Maps
+                  </a>
                   <p className="mt-3 text-[12.5px] text-navy-400">
                     Visits by appointment only — almost everything is faster on WhatsApp.
                   </p>
@@ -126,6 +136,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <GoogleReviews />
 
       <BreadcrumbSchema crumbs={CRUMBS} baseUrl={SITE.url} />
     </>

@@ -362,3 +362,43 @@ body.guard-no-select [contenteditable="true"] {
     animation: none;
   }
 }
+
+/* ============================================================
+   Google reviews banner — see components/landing/google-reviews.tsx
+   The track holds two identical groups, so -50% is one full lap.
+   ============================================================ */
+@keyframes reviews-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.reviews-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+.reviews-track {
+  animation: reviews-scroll 70s linear infinite;
+}
+
+.reviews-marquee:hover .reviews-track,
+.reviews-marquee:focus-within .reviews-track,
+.reviews-marquee[data-paused] .reviews-track {
+  animation-play-state: paused;
+}
+
+/* Reduced motion: no banner, just a row the visitor scrolls themselves. */
+@media (prefers-reduced-motion: reduce) {
+  .reviews-marquee {
+    overflow-x: auto;
+    mask-image: none;
+    padding-inline: 1rem;
+  }
+  .reviews-track {
+    animation: none !important;
+  }
+  .reviews-clone,
+  .reviews-toggle {
+    display: none;
+  }
+}

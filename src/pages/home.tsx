@@ -8,6 +8,7 @@ import { Hero } from "@/components/landing/hero";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { StampPaper } from "@/components/landing/stamp-paper";
 import { Commitments } from "@/components/landing/commitments";
+import { GoogleReviews } from "@/components/landing/google-reviews";
 import { TrustBar } from "@/components/landing/trust-bar";
 import { PLANS, SITE } from "@/lib/site";
 import { rentAgreementPrice } from "@/lib/stamp-duty";
@@ -69,6 +70,7 @@ export default function HomePage() {
       */}
       <Hero />
       <TrustBar />
+      <GoogleReviews />
       <StampPaper />
       <Cities />
       <LeadForm />

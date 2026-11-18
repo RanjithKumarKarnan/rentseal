@@ -2,6 +2,7 @@ import type { PageMeta } from "@/seo/meta";
 import { ArrowRight, Stamp } from "lucide-react";
 import { BreadcrumbSchema, PageHero } from "@/components/site/page-hero";
 import { DistrictIndex } from "@/components/site/district-index";
+import { GoogleReviews } from "@/components/landing/google-reviews";
 import { StampPaperFormats } from "@/components/site/stamp-paper-formats";
 import { StampPaperHow } from "@/components/site/stamp-paper-how";
 import { StampPaperRates } from "@/components/site/stamp-paper-rates";
@@ -73,6 +74,8 @@ export default function StampPaperIndex() {
       </PageHero>
 
       <StampPaperRates />
+
+      <GoogleReviews />
 
       <StampPaperFormats />
 

@@ -1,6 +1,7 @@
 import { Outlet, ScrollRestoration } from "react-router";
 import { MotionProvider } from "@/components/ui/motion-provider";
 import { DISTRICTS } from "@/lib/districts";
+import { GOOGLE_RATING } from "@/lib/google-reviews";
 import { SITE } from "@/lib/site";
 import { CHEAPEST_TEMPLATE_PRICE } from "@/lib/template-prices";
 import { inr } from "@/lib/utils";
@@ -44,6 +45,11 @@ const organizationSchema = {
     postalCode: "600037",
     addressCountry: "IN",
   },
+  // The counter's pin, from its Google Maps listing — lets Google tie this
+  // site to that listing (and its reviews) instead of guessing from the address.
+  geo: { "@type": "GeoCoordinates", latitude: 13.0805402, longitude: 80.1672202 },
+  hasMap: SITE.mapsUrl,
+  sameAs: [GOOGLE_RATING.url],
   areaServed: DISTRICTS.map((d) => ({
     "@type": "AdministrativeArea",
     name: `${d.name} district`,
